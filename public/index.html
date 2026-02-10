@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Barush - Tu Personal Shop Assistant</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <!-- ===== HEADER / NAVEGACION ===== -->
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <h1 class="logo">Barush</h1>
+        <p class="tagline">Your Personal Shop Assistant</p>
+      </div>
+      <nav class="nav">
+        <a href="#inicio" class="nav-link active">Inicio</a>
+        <a href="#servicios" class="nav-link">Servicios</a>
+        <a href="#catalogo" class="nav-link">Catálogo</a>
+        <a href="#como-funciona" class="nav-link">Cómo Funciona</a>
+        <a href="#testimonios" class="nav-link">Testimonios</a>
+        <a href="#contacto" class="nav-link">Contacto</a>
+      </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===== HERO / SECCION PRINCIPAL ===== -->
+  <section class="hero" id="inicio">
+    <div class="container">
+      <div class="hero-badge">Personal Shop Assistant</div>
+      <h2>Tu asistente personal de compras</h2>
+      <p>Te ayudamos a encontrar los mejores productos, las mejores ofertas y las mejores recomendaciones. Compra <strong>smart</strong>, vive mejor.</p>
+      <div class="hero-buttons">
+        <a href="#catalogo" class="btn btn-hero">Explorar Catálogo</a>
+        <a href="#como-funciona" class="btn btn-hero-outline">Saber Más</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECCION: SERVICIOS ===== -->
+  <section class="services-section" id="servicios">
+    <div class="container">
+      <div class="section-header">
+        <h2>Nuestros <span class="highlight">Services</span></h2>
+        <p>Todo lo que necesitas para hacer tus compras de manera inteligente</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">🛍️</div>
+          <h3>Curated Selection</h3>
+          <p>Seleccionamos los mejores productos del mercado para que no pierdas tiempo buscando. Solo lo mejor para ti.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">💰</div>
+          <h3>Best Deals</h3>
+          <p>Encontramos las mejores ofertas y descuentos disponibles. Ahorra dinero en cada compra que hagas.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">⭐</div>
+          <h3>Expert Reviews</h3>
+          <p>Revisamos cada producto para darte opiniones honestas y detalladas. Compra con confianza y sin sorpresas.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🚚</div>
+          <h3>Fast Delivery</h3>
+          <p>Trabajamos con los mejores proveedores para garantizar entregas rápidas y seguras directo a tu puerta.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECCION: CATALOGO DE PRODUCTOS ===== -->
+  <section class="catalog-section" id="catalogo">
+    <div class="container">
+      <div class="section-header">
+        <h2>Nuestro <span class="highlight">Catálogo</span></h2>
+        <p>Explora nuestra selección de productos recomendados especialmente para ti</p>
+      </div>
+
+      <div class="toolbar">
+        <div class="search-box">
+          <input type="text" id="searchInput" placeholder="Buscar productos..." aria-label="Buscar productos">
+        </div>
+        <div class="filters">
+          <select id="categoryFilter" aria-label="Filtrar por categoría">
+            <option value="all">Todas las categorías</option>
+          </select>
+          <select id="sortFilter" aria-label="Ordenar por">
+            <option value="name-asc">Nombre A-Z</option>
+            <option value="name-desc">Nombre Z-A</option>
+            <option value="price-asc">Precio: menor a mayor</option>
+            <option value="price-desc">Precio: mayor a menor</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="results-info">
+        <span id="resultsCount"></span>
+      </div>
+
+      <div class="product-grid" id="productGrid">
+        <!-- Products injected by JS -->
+      </div>
+
+      <div class="no-results" id="noResults" style="display:none;">
+        <p>No se encontraron productos con esos criterios.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECCION: COMO FUNCIONA ===== -->
+  <section class="how-it-works-section" id="como-funciona">
+    <div class="container">
+      <div class="section-header">
+        <h2>Cómo <span class="highlight">Funciona</span></h2>
+        <p>En solo tres pasos puedes empezar a comprar de manera más inteligente</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <h3>Browse</h3>
+          <p>Explora nuestro catálogo con cientos de productos seleccionados cuidadosamente por nuestro equipo de expertos.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <h3>Compare</h3>
+          <p>Compara precios, características y reseñas para tomar la mejor decisión de compra posible.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <h3>Shop Smart</h3>
+          <p>Compra con la seguridad de que estás obteniendo el mejor producto al mejor precio disponible.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECCION: TESTIMONIOS ===== -->
+  <section class="testimonials-section" id="testimonios">
+    <div class="container">
+      <div class="section-header">
+        <h2>Lo que dicen nuestros <span class="highlight">Customers</span></h2>
+        <p>Historias reales de personas que confían en Barush para sus compras</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"Barush me ayudó a encontrar exactamente lo que buscaba a un precio increíble. ¡Totalmente recomendado!"</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">MG</div>
+            <div>
+              <strong>María García</strong>
+              <span>Cliente desde 2025</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"Las recomendaciones personalizadas son muy buenas. Siempre encuentro productos de calidad aquí."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">CL</div>
+            <div>
+              <strong>Carlos López</strong>
+              <span>Cliente desde 2024</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"El mejor personal shop assistant que he usado. Me ahorra mucho tiempo y dinero en mis compras."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">AR</div>
+            <div>
+              <strong>Ana Ramírez</strong>
+              <span>Cliente desde 2025</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECCION: NEWSLETTER / SUSCRIPCION ===== -->
+  <section class="newsletter-section" id="newsletter">
+    <div class="container">
+      <div class="newsletter-content">
+        <h2>Únete a nuestra <span class="highlight">Community</span></h2>
+        <p>Suscríbete para recibir las mejores ofertas, nuevos productos y recomendaciones exclusivas directo en tu correo.</p>
+        <form class="newsletter-form" onsubmit="return false;">
+          <input type="email" placeholder="Tu correo electrónico" aria-label="Correo electrónico" required>
+          <button type="submit" class="btn">Suscribirme</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECCION: CONTACTO ===== -->
+  <section class="contact-section" id="contacto">
+    <div class="container">
+      <div class="section-header">
+        <h2>Ponte en <span class="highlight">Contacto</span></h2>
+        <p>¿Tienes dudas o necesitas asesoría personalizada? Estamos aquí para ayudarte</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="contact-icon">📧</div>
+          <h3>Email</h3>
+          <p>contacto@barush.com</p>
+          <a href="mailto:contacto@barush.com" class="btn btn-sm">Enviar correo</a>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon">💬</div>
+          <h3>Chat</h3>
+          <p>Disponible de lunes a viernes, 9am - 6pm</p>
+          <a href="#" class="btn btn-sm">Iniciar chat</a>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon">📱</div>
+          <h3>Social Media</h3>
+          <p>Síguenos en nuestras redes sociales</p>
+          <a href="#" class="btn btn-sm">Seguir</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h3 class="footer-logo">Barush</h3>
+          <p>Tu personal shop assistant de confianza. Hacemos que tus compras sean más inteligentes y sencillas.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#catalogo">Catálogo</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Categorías</h4>
+          <ul>
+            <li><a href="#catalogo">Electrónica</a></li>
+            <li><a href="#catalogo">Accesorios</a></li>
+            <li><a href="#catalogo">Belleza</a></li>
+            <li><a href="#catalogo">Hogar</a></li>
+            <li><a href="#catalogo">Deportes</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Follow Us</h4>
+          <div class="social-links">
+            <a href="#" aria-label="Instagram">Instagram</a>
+            <a href="#" aria-label="Facebook">Facebook</a>
+            <a href="#" aria-label="TikTok">TikTok</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Barush. Todos los derechos reservados. | Personal Shop Assistant</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/products.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>

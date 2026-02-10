@@ -1,0 +1,10 @@
+{
+  "name": "barush-catalogo",
+  "version": "1.0.0",
+  "description": "Sitio asesor de compras y catálogo de sugerencias",
+  "scripts": {
+    "dev": "netlify dev",
+    "build": "echo 'Static site - no build step required'"
+  },
+  "license": "MIT"
+}

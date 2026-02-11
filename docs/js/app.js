@@ -15,7 +15,7 @@
     chair: "🪑",
     sunscreen: "☀️",
     sportsbag: "🏃",
-    hub: "🔌"
+  
   };
 
   const searchInput = document.getElementById("searchInput");

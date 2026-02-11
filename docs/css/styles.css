@@ -6,16 +6,20 @@
 }
 
 :root {
-  --color-primary: #1a1a2e;
-  --color-primary-light: #16213e;
-  --color-accent: #e94560;
-  --color-accent-hover: #c73a52;
-  --color-bg: #f8f9fc;
-  --color-card: #ffffff;
-  --color-text: #333333;
-  --color-text-light: #777777;
-  --color-border: #e0e0e0;
-  --color-highlight: #e94560;
+/*
+  Aquí puedes modificar la paleta de colores del sitio.
+  Cada variable tiene un comentario en español explicando su uso.
+*/
+  --color-primary: #bdb76b; /* Color principal (caqui) */
+  --color-primary-light: #f5f5dc; /* Color principal claro (beige) */
+  --color-accent: #c2b280; /* Color de acento (beige oscuro) */
+  --color-accent-hover: #a89f5a; /* Color de acento al pasar el mouse (caqui oscuro) */
+  --color-bg: #f5f5dc; /* Color de fondo principal (beige) */
+  --color-card: #fffaf0; /* Color de fondo de tarjetas (beige claro) */
+  --color-text: #5c552e; /* Color principal del texto (marrón suave) */
+  --color-text-light: #a89f5a; /* Color de texto secundario (caqui claro) */
+  --color-border: #e6ddc6; /* Color de bordes (beige grisáceo) */
+  --color-highlight: #bdb76b; /* Color para resaltar elementos (caqui) */
   --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
   --shadow-md: 0 4px 16px rgba(0,0,0,0.1);
   --shadow-lg: 0 8px 30px rgba(0,0,0,0.12);
@@ -71,7 +75,10 @@ a {
 
 /* === Header === */
 .header {
-  background: var(--color-primary);
+  background: linear-gradient(180deg, #bdb76b 0%, #bdb76b 60%, rgba(189,183,107,0.10) 100%);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255,255,255,0.18);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
   color: #fff;
   padding: 16px 0;
   position: sticky;
@@ -145,7 +152,7 @@ a {
 
 /* === Hero === */
 .hero {
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 50%, #0f3460 100%);
+  background: url('../img/inicio.png') center/cover no-repeat;
   color: #fff;
   text-align: center;
   padding: 100px 20px 90px;
@@ -154,19 +161,12 @@ a {
 }
 
 .hero::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle at 30% 50%, rgba(233,69,96,0.1) 0%, transparent 50%);
-  pointer-events: none;
+  /* Eliminado gradiente radial para mostrar solo la imagen de fondo */
 }
 
 .hero-badge {
   display: inline-block;
-  background: rgba(233,69,96,0.2);
+  background: rgba(194,178,128,0.2); /* beige oscuro translúcido */
   color: var(--color-accent);
   padding: 8px 20px;
   border-radius: 50px;
@@ -374,7 +374,7 @@ a {
   width: 100%;
   height: 200px;
   object-fit: cover;
-  background: #f0f0f5;
+  background: #f5f5dc;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -476,7 +476,7 @@ a {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--color-accent), #ff6b81);
+  background: linear-gradient(135deg, var(--color-accent), #c2b280);
   color: #fff;
   font-size: 1.5rem;
   font-weight: 800;
@@ -568,7 +568,7 @@ a {
 /* === Newsletter Section === */
 .newsletter-section {
   padding: 70px 0;
-  background: linear-gradient(135deg, var(--color-primary) 0%, #0f3460 100%);
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
   color: #fff;
 }
 
@@ -584,7 +584,7 @@ a {
 }
 
 .newsletter-content .highlight {
-  color: #ff6b81;
+  color: var(--color-accent);
 }
 
 .newsletter-content p {

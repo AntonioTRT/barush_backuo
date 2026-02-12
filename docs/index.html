@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Barush - Tu Personal Shop Assistant</title>
+  <title>Baruch - ¡Bendecidas para bendecir!</title>
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -11,10 +11,10 @@
   <header class="header">
     <div class="container">
       <div class="header-content">
-        <h1 class="logo">Barush</h1>
+        <h1 class="logo"><img src="img/logo01.png" alt="Baruch Logo" style="height:48px;vertical-align:middle;"></h1>
         <p class="tagline">Your Personal Shop Assistant</p>
       </div>
-      <nav class="nav">
+      <nav class="nav">s
         <a href="#inicio" class="nav-link active">Inicio</a>
         <a href="#servicios" class="nav-link">Servicios</a>
         <a href="#catalogo" class="nav-link">Catálogo</a>
@@ -33,7 +33,7 @@
     <div class="container">
       <div class="hero-badge">Personal Shop Assistant</div>
       <h2>Tu asistente personal de compras</h2>
-      <p>Te ayudamos a encontrar los mejores productos, las mejores ofertas y las mejores recomendaciones. Compra <strong>smart</strong>, vive mejor.</p>
+      <p>Barush nace para acercarte moda importada de calidad, sin inventario, donde tú decides qué comprar. Ofrecemos dos formas de compra fáciles y transparentes:\n\n- Compras Individuales: Pagas el precio de la tienda, el impuesto (IVA) y una comisión del 30%, sin mínimo de compra. Si tu producto llega a mi domicilio en USA, solo pagas una comisión del 15%.\n\n- Compras en Tiendas en línea: Te ayudamos a comprar directamente en tiendas online. Pagas el precio de la tienda, el impuesto (IVA) y una comisión del 15%. En este servicio hay una compra mínima de $700 dólares y se agenda un día y hora para tu atención personalizada. Publicamos la compra en nuestro grupo de WhatsApp para que sigas el proceso.\n\nAsí, con Barush tienes control total de tus compras, acceso a ofertas únicas y claridad en cada paso del proceso..</p>
       <div class="hero-buttons">
         <a href="#catalogo" class="btn btn-hero">Explorar Catálogo</a>
         <a href="#como-funciona" class="btn btn-hero-outline">Saber Más</a>
@@ -117,23 +117,28 @@
     <div class="container">
       <div class="section-header">
         <h2>Cómo <span class="highlight">Funciona</span></h2>
-        <p>En solo tres pasos puedes empezar a comprar de manera más inteligente</p>
+        <p>Conoce los 4 pasos clave para tu compra ideal</p>
       </div>
       <div class="steps-grid">
         <div class="step-card">
           <div class="step-number">1</div>
-          <h3>Browse</h3>
-          <p>Explora nuestro catálogo con cientos de productos seleccionados cuidadosamente por nuestro equipo de expertos.</p>
+          <h3>Características del producto</h3>
+          <p>Analiza las especificaciones, materiales, colores y detalles importantes de cada producto antes de decidir.</p>
         </div>
         <div class="step-card">
           <div class="step-number">2</div>
-          <h3>Compare</h3>
-          <p>Compara precios, características y reseñas para tomar la mejor decisión de compra posible.</p>
+          <h3>Presupuesto</h3>
+          <p>Define cuánto quieres invertir y revisa las opciones que se ajustan a tu presupuesto.</p>
         </div>
         <div class="step-card">
           <div class="step-number">3</div>
-          <h3>Shop Smart</h3>
-          <p>Compra con la seguridad de que estás obteniendo el mejor producto al mejor precio disponible.</p>
+          <h3>Hunting Objective</h3>
+          <p>Establece tu objetivo de compra: ¿buscas una oferta, un producto exclusivo o algo específico?</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">4</div>
+          <h3>Shipping</h3>
+          <p>Elige el método de envío que más te convenga y revisa los tiempos y costos antes de finalizar tu compra.</p>
         </div>
       </div>
     </div>
@@ -148,12 +153,12 @@
       </div>
       <div class="testimonials-grid">
         <div class="testimonial-card">
-          <div class="testimonial-stars">★★★★★</div>
+          <div class="testimonial-stars">★★★★</div>
           <p class="testimonial-text">"Barush me ayudó a encontrar exactamente lo que buscaba a un precio increíble. ¡Totalmente recomendado!"</p>
           <div class="testimonial-author">
             <div class="testimonial-avatar">MG</div>
             <div>
-              <strong>María García</strong>
+              <strong>María </strong>
               <span>Cliente desde 2025</span>
             </div>
           </div>
@@ -188,12 +193,16 @@
   <section class="newsletter-section" id="newsletter">
     <div class="container">
       <div class="newsletter-content">
-        <h2>Únete a nuestra <span class="highlight">Community</span></h2>
-        <p>Suscríbete para recibir las mejores ofertas, nuevos productos y recomendaciones exclusivas directo en tu correo.</p>
+        <h2>Únete a nuestro <span class="highlight">Grupo de WhatsApp</span></h2>
+        <p>Forma parte de nuestra comunidad exclusiva en WhatsApp para recibir ofertas, novedades y atención personalizada. También puedes dejar tu nombre y número para que te agreguemos directamente.</p>
         <form class="newsletter-form" onsubmit="return false;">
-          <input type="email" placeholder="Tu correo electrónico" aria-label="Correo electrónico" required>
-          <button type="submit" class="btn">Suscribirme</button>
+          <input type="text" placeholder="Tu nombre" aria-label="Nombre" required>
+          <input type="tel" placeholder="Tu número de WhatsApp" aria-label="Número de WhatsApp" required pattern="[0-9\s\-\+]{8,15}">
+          <img src="img/whatsapplogo.png" alt="WhatsApp Logo" style="height:2.5rem;vertical-align:middle;" />
         </form>
+        <div style="margin-top:20px;">
+          <a href="https://wa.me/XXXXXXXXXXX" target="_blank" class="btn btn-hero" style="background: var(--color-accent); color: #fff;">Unirme al grupo de WhatsApp</a>
+        </div>
       </div>
     </div>
   </section>

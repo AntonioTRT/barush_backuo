@@ -6,7 +6,7 @@ const PRODUCTS = [
     price: 1299,
     originalPrice: 1799,
     category: "Electrónica",
-    image: "headphones",
+    image: "img/catalogo/catalogo01.png",
     offer: true
   },
   {
@@ -16,7 +16,7 @@ const PRODUCTS = [
     price: 649,
     originalPrice: null,
     category: "Accesorios",
-    image: "backpack",
+    image: "img/catalogo/catalogo01.png",
     offer: false
   },
   {
@@ -26,7 +26,7 @@ const PRODUCTS = [
     price: 2499,
     originalPrice: 3200,
     category: "Electrónica",
-    image: "watch",
+    image: "img/catalogo/catalogo01.png",
     offer: true
   },
   {
@@ -36,7 +36,7 @@ const PRODUCTS = [
     price: 899,
     originalPrice: null,
     category: "Belleza",
-    image: "skincare",
+    image: "img/catalogo/catalogo01.png",
     offer: false
   },
   {
@@ -46,7 +46,7 @@ const PRODUCTS = [
     price: 1599,
     originalPrice: 2100,
     category: "Electrónica",
-    image: "keyboard",
+    image: "img/catalogo/catalogo01.png",
     offer: true
   },
   {
@@ -56,7 +56,7 @@ const PRODUCTS = [
     price: 349,
     originalPrice: null,
     category: "Hogar",
-    image: "bottle",
+    image: "img/catalogo/catalogo01.png",
     offer: false
   },
   {
@@ -66,7 +66,7 @@ const PRODUCTS = [
     price: 1899,
     originalPrice: 2400,
     category: "Deportes",
-    image: "shoes",
+    image: "img/catalogo/catalogo01.png",
     offer: true
   },
   {
@@ -76,7 +76,7 @@ const PRODUCTS = [
     price: 499,
     originalPrice: null,
     category: "Hogar",
-    image: "lamp",
+    image: "img/catalogo/catalogo01.png",
     offer: false
   },
   {
@@ -86,7 +86,7 @@ const PRODUCTS = [
     price: 1399,
     originalPrice: null,
     category: "Electrónica",
-    image: "camera",
+    image: "img/catalogo/catalogo01.png",
     offer: false
   },
   {
@@ -96,7 +96,7 @@ const PRODUCTS = [
     price: 459,
     originalPrice: 599,
     category: "Belleza",
-    image: "organizer",
+    image: "img/catalogo/catalogo01.png",
     offer: true
   },
   {
@@ -106,7 +106,7 @@ const PRODUCTS = [
     price: 299,
     originalPrice: null,
     category: "Deportes",
-    image: "bands",
+    image: "img/catalogo/catalogo01.png",
     offer: false
   },
   {
@@ -116,7 +116,7 @@ const PRODUCTS = [
     price: 599,
     originalPrice: 799,
     category: "Electrónica",
-    image: "powerbank",
+    image: "img/catalogo/catalogo01.png",
     offer: true
   },
   {
@@ -126,7 +126,7 @@ const PRODUCTS = [
     price: 4599,
     originalPrice: 5800,
     category: "Hogar",
-    image: "chair",
+    image: "img/catalogo/catalogo01.png",
     offer: true
   },
   {
@@ -136,7 +136,7 @@ const PRODUCTS = [
     price: 279,
     originalPrice: null,
     category: "Belleza",
-    image: "sunscreen",
+    image: "img/catalogo/catalogo01.png",
     offer: false
   },
   {
@@ -146,7 +146,7 @@ const PRODUCTS = [
     price: 549,
     originalPrice: null,
     category: "Deportes",
-    image: "sportsbag",
+    image: "img/catalogo/catalogo01.png",
     offer: false
   },
   {
@@ -156,7 +156,7 @@ const PRODUCTS = [
     price: 749,
     originalPrice: 999,
     category: "Electrónica",
-    image: "hub",
+    image: "img/catalogo/catalogo01.png",
     offer: true
   }
 ];

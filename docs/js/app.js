@@ -113,8 +113,6 @@
   }
 
   function createCard(product) {
-    var icon = IMAGE_ICONS[product.image] || "📦";
-
     var priceHTML = product.originalPrice
       ? formatPrice(product.price) + '<span class="original-price">' + formatPrice(product.originalPrice) + '</span>'
       : formatPrice(product.price);
@@ -124,7 +122,7 @@
       : "";
 
     return '<article class="product-card">' +
-      '<div class="product-image">' + icon + '</div>' +
+      '<div class="product-image"><img src="' + product.image + '" alt="' + product.name + '" style="width:100%;height:100%;object-fit:cover;"></div>' +
       '<div class="product-body">' +
         '<span class="product-category">' + product.category + '</span>' +
         '<h3 class="product-name">' + product.name + '</h3>' +

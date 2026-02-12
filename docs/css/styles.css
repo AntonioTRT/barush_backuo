@@ -1,3 +1,9 @@
+/* Imágenes responsivas */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
 /* === Reset & Base === */
 *, *::before, *::after {
   box-sizing: border-box;

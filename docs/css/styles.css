@@ -25,6 +25,7 @@ img {
   Cada variable tiene un comentario en español explicando su uso.
 */
   --color-primary: #bdb76b; /* Color principal (caqui) */
+  --color-header-bg: #d2b48c; /* Café claro para fondo de header */
   --color-primary-light: #f5f5dc; /* Color principal claro (beige) */
   --color-accent: #c2b280; /* Color de acento (beige oscuro) */
   --color-accent-hover: #a89f5a; /* Color de acento al pasar el mouse (caqui oscuro) */
@@ -89,7 +90,7 @@ a {
 
 /* === Header === */
 .header {
-  background: linear-gradient(180deg, #bdb76b 0%, #bdb76b 60%, rgba(189,183,107,0.10) 100%);
+  background: var(--color-header-bg);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid rgba(255,255,255,0.18);
   box-shadow: 0 4px 24px rgba(0,0,0,0.08);

@@ -1,3 +1,11 @@
+/* Logo de WhatsApp responsivo en sección de contacto */
+.whatsapp-logo-responsive {
+  max-width: 80px;
+  width: 100%;
+  height: auto;
+  display: inline-block;
+  vertical-align: middle;
+}
 /* Imágenes responsivas */
 img {
   max-width: 100%;

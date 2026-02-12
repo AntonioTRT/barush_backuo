@@ -11,7 +11,7 @@
   <header class="header">
     <div class="container">
       <div class="header-content">
-        <h1 class="logo"><img src="img/logo01.png" alt="Baruch Logo" style="height:48px;vertical-align:middle;"></h1>
+        <h1 class="logo"><a href="index.html#inicio"><img src="img/logo01.png" alt="Baruch Logo" style="height:48px;vertical-align:middle;"></a></h1>
         <p class="tagline">Your Personal Shop Assistant</p>
       </div>
       <nav class="nav">
@@ -192,49 +192,25 @@
 
   <!-- ===== SECCION: NEWSLETTER / SUSCRIPCION ===== -->
   <section class="newsletter-section" id="newsletter">
-    <div class="container">
-      <div class="newsletter-content">
-        <h2>Únete a nuestro <span class="highlight">Grupo de WhatsApp</span></h2>
-        <p>Forma parte de nuestra comunidad exclusiva en WhatsApp para recibir ofertas, novedades y atención personalizada. También puedes dejar tu nombre y número para que te agreguemos directamente.</p>
-        <form class="newsletter-form" onsubmit="return false;">
-          <input type="text" placeholder="Tu nombre" aria-label="Nombre" required>
-          <input type="tel" placeholder="Tu número de WhatsApp" aria-label="Número de WhatsApp" required pattern="[0-9\s\-\+]{8,15}">
-          <img src="img/whatsapplogo.png" alt="WhatsApp Logo" style="height:2.5rem;vertical-align:middle;" />
-        </form>
-        <div style="margin-top:20px;">
-          <a href="https://wa.me/XXXXXXXXXXX" target="_blank" class="btn btn-hero" style="background: var(--color-accent); color: #fff;">Unirme al grupo de WhatsApp</a>
-        </div>
-      </div>
-    </div>
+    <!-- Sección eliminada: el formulario de WhatsApp estará en la sección de contacto -->
   </section>
 
   <!-- ===== SECCION: CONTACTO ===== -->
   <section class="contact-section" id="contacto">
     <div class="container">
       <div class="section-header">
-        <h2>Ponte en <span class="highlight">Contacto</span></h2>
-        <p>¿Tienes dudas o necesitas asesoría personalizada? Estamos aquí para ayudarte</p>
+        <h2>Contáctanos <span class="highlight">por WhatsApp</span></h2>
+        <p>¿Tienes dudas, quieres recibir ofertas o atención personalizada? Escríbenos por WhatsApp o deja tu nombre y número para que te contactemos directamente.</p>
       </div>
-      <div class="contact-grid">
-        <div class="contact-card">
-          <div class="contact-icon">📧</div>
-          <h3>Email</h3>
-          <p>contacto@barush.com</p>
-          <a href="mailto:contacto@barush.com" class="btn btn-sm">Enviar correo</a>
-        </div>
-        <div class="contact-card">
-          <div class="contact-icon">💬</div>
-          <h3>Chat</h3>
-          <p>Disponible de lunes a viernes, 9am - 6pm</p>
-          <a href="#" class="btn btn-sm">Iniciar chat</a>
-        </div>
-        <div class="contact-card">
-          <div class="contact-icon">📱</div>
-          <h3>Social Media</h3>
-          <p>Síguenos en nuestras redes sociales</p>
-          <a href="#" class="btn btn-sm">Seguir</a>
-        </div>
-      </div>
+      <form class="newsletter-form" onsubmit="return false;">
+        <label for="waName" style="display:block;margin-bottom:0.2em;">Nombre:</label>
+        <input type="text" id="waName" placeholder="Tu nombre" aria-label="Nombre" required style="margin-bottom:0.8em;">
+        <label for="waNumber" style="display:block;margin-bottom:0.2em;">Número de WhatsApp:</label>
+        <input type="tel" id="waNumber" placeholder="Tu número de WhatsApp" aria-label="Número de WhatsApp" required pattern="[0-9\s\-\+]{8,15}" style="margin-bottom:0.8em;">
+        <img src="img/whatsapplogo.png" alt="WhatsApp Logo" class="whatsapp-logo-responsive" />
+        <button type="submit" class="btn btn-hero" style="background: var(--color-accent); color: #fff; margin-top: 1rem;">Unirme al grupo de WhatsApp</button>
+      </form>
+      <div id="waLinkMsg" style="margin-top:15px;"></div>
     </div>
   </section>
 
@@ -283,5 +259,20 @@
 
   <script src="js/products.js"></script>
   <script src="js/app.js"></script>
+  <script>
+    // Formulario para generar enlace de WhatsApp
+    document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      var nombre = document.getElementById('waName').value.trim();
+      var numero = document.getElementById('waNumber').value.replace(/\D/g, '');
+      if (!nombre || !numero) {
+        document.getElementById('waLinkMsg').innerHTML = '<span style="color:red;">Por favor, ingresa tu nombre y número.</span>';
+        return;
+      }
+      var mensaje = encodeURIComponent('Hola, soy ' + nombre + ' y quiero unirme al grupo de WhatsApp.');
+      var enlace = 'https://wa.me/' + numero + '?text=' + mensaje;
+      document.getElementById('waLinkMsg').innerHTML = '<a href="' + enlace + '" target="_blank" class="btn btn-hero" style="background: var(--color-accent); color: #fff;">Enviar solicitud por WhatsApp</a>';
+    });
+  </script>
 </body>
 </html>

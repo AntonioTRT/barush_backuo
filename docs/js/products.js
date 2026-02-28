@@ -6,7 +6,7 @@ const PRODUCTS = [
     price: 1299,
     originalPrice: 1799,
     category: "Electrónica",
-    image: "img/catalogo/catalogo01.png",
+    image: "img/inicio.png",
     offer: true
   },
   {

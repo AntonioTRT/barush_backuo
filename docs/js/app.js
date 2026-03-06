@@ -264,6 +264,7 @@
       whatsAppOrderButton.addEventListener("click", function() {
         var userText = orderInput && orderInput.value.trim() ? orderInput.value.trim() : "Me interesa este producto.";
         var text = "Hola, te interesa este producto?\n" +
+          "ID: " + product.id + "\n" +
           "Producto: " + product.name + "\n" +
           "Precio: " + formatPrice(product.price) + "\n" +
           "¿Qué detalles buscas? " + userText;

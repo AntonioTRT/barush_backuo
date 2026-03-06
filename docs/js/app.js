@@ -39,6 +39,7 @@
       .then(response => response.json())
       .then(data => {
         window.ALLOWED_IDS = data.allowed_ids;
+        window.WHATSAPP_NUMBER = data.whatsapp_number;
         render();
       });
     searchInput.addEventListener("input", render);
@@ -266,7 +267,11 @@
           "Producto: " + product.name + "\n" +
           "Precio: " + formatPrice(product.price) + "\n" +
           "¿Qué detalles buscas? " + userText;
-        window.open("https://api.whatsapp.com/send?text=" + encodeURIComponent(text), "_blank");
+        var whatsappUrl = "https://api.whatsapp.com/send?text=" + encodeURIComponent(text);
+        if (window.WHATSAPP_NUMBER && window.WHATSAPP_NUMBER.length > 0) {
+          whatsappUrl = "https://api.whatsapp.com/send?phone=" + window.WHATSAPP_NUMBER + "&text=" + encodeURIComponent(text);
+        }
+        window.open(whatsappUrl, "_blank");
       });
     }
   }

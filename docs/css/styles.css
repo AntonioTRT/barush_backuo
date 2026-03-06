@@ -21,20 +21,20 @@ img {
 
 :root {
 /*
-  Aquí puedes modificar la paleta de colores del sitio.
-  Cada variable tiene un comentario en español explicando su uso.
+  Paleta de colores profesional - Beige y marrón
+  Variables diseñadas para una apariencia elegante y moderna
 */
-  --color-primary: #bdb76b; /* Color principal (caqui) */
-  --color-header-bg: #d2b48c; /* Café claro para fondo de header */
-  --color-primary-light: #f5f5dc; /* Color principal claro (beige) */
-  --color-accent: #c2b280; /* Color de acento (beige oscuro) */
-  --color-accent-hover: #a89f5a; /* Color de acento al pasar el mouse (caqui oscuro) */
-  --color-bg: #f5f5dc; /* Color de fondo principal (beige) */
-  --color-card: #fffaf0; /* Color de fondo de tarjetas (beige claro) */
-  --color-text: #5c552e; /* Color principal del texto (marrón suave) */
-  --color-text-light: #a89f5a; /* Color de texto secundario (caqui claro) */
-  --color-border: #e6ddc6; /* Color de bordes (beige grisáceo) */
-  --color-highlight: #bdb76b; /* Color para resaltar elementos (caqui) */
+  --color-primary: #a8957a; /* Color principal (beige oscuro) */
+  --color-header-bg: #3d2d16; /* Fondo Encabezado */
+  --color-primary-light: #f5f5dc; /* Variante Clara */
+  --color-accent: #a8957a; /* Color de acento (beige oscuro) */
+  --color-accent-hover: #8b785f; /* Color de acento al pasar el mouse */
+  --color-bg: #f5f5dc; /* Color de fondo principal */
+  --color-card: #eee8d5; /* Fondo Tarjetas */
+  --color-text: #6b4f2c; /* Texto Marrón */
+  --color-text-light: #a8957a; /* Texto secundario */
+  --color-border: #d8d0c4; /* Borde Beige */
+  --color-highlight: #a8957a; /* Color para resaltar elementos */
   --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
   --shadow-md: 0 4px 16px rgba(0,0,0,0.1);
   --shadow-lg: 0 8px 30px rgba(0,0,0,0.12);
@@ -94,7 +94,7 @@ a {
   backdrop-filter: blur(8px);
   border-bottom: 1px solid rgba(255,255,255,0.18);
   box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-  color: #fff;
+  color: #ffffff;
   padding: 16px 0;
     position: sticky;
   top: 0px;
@@ -163,7 +163,7 @@ a {
   display: block;
   width: 24px;
   height: 2px;
-  background: #fff;
+  background: #6b4f2c;
   border-radius: 2px;
   transition: var(--transition);
 }
@@ -178,10 +178,6 @@ a {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.hero::before {
-  /* Eliminado gradiente radial para mostrar solo la imagen de fondo */
 }
 
 .hero-badge {
@@ -271,20 +267,27 @@ a {
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 28px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+}
+
+/* En desktop, la 4ta tarjeta queda abajo al centro. */
+.services-grid .service-card:nth-child(4) {
+  grid-column: 2;
 }
 
 .service-card {
   text-align: center;
-  padding: 36px 24px;
+  padding: 28px 24px 34px;
   border-radius: var(--radius-lg);
   background: var(--color-bg);
+  border: 1px solid #e5dcc9;
+  box-shadow: var(--shadow-sm);
   transition: all var(--transition);
 }
 
 .service-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-8px);
   box-shadow: var(--shadow-lg);
 }
 
@@ -294,14 +297,14 @@ a {
 }
 
 .service-card h3 {
-  font-size: 1.15rem;
+  font-size: 1.4rem;
   color: var(--color-primary);
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .service-card p {
-  font-size: 0.92rem;
-  color: var(--color-text-light);
+  font-size: 1.05rem;
+  color: var(--color-text);
   line-height: 1.6;
 }
 
@@ -469,6 +472,175 @@ a {
   padding: 60px 20px;
   color: var(--color-text-light);
   font-size: 1.1rem;
+}
+
+/* === Product Publication Modal === */
+.product-card {
+  cursor: pointer;
+}
+
+.product-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 400;
+  display: none;
+}
+
+.product-modal.open {
+  display: block;
+}
+
+.product-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(24, 17, 8, 0.65);
+}
+
+.product-modal-panel {
+  position: relative;
+  z-index: 1;
+  width: min(980px, calc(100% - 24px));
+  max-height: calc(100vh - 24px);
+  margin: 12px auto;
+  overflow: auto;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 16px 50px rgba(0, 0, 0, 0.25);
+}
+
+.product-modal-close {
+  position: sticky;
+  top: 12px;
+  float: right;
+  margin: 10px 12px 0 0;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  background: #fff;
+  color: var(--color-text);
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.product-modal-content {
+  padding: 18px;
+}
+
+.publication-layout {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 20px;
+}
+
+.publication-image {
+  width: 100%;
+  min-height: 320px;
+  border-radius: 14px;
+  object-fit: cover;
+  background: var(--color-bg);
+}
+
+.publication-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.publication-title {
+  font-size: 1.8rem;
+  line-height: 1.2;
+}
+
+.publication-description {
+  color: var(--color-text-light);
+}
+
+.publication-price {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 1.5rem;
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+.publication-price .old-price {
+  font-size: 0.9rem;
+  color: var(--color-text-light);
+  text-decoration: line-through;
+  font-weight: 400;
+}
+
+.chat-box {
+  margin-top: 10px;
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fbfaf7;
+}
+
+.chat-header {
+  padding: 12px 14px;
+  background: #efe7d9;
+  font-weight: 600;
+}
+
+.chat-messages {
+  height: 220px;
+  overflow-y: auto;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.chat-message {
+  max-width: 80%;
+  padding: 10px 12px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.chat-message.bot {
+  align-self: flex-start;
+  background: #ece5d8;
+}
+
+.chat-message.user {
+  align-self: flex-end;
+  background: var(--color-accent);
+  color: #fff;
+}
+
+.chat-controls {
+  display: flex;
+  gap: 8px;
+  padding: 10px;
+  border-top: 1px solid var(--color-border);
+  background: #fff;
+}
+
+.chat-controls input {
+  flex: 1;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.chat-controls button {
+  border: none;
+  background: var(--color-accent);
+  color: #fff;
+  border-radius: 10px;
+  padding: 0 14px;
+  cursor: pointer;
+}
+
+.whatsapp-order {
+  display: inline-block;
+  margin-top: 10px;
 }
 
 /* === How It Works Section === */
@@ -686,7 +858,7 @@ a {
 /* === Footer === */
 .footer {
   background: var(--color-header-bg);
-  color: rgba(255,255,255,0.7);
+  color: #fafafa;
   padding: 60px 0 0;
 }
 
@@ -700,7 +872,7 @@ a {
 
 .footer-logo {
   font-size: 1.5rem;
-  color: #fff;
+  color: #ffffff;
   margin-bottom: 12px;
 }
 
@@ -710,7 +882,7 @@ a {
 }
 
 .footer-col h4 {
-  color: #fff;
+  color: #ffffff;
   font-size: 0.95rem;
   margin-bottom: 16px;
 }
@@ -756,6 +928,10 @@ a {
 
 /* === Responsive === */
 @media (max-width: 900px) {
+  .services-grid .service-card:nth-child(4) {
+    grid-column: auto;
+  }
+
   .footer-grid {
     grid-template-columns: 1fr 1fr;
     gap: 30px;
@@ -816,6 +992,14 @@ a {
   .footer-grid {
     grid-template-columns: 1fr;
     gap: 24px;
+  }
+
+  .publication-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .publication-image {
+    min-height: 240px;
   }
 }
 

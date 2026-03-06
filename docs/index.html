@@ -205,17 +205,11 @@
     <div class="container">
       <div class="section-header">
         <h2>Contáctanos <span class="highlight">por WhatsApp</span></h2>
-        <p>¿Tienes dudas, quieres recibir ofertas o atención personalizada? Escríbenos por WhatsApp o deja tu nombre y número para que te contactemos directamente.</p>
+        <p>Únete a nuestro grupo de WhatsApp para recibir ofertas exclusivas, atención personalizada y estar al día con nuestras recomendaciones.</p>
       </div>
-      <form class="newsletter-form" onsubmit="return false;">
-        <label for="waName" style="display:block;margin-bottom:0.2em;">Nombre:</label>
-        <input type="text" id="waName" placeholder="Tu nombre" aria-label="Nombre" required style="margin-bottom:0.8em;">
-        <label for="waNumber" style="display:block;margin-bottom:0.2em;">Número de WhatsApp:</label>
-        <input type="tel" id="waNumber" placeholder="Tu número de WhatsApp" aria-label="Número de WhatsApp" required pattern="[0-9\s\-\+]{8,15}" style="margin-bottom:0.8em;">
-        <img src="img/whatsapplogo.png" alt="WhatsApp Logo" class="whatsapp-logo-responsive" />
-        <button type="submit" class="btn btn-hero" style="background: var(--color-accent); color: #fff; margin-top: 1rem;">Unirme al grupo de WhatsApp</button>
-      </form>
-      <div id="waLinkMsg" style="margin-top:15px;"></div>
+      <div class="contact-content" style="text-align: center;">
+        <a href="https://chat.whatsapp.com/GzglDCFScuZF4UvgfIvZoN?mode=gi_t" target="_blank" class="btn btn-hero" style="background: var(--color-accent); color: #fff; margin-top: 1rem;">Unirme al grupo de WhatsApp</a>
+      </div>
     </div>
   </section>
 
@@ -264,20 +258,5 @@
 
   <script src="js/products.js"></script>
   <script src="js/app.js"></script>
-  <script>
-    // Formulario para generar enlace de WhatsApp
-    document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      var nombre = document.getElementById('waName').value.trim();
-      var numero = document.getElementById('waNumber').value.replace(/\D/g, '');
-      if (!nombre || !numero) {
-        document.getElementById('waLinkMsg').innerHTML = '<span style="color:red;">Por favor, ingresa tu nombre y número.</span>';
-        return;
-      }
-      var mensaje = encodeURIComponent('Hola, soy ' + nombre + ' y quiero unirme al grupo de WhatsApp.');
-      var enlace = 'https://wa.me/' + numero + '?text=' + mensaje;
-      document.getElementById('waLinkMsg').innerHTML = '<a href="' + enlace + '" target="_blank" class="btn btn-hero" style="background: var(--color-accent); color: #fff;">Enviar solicitud por WhatsApp</a>';
-    });
-  </script>
 </body>
 </html>

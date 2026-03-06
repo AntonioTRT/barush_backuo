@@ -21,20 +21,20 @@ img {
 
 :root {
 /*
-  Aquí puedes modificar la paleta de colores del sitio.
-  Cada variable tiene un comentario en español explicando su uso.
+  Paleta de colores profesional - Beige y marrón
+  Variables diseñadas para una apariencia elegante y moderna
 */
-  --color-primary: #bdb76b; /* Color principal (caqui) */
-  --color-header-bg: #d2b48c; /* Café claro para fondo de header */
-  --color-primary-light: #f5f5dc; /* Color principal claro (beige) */
-  --color-accent: #c2b280; /* Color de acento (beige oscuro) */
-  --color-accent-hover: #a89f5a; /* Color de acento al pasar el mouse (caqui oscuro) */
-  --color-bg: #f5f5dc; /* Color de fondo principal (beige) */
-  --color-card: #fffaf0; /* Color de fondo de tarjetas (beige claro) */
-  --color-text: #5c552e; /* Color principal del texto (marrón suave) */
-  --color-text-light: #a89f5a; /* Color de texto secundario (caqui claro) */
-  --color-border: #e6ddc6; /* Color de bordes (beige grisáceo) */
-  --color-highlight: #bdb76b; /* Color para resaltar elementos (caqui) */
+  --color-primary: #a8957a; /* Color principal (beige oscuro) */
+  --color-header-bg: #3d2d16; /* Fondo Encabezado */
+  --color-primary-light: #f5f5dc; /* Variante Clara */
+  --color-accent: #a8957a; /* Color de acento (beige oscuro) */
+  --color-accent-hover: #8b785f; /* Color de acento al pasar el mouse */
+  --color-bg: #f5f5dc; /* Color de fondo principal */
+  --color-card: #eee8d5; /* Fondo Tarjetas */
+  --color-text: #6b4f2c; /* Texto Marrón */
+  --color-text-light: #a8957a; /* Texto secundario */
+  --color-border: #d8d0c4; /* Borde Beige */
+  --color-highlight: #a8957a; /* Color para resaltar elementos */
   --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
   --shadow-md: 0 4px 16px rgba(0,0,0,0.1);
   --shadow-lg: 0 8px 30px rgba(0,0,0,0.12);
@@ -94,7 +94,7 @@ a {
   backdrop-filter: blur(8px);
   border-bottom: 1px solid rgba(255,255,255,0.18);
   box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-  color: #fff;
+  color: #ffffff;
   padding: 16px 0;
     position: sticky;
   top: 0px;
@@ -163,7 +163,7 @@ a {
   display: block;
   width: 24px;
   height: 2px;
-  background: #fff;
+  background: #6b4f2c;
   border-radius: 2px;
   transition: var(--transition);
 }
@@ -684,7 +684,7 @@ a {
 /* === Footer === */
 .footer {
   background: var(--color-header-bg);
-  color: rgba(255,255,255,0.7);
+  color: #fafafa;
   padding: 60px 0 0;
 }
 
@@ -698,7 +698,7 @@ a {
 
 .footer-logo {
   font-size: 1.5rem;
-  color: #fff;
+  color: #ffffff;
   margin-bottom: 12px;
 }
 
@@ -708,7 +708,7 @@ a {
 }
 
 .footer-col h4 {
-  color: #fff;
+  color: #ffffff;
   font-size: 0.95rem;
   margin-bottom: 16px;
 }

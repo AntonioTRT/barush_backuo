@@ -178,10 +178,6 @@ a {
   overflow: hidden;
 }
 
-.hero::before {
-  /* Eliminado gradiente radial para mostrar solo la imagen de fondo */
-}
-
 .hero-badge {
   display: inline-block;
   background: rgba(194,178,128,0.2); /* beige oscuro translúcido */
@@ -269,20 +265,27 @@ a {
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 28px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+}
+
+/* En desktop, la 4ta tarjeta queda abajo al centro. */
+.services-grid .service-card:nth-child(4) {
+  grid-column: 2;
 }
 
 .service-card {
   text-align: center;
-  padding: 36px 24px;
+  padding: 28px 24px 34px;
   border-radius: var(--radius-lg);
   background: var(--color-bg);
+  border: 1px solid #e5dcc9;
+  box-shadow: var(--shadow-sm);
   transition: all var(--transition);
 }
 
 .service-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-8px);
   box-shadow: var(--shadow-lg);
 }
 
@@ -292,14 +295,14 @@ a {
 }
 
 .service-card h3 {
-  font-size: 1.15rem;
+  font-size: 1.4rem;
   color: var(--color-primary);
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .service-card p {
-  font-size: 0.92rem;
-  color: var(--color-text-light);
+  font-size: 1.05rem;
+  color: var(--color-text);
   line-height: 1.6;
 }
 
@@ -754,6 +757,10 @@ a {
 
 /* === Responsive === */
 @media (max-width: 900px) {
+  .services-grid .service-card:nth-child(4) {
+    grid-column: auto;
+  }
+
   .footer-grid {
     grid-template-columns: 1fr 1fr;
     gap: 30px;

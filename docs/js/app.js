@@ -35,7 +35,12 @@
 
   function init() {
     populateCategories();
-    render();
+    fetch("js/allowed_ids.json")
+      .then(response => response.json())
+      .then(data => {
+        window.ALLOWED_IDS = data.allowed_ids;
+        render();
+      });
     searchInput.addEventListener("input", render);
     categoryFilter.addEventListener("change", render);
     sortFilter.addEventListener("change", render);
@@ -125,7 +130,8 @@
         p.description.toLowerCase().includes(query) ||
         p.category.toLowerCase().includes(query);
       var matchesCategory = category === "all" || p.category === category;
-      return matchesSearch && matchesCategory;
+      var matchesAllowed = !window.ALLOWED_IDS || window.ALLOWED_IDS.includes(p.id);
+      return matchesSearch && matchesCategory && matchesAllowed;
     });
 
     var sort = sortFilter.value;
@@ -202,7 +208,7 @@
     if (!activeProduct) return;
     var orderInput = document.getElementById("orderInput");
     var userText = orderInput && orderInput.value.trim() ? orderInput.value.trim() : "Me interesa este producto.";
-    var text = "Hola, quiero pedir este producto:\n" +
+    var text = "Hola, te interesa un producto similar a este?:\n puedes darme mas detalles de lo que buscas" +
       "Producto: " + activeProduct.name + "\n" +
       "Precio: " + formatPrice(activeProduct.price) + "\n" +
       "Mensaje: " + userText;
@@ -241,14 +247,7 @@
           '<h2 class="publication-title" id="modalProductTitle">' + product.name + '</h2>' +
           '<p class="publication-description">' + product.description + '</p>' +
           '<div class="publication-price">' + formatPrice(product.price) + oldPrice + '</div>' +
-          '<div class="chat-box">' +
-            '<div class="chat-header">Chat para pedir este producto</div>' +
-            '<div class="chat-messages" id="chatMessages"></div>' +
-            '<div class="chat-controls">' +
-              '<input id="orderInput" type="text" placeholder="Escribe tu mensaje...">' +
-              '<button id="sendChatButton" type="button">Enviar</button>' +
-            '</div>' +
-          '</div>' +
+          '<input id="orderInput" type="text" placeholder="Escribe tu mensaje...">' +
           '<button class="btn whatsapp-order" id="whatsAppOrderButton" type="button">Pedir por WhatsApp</button>' +
         '</div>' +
       '</div>';
@@ -257,28 +256,18 @@
     productModal.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
 
-    addChatMessage("Hola, me interesa " + product.name + ". Cuéntame cuántas piezas quieres y tu ciudad.", "bot");
-
-    var sendChatButton = document.getElementById("sendChatButton");
     var whatsAppOrderButton = document.getElementById("whatsAppOrderButton");
     var orderInput = document.getElementById("orderInput");
-
-    if (sendChatButton) {
-      sendChatButton.addEventListener("click", handleSendChat);
-    }
-
-    if (orderInput) {
-      orderInput.addEventListener("keydown", function (event) {
-        if (event.key === "Enter") {
-          event.preventDefault();
-          handleSendChat();
-        }
-      });
-      orderInput.focus();
-    }
-
+    if (orderInput) orderInput.focus();
     if (whatsAppOrderButton) {
-      whatsAppOrderButton.addEventListener("click", sendOrderToWhatsApp);
+      whatsAppOrderButton.addEventListener("click", function() {
+        var userText = orderInput && orderInput.value.trim() ? orderInput.value.trim() : "Me interesa este producto.";
+        var text = "Hola, te interesa este producto?\n" +
+          "Producto: " + product.name + "\n" +
+          "Precio: " + formatPrice(product.price) + "\n" +
+          "¿Qué detalles buscas? " + userText;
+        window.open("https://api.whatsapp.com/send?text=" + encodeURIComponent(text), "_blank");
+      });
     }
   }
 

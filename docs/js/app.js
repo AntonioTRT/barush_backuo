@@ -156,7 +156,7 @@
 
   function getProductImages(product) {
     if (Array.isArray(product.images) && product.images.length > 0) {
-      return product.images.slice(0, 2);
+      return product.images.slice(0, 4);
     }
     return [product.image];
   }

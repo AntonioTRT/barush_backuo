@@ -41,72 +41,89 @@ const PRODUCTS = [
   },
   {
     id: 5,
-    name: "Teclado Mecánico RGB",
-    description: "Teclado mecánico con switches intercambiables, retroiluminación RGB personalizable.",
-    price: 1599,
-    originalPrice: 2100,
-    category: "Electrónica",
-    image: "img/catalogo/catalogo01.png",
+    name: "Bolso Bandolera Michael Kors Jet Set Travel Medium Dome",
+    description: "Bolso elegante y funcional de la marca Michael Kors, ideal para uso diario y ocasiones especiales.",
+    price: 2800,
+    originalPrice: 3200,
+    category: "Accesorios",
+    image: "img/catalogo/catalago07.png",
     offer: true
   },
   {
     id: 6,
-    name: "Botella Térmica 750ml",
-    description: "Botella de acero inoxidable que mantiene bebidas frías 24h y calientes 12h.",
-    price: 349,
+    name: "Bolso Michael Kors",
+    description: "Bolso Michael Kors original con acabado premium y diseño elegante, ideal para uso diario. Precio especial: $2,800; combo con cartera a juego: $3,800.",
+    price: 2800,
     originalPrice: null,
-    category: "Hogar",
-    image: "img/catalogo/catalogo01.png",
-    offer: false
+    category: "Accesorios",
+    image: "img/catalogo/catalago08.png",
+    offer: true
   },
   {
     id: 7,
-    name: "Zapatillas Running Ultra",
-    description: "Zapatillas ligeras con amortiguación de espuma reactiva para corredores exigentes.",
-    price: 1899,
-    originalPrice: 2400,
-    category: "Deportes",
-    image: "img/catalogo/catalogo01.png",
+    name: "Paquete Michael Kors",
+    description: "Paquete de productos Michael Kors, incluyendo bolso y accesorios, ideal para uso diario y ocasiones especiales.",
+    price: 2100,
+    originalPrice: 2500,
+    category: "Accesorios",
+    images: [
+      "img/catalogo/catalago05.png",
+      "img/catalogo/catalago06.png"
+    ],
     offer: true
   },
   {
     id: 8,
-    name: "Lámpara de Escritorio LED",
-    description: "Lámpara ajustable con 5 niveles de brillo, temperatura de color y puerto USB.",
-    price: 499,
-    originalPrice: null,
-    category: "Hogar",
-    image: "img/catalogo/catalogo01.png",
-    offer: false
+    name: "Sudadera Nike con capucha tipo hoodie y bolsa canguro",
+    description: "Sudadera Nike con capucha tipo hoodie y bolsa canguro, ideal para uso diario y ocasiones especiales.",
+    price: 1650,
+    originalPrice: 2000,
+    category: "Ropa",
+    images: [
+      "img/catalogo/catalago09.png",
+      "img/catalogo/catalago10.png",
+      "img/catalogo/catalago11.png",
+      "img/catalogo/catalago12.png"
+    ],
+    offer: true
   },
   {
     id: 9,
-    name: "Cámara Instantánea Retro",
-    description: "Cámara de fotografía instantánea con flash automático y modo selfie integrado.",
-    price: 1399,
+    name: "Mochila Lululemon",
+    description: "Mochila Lululemon con múltiples compartimentos y diseño ergonómico, ideal para uso diario y actividades deportivas.",
+    price: 2744,
     originalPrice: null,
-    category: "Electrónica",
-    image: "img/catalogo/catalogo01.png",
+    category: "Accesorios",
+    images: [
+      "img/catalogo/catalago13.png",
+      "img/catalogo/catalago14.png",
+      "img/catalogo/catalago15.png"
+    ],
     offer: false
   },
   {
     id: 10,
-    name: "Organizador de Maquillaje",
-    description: "Organizador acrílico giratorio con múltiples compartimentos y cajones.",
-    price: 459,
-    originalPrice: 599,
-    category: "Belleza",
-    image: "img/catalogo/catalogo01.png",
+    name: "New Balance 9060 en color Pink Granite Washed Burgundy. ",
+    description: "Tenis New Balance 9060 en color Pink Granite Washed Burgundy, con diseño moderno y comodidad excepcional.",
+    price: 1590,
+    originalPrice: 1650,
+    category: "Zapatos",
+    image: "img/catalogo/catalago16.png",
     offer: true
   },
   {
     id: 11,
-    name: "Banda de Resistencia Set",
-    description: "Set de 5 bandas elásticas con diferentes niveles de resistencia y accesorios.",
-    price: 299,
+    name: "Bolso crossbody Steve Madden con llavero",
+    description: "Bolso crossbody Steve Madden con llavero, ideal para uso diario y ocasiones especiales.",
+    price: 840,
     originalPrice: null,
-    category: "Deportes",
-    image: "img/catalogo/catalogo01.png",
+    category: "Accesorios",
+    images: [
+      "img/catalogo/catalago17.png",
+      "img/catalogo/catalago18.png",
+      "img/catalogo/catalago19.png",
+      "img/catalogo/catalago20.png"
+    ],
     offer: false
   },
   {

@@ -146,7 +146,108 @@
     return "$" + price.toLocaleString("es-MX");
   }
 
+  function getRecommendationText(product) {
+    if (product.recommendation && product.recommendation.trim()) {
+      return product.recommendation.trim();
+    }
+
+    return "Recomendacion Baruch: este producto destaca por su calidad, diseno y excelente relacion calidad-precio. Es una opcion confiable para uso diario, para regalo o para reventa, con acabados que proyectan buena presencia y durabilidad. Si buscas una compra segura y con estilo, esta es una excelente eleccion.";
+  }
+
+  function getProductImages(product) {
+    if (Array.isArray(product.images) && product.images.length > 0) {
+      return product.images.slice(0, 2);
+    }
+    return [product.image];
+  }
+
+  function buildMediaHTML(images, sliderClass, imageClass, productName) {
+    if (images.length > 1) {
+      var slides = images.map(function (src, index) {
+        var activeClass = index === 0 ? " is-active" : "";
+        return '<img class="slide-image ' + imageClass + activeClass + '" src="' + src + '" alt="' + productName + ' imagen ' + (index + 1) + '">';
+      }).join("");
+
+      return '<div class="image-slider ' + sliderClass + '">' +
+        '<button type="button" class="slider-arrow slider-arrow-prev" aria-label="Imagen anterior">&#8249;</button>' +
+        slides +
+        '<button type="button" class="slider-arrow slider-arrow-next" aria-label="Siguiente imagen">&#8250;</button>' +
+      '</div>';
+    }
+
+    return '<img class="' + imageClass + '" src="' + images[0] + '" alt="' + productName + '">';
+  }
+
+  function initImageSliders(scope) {
+    var root = scope || document;
+    var sliders = root.querySelectorAll(".image-slider");
+
+    sliders.forEach(function (slider) {
+      if (slider.dataset.ready === "true") return;
+
+      var slides = slider.querySelectorAll(".slide-image");
+      if (slides.length <= 1) return;
+
+      var prevButton = slider.querySelector(".slider-arrow-prev");
+      var nextButton = slider.querySelector(".slider-arrow-next");
+      var currentIndex = 0;
+      var timerId = null;
+
+      function showSlide(index) {
+        currentIndex = (index + slides.length) % slides.length;
+        slides.forEach(function (slide, slideIndex) {
+          slide.classList.toggle("is-active", slideIndex === currentIndex);
+        });
+      }
+
+      function nextSlide() {
+        showSlide(currentIndex + 1);
+      }
+
+      function prevSlide() {
+        showSlide(currentIndex - 1);
+      }
+
+      function stopAuto() {
+        if (timerId) {
+          clearInterval(timerId);
+          timerId = null;
+        }
+      }
+
+      function startAuto() {
+        stopAuto();
+        timerId = setInterval(nextSlide, 4000);
+      }
+
+      function onArrowClick(handler) {
+        return function (event) {
+          event.preventDefault();
+          event.stopPropagation();
+          handler();
+          startAuto();
+        };
+      }
+
+      if (prevButton) {
+        prevButton.addEventListener("click", onArrowClick(prevSlide));
+      }
+
+      if (nextButton) {
+        nextButton.addEventListener("click", onArrowClick(nextSlide));
+      }
+
+      slider.addEventListener("mouseenter", stopAuto);
+      slider.addEventListener("mouseleave", startAuto);
+
+      showSlide(0);
+      startAuto();
+      slider.dataset.ready = "true";
+    });
+  }
+
   function createCard(product) {
+    var images = getProductImages(product);
     var priceHTML = product.originalPrice
       ? formatPrice(product.price) + '<span class="original-price">' + formatPrice(product.originalPrice) + '</span>'
       : formatPrice(product.price);
@@ -155,8 +256,12 @@
       ? '<span class="badge-offer">Oferta</span>'
       : "";
 
+    var cardImageHTML = '<div class="product-image">' +
+      buildMediaHTML(images, "product-media-slider", "product-image-media", product.name) +
+      '</div>';
+
     return '<article class="product-card" data-product-id="' + product.id + '" role="button" tabindex="0" aria-label="Ver publicación de ' + product.name + '">' +
-      '<div class="product-image"><img src="' + product.image + '" alt="' + product.name + '" style="width:100%;height:100%;object-fit:cover;"></div>' +
+      cardImageHTML +
       '<div class="product-body">' +
         '<span class="product-category">' + product.category + '</span>' +
         '<h3 class="product-name">' + product.name + '</h3>' +
@@ -185,6 +290,7 @@
       : products.length + " de " + PRODUCTS.length + " productos";
 
     productGrid.innerHTML = products.map(createCard).join("");
+    initImageSliders(productGrid);
   }
 
   function addChatMessage(text, sender) {
@@ -228,14 +334,21 @@
     var product = PRODUCTS.find(function (p) { return p.id === productId; });
     if (!product || !productModal || !productModalContent) return;
     activeProduct = product;
+    var images = getProductImages(product);
 
     var oldPrice = product.originalPrice
       ? '<span class="old-price">' + formatPrice(product.originalPrice) + '</span>'
       : "";
 
+    var publicationImageHTML = buildMediaHTML(images, "publication-media", "publication-image", product.name);
+    var recommendationText = getRecommendationText(product);
+
     productModalContent.innerHTML =
       '<div class="publication-layout">' +
-        '<img class="publication-image" src="' + product.image + '" alt="' + product.name + '">' +
+        '<div class="publication-media-column">' +
+          publicationImageHTML +
+          '<p class="publication-recommendation">' + recommendationText + '</p>' +
+        '</div>' +
         '<div class="publication-info">' +
           '<span class="product-category">' + product.category + '</span>' +
           '<h2 class="publication-title" id="modalProductTitle">' + product.name + '</h2>' +
@@ -280,6 +393,8 @@
     if (whatsAppOrderButton) {
       whatsAppOrderButton.addEventListener("click", sendOrderToWhatsApp);
     }
+
+    initImageSliders(productModalContent);
   }
 
   function closePublication() {

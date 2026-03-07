@@ -41,32 +41,35 @@ const PRODUCTS = [
   },
   {
     id: 5,
-    name: "Teclado Mecánico RGB",
-    description: "Teclado mecánico con switches intercambiables, retroiluminación RGB personalizable.",
-    price: 1599,
-    originalPrice: 2100,
-    category: "Electrónica",
-    image: "img/catalogo/catalogo01.png",
+    name: "Bolso Bandolera Michael Kors Jet Set Travel Medium Dome",
+    description: "Bolso elegante y funcional de la marca Michael Kors, ideal para uso diario y ocasiones especiales.",
+    price: 2800,
+    originalPrice: 3200,
+    category: "Accesorios",
+    image: "img/catalogo/catalago07.png",
     offer: true
   },
   {
     id: 6,
-    name: "Botella Térmica 750ml",
-    description: "Botella de acero inoxidable que mantiene bebidas frías 24h y calientes 12h.",
-    price: 349,
+    name: "Bolso Michael Kors",
+    description: "Bolso Michael Kors original con acabado premium y diseño elegante, ideal para uso diario. Precio especial: $2,800; combo con cartera a juego: $3,800.",
+    price: 2800,
     originalPrice: null,
-    category: "Hogar",
-    image: "img/catalogo/catalogo01.png",
-    offer: false
+    category: "Accesorios",
+    image: "img/catalogo/catalago08.png",
+    offer: true
   },
   {
     id: 7,
-    name: "Zapatillas Running Ultra",
-    description: "Zapatillas ligeras con amortiguación de espuma reactiva para corredores exigentes.",
-    price: 1899,
-    originalPrice: 2400,
-    category: "Deportes",
-    image: "img/catalogo/catalogo01.png",
+    name: "Paquete Michael Kors",
+    description: "Paquete de productos Michael Kors, incluyendo bolso y accesorios, ideal para uso diario y ocasiones especiales.",
+    price: 2100,
+    originalPrice: 2500,
+    category: "Accesorios",
+    images: [
+      "img/catalogo/catalago05.png",
+      "img/catalogo/catalago06.png"
+    ],
     offer: true
   },
   {

@@ -38,7 +38,13 @@
     fetch("js/allowed_ids.json")
       .then(response => response.json())
       .then(data => {
-        window.ALLOWED_IDS = data.allowed_ids;
+        // Randomize 6 IDs from all_ids
+        let ids = data.all_ids ? [...data.all_ids] : [];
+        for (let i = ids.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [ids[i], ids[j]] = [ids[j], ids[i]];
+        }
+        window.ALLOWED_IDS = ids.slice(0, 6);
         window.WHATSAPP_NUMBER = data.whatsapp_number;
         render();
       });

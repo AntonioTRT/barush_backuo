@@ -290,8 +290,18 @@ a {
 }
 
 .service-icon {
-  font-size: 3rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
   margin-bottom: 16px;
+}
+
+.service-icon-label {
+  font-size: 2.5rem;
+  line-height: 1.1;
+  color: var(--color-text);
 }
 
 .service-card h3 {

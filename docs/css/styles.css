@@ -170,12 +170,14 @@ a {
 
 /* === Hero === */
 .hero {
-  background: url('../img/inicio.png') center/cover no-repeat;
+  background: url('../img/inicio.jpg') center/cover no-repeat;
   color: #fff;
   text-align: center;
-  padding: 100px 20px 90px;
-  position: relative;
-  overflow: hidden;
+  padding: 100px 20px; /* 90px; */
+    min-height: 100vh; /* 👈 Esto lo ajusta a pantalla completa */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .hero-badge {

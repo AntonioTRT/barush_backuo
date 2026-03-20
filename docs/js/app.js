@@ -116,13 +116,63 @@
       });
     });
 
-    // Botón de Ana Ramírez para abrir catálogo
-    var anaOpenButton = document.getElementById("anaOpenCatalog");
-    if (anaOpenButton) {
-      anaOpenButton.addEventListener("click", function () {
-        openPublication(12);
+    var openComment = document.getElementById("anaOpenCatalog");
+    if (openComment) {
+      openComment.addEventListener("click", function () {
+        openCommentModal();
       });
     }
+
+    var commentClose = document.getElementById("commentModalClose");
+    var commentBackdrop = document.getElementById("commentModalBackdrop");
+    if (commentClose) commentClose.addEventListener("click", closeCommentModal);
+    if (commentBackdrop) commentBackdrop.addEventListener("click", closeCommentModal);
+  }
+
+  function openCommentModal() {
+    var modal = document.getElementById("commentModal");
+    var content = document.getElementById("commentModalContent");
+    if (!modal || !content) return;
+
+    content.innerHTML =
+      '<h3 id="commentModalTitle">Deja tu comentario para Baruch</h3>' +
+      '<p>Escribe tu comentario y este será enviado directamente al correo electrónico baruch.usamx@gmail.com para su atención.</p>' +
+      '<label for="commentName">Nombre</label>' +
+      '<input id="commentName" type="text" placeholder="Tu nombre" />' +
+      '<label for="commentEmail">Email</label>' +
+      '<input id="commentEmail" type="email" placeholder="Tu email" />' +
+      '<label for="commentText">Comentario</label>' +
+      '<textarea id="commentText" rows="5" placeholder="Escribe aquí tu comentario..."></textarea>' +
+      '<button id="commentSubmit" class="comment-submit" type="button">Enviar comentario</button>';
+
+    modal.classList.add("open");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+
+    var submit = document.getElementById("commentSubmit");
+    if (submit) {
+      submit.addEventListener("click", function () {
+        var name = document.getElementById("commentName").value.trim();
+        var email = document.getElementById("commentEmail").value.trim();
+        var text = document.getElementById("commentText").value.trim();
+        if (!text) {
+          alert("Por favor escribe tu comentario antes de enviar.");
+          return;
+        }
+
+        var subject = encodeURIComponent("Comentario desde sitio Barush");
+        var body = encodeURIComponent("Nombre: " + (name || "No proporcionado") + "\nEmail: " + (email || "No proporcionado") + "\n\nComentario:\n" + text);
+        window.location.href = "mailto:baruch.usamx@gmail.com?subject=" + subject + "&body=" + body;
+      });
+    }
+  }
+
+  function closeCommentModal() {
+    var modal = document.getElementById("commentModal");
+    if (!modal) return;
+    modal.classList.remove("open");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
   }
 
   function populateCategories() {
@@ -182,11 +232,19 @@
     return [product.image];
   }
 
-  function buildMediaHTML(images, sliderClass, imageClass, productName) {
+  function getProductImageSizeAttributes(product) {
+    if (product && product.id >= 12 && product.id <= 20) {
+      return ' width="1024" height="1024"';
+    }
+    return '';
+  }
+
+  function buildMediaHTML(images, sliderClass, imageClass, productName, imageSizeAttributes) {
+    var sizeAttrs = imageSizeAttributes || '';
     if (images.length > 1) {
       var slides = images.map(function (src, index) {
         var activeClass = index === 0 ? " is-active" : "";
-        return '<img class="slide-image ' + imageClass + activeClass + '" src="' + src + '" alt="' + productName + ' imagen ' + (index + 1) + '">';
+        return '<img class="slide-image ' + imageClass + activeClass + '" src="' + src + '" alt="' + productName + ' imagen ' + (index + 1) + '"' + sizeAttrs + '>';
       }).join("");
 
       return '<div class="image-slider ' + sliderClass + '">' +
@@ -196,7 +254,35 @@
       '</div>';
     }
 
-    return '<img class="' + imageClass + '" src="' + images[0] + '" alt="' + productName + '">';
+    return '<img class="' + imageClass + '" src="' + images[0] + '" alt="' + productName + '"' + sizeAttrs + '>';
+  }
+
+  function updateMediaAspectRatio(target, image) {
+    if (!target || !image || !image.naturalWidth || !image.naturalHeight) return;
+    target.style.setProperty("--media-aspect-ratio", image.naturalWidth + " / " + image.naturalHeight);
+  }
+
+  function bindStandaloneMediaAspectRatio(scope) {
+    var root = scope || document;
+    var mediaImages = root.querySelectorAll(".product-image > img, img.publication-image");
+
+    mediaImages.forEach(function (image) {
+      var target = image.classList.contains("publication-image")
+        ? image
+        : image.closest(".product-image");
+
+      if (!target) return;
+
+      function syncAspectRatio() {
+        updateMediaAspectRatio(target, image);
+      }
+
+      if (image.complete) {
+        syncAspectRatio();
+      } else {
+        image.addEventListener("load", syncAspectRatio, { once: true });
+      }
+    });
   }
 
   function initImageSliders(scope) {
@@ -213,12 +299,18 @@
       var nextButton = slider.querySelector(".slider-arrow-next");
       var currentIndex = 0;
       var timerId = null;
+      var aspectTarget = slider.closest(".product-image") || slider;
+
+      function syncSliderAspectRatio() {
+        updateMediaAspectRatio(aspectTarget, slides[currentIndex]);
+      }
 
       function showSlide(index) {
         currentIndex = (index + slides.length) % slides.length;
         slides.forEach(function (slide, slideIndex) {
           slide.classList.toggle("is-active", slideIndex === currentIndex);
         });
+        syncSliderAspectRatio();
       }
 
       function nextSlide() {
@@ -261,6 +353,12 @@
       slider.addEventListener("mouseenter", stopAuto);
       slider.addEventListener("mouseleave", startAuto);
 
+      slides.forEach(function (slide) {
+        if (!slide.complete) {
+          slide.addEventListener("load", syncSliderAspectRatio);
+        }
+      });
+
       showSlide(0);
       startAuto();
       slider.dataset.ready = "true";
@@ -277,8 +375,9 @@
       ? '<span class="badge-offer">Oferta</span>'
       : "";
 
+    var imageSizeAttrs = getProductImageSizeAttributes(product);
     var cardImageHTML = '<div class="product-image">' +
-      buildMediaHTML(images, "product-media-slider", "product-image-media", product.name) +
+      buildMediaHTML(images, "product-media-slider", "product-image-media", product.name, imageSizeAttrs) +
       '</div>';
 
     return '<article class="product-card" data-product-id="' + product.id + '" role="button" tabindex="0" aria-label="Ver publicación de ' + product.name + '">' +
@@ -311,6 +410,7 @@
       : products.length + " de " + PRODUCTS.length + " productos";
 
     productGrid.innerHTML = products.map(createCard).join("");
+    bindStandaloneMediaAspectRatio(productGrid);
     initImageSliders(productGrid);
   }
 
@@ -361,7 +461,7 @@
       ? '<span class="old-price">' + formatPrice(product.originalPrice) + '</span>'
       : "";
 
-    var publicationImageHTML = buildMediaHTML(images, "publication-media", "publication-image", product.name);
+    var publicationImageHTML = buildMediaHTML(images, "publication-media", "publication-image", product.name, getProductImageSizeAttributes(product));
     var recommendationText = getRecommendationText(product);
 
     productModalContent.innerHTML =
@@ -403,6 +503,7 @@
       });
     }
 
+    bindStandaloneMediaAspectRatio(productModalContent);
     initImageSliders(productModalContent);
   }
 

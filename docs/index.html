@@ -182,42 +182,49 @@
         <h2>Lo que dicen nuestros <span class="highlight">Customers</span></h2>
         <p>Historias reales de personas que confían en Barush para sus compras</p>
       </div>
-      <div class="testimonials-grid">
-        <div class="testimonial-card">
-          <div class="testimonial-stars">★★★★</div>
-          <p class="testimonial-text">"Barush me ayudó a encontrar exactamente lo que buscaba a un precio increíble. ¡Totalmente recomendado!"</p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar">MG</div>
-            <div>
-              <strong>María </strong>
-              <span>Cliente desde 2025</span>
+      <div class="testimonials-row">
+        <div class="testimonials-grid">
+          <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★</div>
+            <p class="testimonial-text">"Barush me ayudó a encontrar exactamente lo que buscaba a un precio increíble. ¡Totalmente recomendado!"</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">MG</div>
+              <div>
+                <strong>María </strong>
+                <span>Cliente desde 2025</span>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="testimonial-card">
-          <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-text">"Las recomendaciones personalizadas son muy buenas. Siempre encuentro productos de calidad aquí."</p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar">CL</div>
-            <div>
-              <strong>Carlos López</strong>
-              <span>Cliente desde 2024</span>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-card">
-          <div class="testimonial-top-row">
+          <div class="testimonial-card">
             <div class="testimonial-stars">★★★★★</div>
-            <button id="anaOpenCatalog" class="testimonial-open-catalog" type="button" aria-label="Ver producto recomendado por Ana">+</button>
-          </div>
-          <p class="testimonial-text">"El mejor personal shop assistant que he usado. Me ahorra mucho tiempo y dinero en mis compras."</p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar">AR</div>
-            <div>
-              <strong>Ana Ramírez</strong>
-              <span>Cliente desde 2025</span>
+            <p class="testimonial-text">"Las recomendaciones personalizadas son muy buenas. Siempre encuentro productos de calidad aquí."</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">CL</div>
+              <div>
+                <strong>Carlos López</strong>
+                <span>Cliente desde 2024</span>
+              </div>
             </div>
           </div>
+          <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">"El mejor personal shop assistant que he usado. Me ahorra mucho tiempo y dinero en mis compras."</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">AR</div>
+              <div>
+                <strong>Ana Ramírez</strong>
+                <span>Cliente desde 2025</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button id="anaOpenCatalog" class="testimonial-open-catalog-outside" type="button" aria-label="Dejar comentario">+</button>
+      </div>
+      <div class="comment-modal" id="commentModal" aria-hidden="true" role="dialog" aria-labelledby="commentModalTitle">
+        <div class="comment-modal-backdrop" id="commentModalBackdrop"></div>
+        <div class="comment-modal-panel" role="document">
+          <button class="comment-modal-close" id="commentModalClose" aria-label="Cerrar">×</button>
+          <div class="comment-modal-content" id="commentModalContent"></div>
         </div>
       </div>
     </div>

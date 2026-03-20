@@ -128,51 +128,94 @@ const PRODUCTS = [
   },
   {
     id: 12,
-    name: "Cargador Portátil 20000mAh",
-    description: "Power bank de alta capacidad con carga rápida y dos puertos USB-C.",
-    price: 599,
-    originalPrice: 799,
-    category: "Electrónica",
-    image: "img/catalogo/catalogo01.png",
-    offer: true
+    name: "On Cloudnova (White)",
+    description: "Tenis On Cloudnova en color blanco, con diseño moderno y comodidad excepcional.",
+    price: 2600,
+    originalPrice: null,
+    category: "Zapatos",
+    image: "img/catalogo/catalago21.png",
+    offer: false
   },
   {
     id: 13,
-    name: "Silla Ergonómica de Oficina",
-    description: "Silla con soporte lumbar ajustable, reposabrazos 3D y malla transpirable.",
-    price: 4599,
-    originalPrice: 5800,
-    category: "Hogar",
-    image: "img/catalogo/catalogo01.png",
-    offer: true
+    name: "On Cloud 5",
+    description: "Tenis On Cloud 5 en color negro, con un diseño moderno y gran comodidad. Incorporan tecnología de amortiguación que brinda una pisada suave y ligera, ideales para el uso diario o actividades ligeras. Su material transpirable y ajuste cómodo los hacen una opción práctica y versátil.",
+    price: 3640,
+    originalPrice: null,
+    category: "Zapatos",
+    image: "img/catalogo/catalago22.png",
+    offer: false
   },
   {
     id: 14,
-    name: "Protector Solar FPS 50+",
-    description: "Protector solar de amplio espectro, ligero, no graso y resistente al sudor.",
-    price: 279,
+    name: "On Cloudnova",
+    description: "Tenis On Cloudnova en color blanco, con un diseño moderno y estilo urbano. Su suela con tecnología de amortiguación brinda una pisada suave y cómoda, ideal para el uso diario. Fabricados con materiales ligeros y transpirables, ofrecen un ajuste cómodo y un look versátil que combina fácilmente con cualquier outfit.",
+    price: 2800,
     originalPrice: null,
-    category: "Belleza",
-    image: "img/catalogo/catalogo01.png",
+    category: "Zapatos",
+    image: "img/catalogo/catalago23.png",
     offer: false
   },
   {
     id: 15,
-    name: "Bolsa Deportiva Multiuso",
-    description: "Bolsa con compartimento para calzado, bolsillo impermeable y correa ajustable.",
-    price: 549,
+    name: "Tenis Chunky Retro Urban",
+    description: "Tenis estilo chunky con diseño retro y estética urbana. Su suela de plataforma brinda mayor comodidad y estabilidad en cada paso, mientras que sus materiales ligeros y transpirables ofrecen un ajuste confortable durante todo el día. Ideales para complementar un look moderno y versátil, perfectos para uso diario o para salir con amigos.",
+    price: 1064,
     originalPrice: null,
-    category: "Deportes",
-    image: "img/catalogo/catalogo01.png",
+    category: "Zapatos",
+    images: [
+      "img/catalogo/catalago24.png",
+      "img/catalogo/catalago25.png"
+    ],
     offer: false
   },
   {
     id: 16,
-    name: "Hub USB-C 7 en 1",
-    description: "Adaptador multipuerto con HDMI 4K, lector SD, USB 3.0 y carga pass-through.",
-    price: 749,
-    originalPrice: 999,
+    name: "New Balance 9060",
+    description: "un diseño retro-futurista que combina estilo urbano y comodidad. Incorporan una suela robusta con tecnología de amortiguación que brinda una pisada suave y estable, ideal para el uso diario. Su confección en materiales como malla y gamuza ofrece transpirabilidad y durabilidad, mientras que su estética moderna los convierte en una opción versátil para complementar cualquier outfit urbano o casual. Perfectos para quienes buscan un calzado que combine estilo y funcionalidad en su día a día.",
+    price: 1560,
+    originalPrice: 5808.70,
+    category: "Zapatos",
+    image: "img/catalogo/catalago26.png",
+    offer: true
+  },
+  {
+    id: 17,
+    name: "Audífonos Inalámbricos Bluetooth",
+    description: "Audífonos tipo over-ear con cancelación de ruido, micrófono integrado y hasta 30 horas de batería.",
+    price: 1299,
+    originalPrice: 1499,
     category: "Electrónica",
+    image: "img/catalogo/catalogo01.png",
+    offer: true
+  },
+  {
+    id: 18,
+    name: "Reloj Deportivo Smart",
+    description: "Reloj inteligente con monitor de ritmo cardíaco, GPS y notificaciones de mensajes.",
+    price: 1999,
+    originalPrice: null,
+    category: "Accesorios",
+    image: "img/catalogo/catalogo01.png",
+    offer: false
+  },
+  {
+    id: 19,
+    name: "Set de Maletas Reforzadas",
+    description: "Set de 3 maletas rígidas con ruedas dobles 360° y cerradura TSA.",
+    price: 3299,
+    originalPrice: 3999,
+    category: "Viajes",
+    image: "img/catalogo/catalogo01.png",
+    offer: true
+  },
+  {
+    id: 20,
+    name: "Cámara de Seguridad WiFi",
+    description: "Cámara de seguridad con visión nocturna, detección de movimiento y audio bidireccional.",
+    price: 1099,
+    originalPrice: 1299,
+    category: "Hogar",
     image: "img/catalogo/catalogo01.png",
     offer: true
   }

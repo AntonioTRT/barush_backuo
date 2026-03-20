@@ -115,6 +115,14 @@
         }
       });
     });
+
+    // Botón de Ana Ramírez para abrir catálogo
+    var anaOpenButton = document.getElementById("anaOpenCatalog");
+    if (anaOpenButton) {
+      anaOpenButton.addEventListener("click", function () {
+        openPublication(12);
+      });
+    }
   }
 
   function populateCategories() {

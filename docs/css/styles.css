@@ -21,22 +21,22 @@ img {
 
 :root {
 /*
-  Paleta de colores profesional - arena, oliva y terracota suave
-  Variables diseñadas para una apariencia elegante, cálida y más premium
+  Paleta profesional solicitada por el cliente
+  Mantiene acentos cafe fuerte en las zonas clave del sitio
 */
-  --color-primary: #73553b;
+  --color-primary: #7A5A3A;
   --color-header-bg: rgba(54, 38, 25, 0.94);
-  --color-primary-light: #efe3d1;
-  --color-accent: #c4704f;
-  --color-accent-hover: #a85a3c;
-  --color-bg: #f7f1e8;
-  --color-card: #fffdf9;
-  --color-text: #35261c;
-  --color-text-light: #7d6757;
-  --color-border: #e5d7c6;
-  --color-highlight: #b96d49;
-  --color-surface-strong: #f1e5d6;
-  --color-pill: #fcf8f2;
+  --color-primary-light: #D6CCC2;
+  --color-accent: #A8947B;
+  --color-accent-hover: #7A5A3A;
+  --color-bg: #E6DED0;
+  --color-card: #E9DFC9;
+  --color-text: #7A5A3A;
+  --color-text-light: #8d7963;
+  --color-border: #D6CCC2;
+  --color-highlight: #BFA27A;
+  --color-surface-strong: #E9DFC9;
+  --color-pill: #f3ece3;
   --shadow-sm: 0 10px 24px rgba(65, 43, 27, 0.08);
   --shadow-md: 0 16px 36px rgba(65, 43, 27, 0.12);
   --shadow-lg: 0 22px 48px rgba(65, 43, 27, 0.16);
@@ -52,9 +52,9 @@ html {
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   background:
-    radial-gradient(circle at top left, rgba(196, 112, 79, 0.10), transparent 30%),
-    radial-gradient(circle at top right, rgba(115, 85, 59, 0.08), transparent 22%),
-    linear-gradient(180deg, #fbf7f1 0%, var(--color-bg) 100%);
+    radial-gradient(circle at top left, rgba(191, 162, 122, 0.14), transparent 30%),
+    radial-gradient(circle at top right, rgba(168, 148, 123, 0.10), transparent 22%),
+    linear-gradient(180deg, #f7f3ed 0%, var(--color-bg) 100%);
   color: var(--color-text);
   line-height: 1.6;
 }
@@ -188,7 +188,7 @@ a {
 
 .hero-badge {
   display: inline-block;
-  background: rgba(194,178,128,0.2); /* beige oscuro translúcido */
+  background: rgba(191, 162, 122, 0.16);
   color: var(--color-accent);
   padding: 8px 20px;
   border-radius: 50px;
@@ -237,7 +237,7 @@ a {
 .btn:hover {
   background: var(--color-accent-hover);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(233,69,96,0.3);
+  box-shadow: 0 8px 18px rgba(122, 90, 58, 0.22);
 }
 
 .btn-hero {
@@ -287,7 +287,7 @@ a {
   padding: 28px 24px 34px;
   border-radius: var(--radius-lg);
   background: var(--color-bg);
-  border: 1px solid #e5dcc9;
+  border: 1px solid var(--color-border);
   box-shadow: var(--shadow-sm);
   transition: all var(--transition);
 }
@@ -340,8 +340,8 @@ a {
   margin-bottom: 20px;
   align-items: center;
   padding: 20px;
-  background: rgba(255, 252, 247, 0.86);
-  border: 1px solid rgba(229, 215, 198, 0.9);
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(214, 204, 194, 0.95);
   border-radius: 24px;
   box-shadow: var(--shadow-sm);
   backdrop-filter: blur(10px);
@@ -364,7 +364,7 @@ a {
 
 .search-box input:focus {
   border-color: var(--color-accent);
-  box-shadow: 0 0 0 4px rgba(196, 112, 79, 0.12);
+  box-shadow: 0 0 0 4px rgba(191, 162, 122, 0.18);
 }
 
 .filters {
@@ -388,7 +388,7 @@ a {
 
 .filters select:focus {
   border-color: var(--color-accent);
-  box-shadow: 0 0 0 4px rgba(196, 112, 79, 0.12);
+  box-shadow: 0 0 0 4px rgba(191, 162, 122, 0.18);
 }
 
 .visually-hidden {
@@ -407,8 +407,8 @@ a {
   margin-bottom: 18px;
   padding: 24px;
   border-radius: 28px;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(241, 229, 214, 0.88));
-  border: 1px solid rgba(229, 215, 198, 0.9);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(233, 223, 201, 0.74));
+  border: 1px solid rgba(214, 204, 194, 0.95);
   box-shadow: var(--shadow-sm);
 }
 
@@ -480,7 +480,7 @@ a {
   background: var(--category-accent, var(--color-accent));
   color: #fff;
   border-color: transparent;
-  box-shadow: 0 14px 24px rgba(196, 112, 79, 0.26);
+  box-shadow: 0 14px 24px rgba(122, 90, 58, 0.22);
 }
 
 .category-pill-icon {
@@ -536,7 +536,7 @@ a {
 
 .product-card:hover {
   transform: translateY(-6px);
-  border-color: rgba(196, 112, 79, 0.28);
+  border-color: rgba(191, 162, 122, 0.5);
   box-shadow: var(--shadow-md);
 }
 
@@ -853,7 +853,7 @@ a {
   margin: 0;
   padding: 14px 16px;
   border-radius: 12px;
-  background: #f5f2e4;
+  background: rgba(233, 223, 201, 0.72);
   color: var(--color-text-light);
   font-size: 0.95rem;
   line-height: 1.45;
@@ -989,12 +989,12 @@ a {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--color-accent), #c2b280);
+  background: linear-gradient(135deg, var(--color-accent), var(--color-accent-hover));
   color: #fff;
   font-size: 1.5rem;
   font-weight: 800;
   margin-bottom: 20px;
-  box-shadow: 0 4px 15px rgba(233,69,96,0.3);
+  box-shadow: 0 8px 18px rgba(122, 90, 58, 0.22);
 }
 
 .step-card h3 {
@@ -1019,6 +1019,36 @@ a {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 28px;
+}
+
+.testimonials-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: start;
+  gap: 22px;
+}
+
+.testimonial-open-catalog-outside {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  border: 3px solid #0f0f0f;
+  background: #fff;
+  color: #0f0f0f;
+  font-size: 2.2rem;
+  line-height: 0.8;
+  font-weight: 800;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.2);
+  margin-top: 36px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.testimonial-open-catalog-outside:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.27);
 }
 
 .testimonial-card {
@@ -1419,6 +1449,16 @@ a {
 @media (max-width: 900px) {
   .services-grid .service-card:nth-child(4) {
     grid-column: auto;
+  }
+
+  .testimonials-row {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .testimonial-open-catalog-outside {
+    margin-top: 0;
+    justify-self: flex-start;
   }
 
   .footer-grid {

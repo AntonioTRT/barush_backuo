@@ -18,8 +18,19 @@
   
   };
 
+  const CATEGORY_META = {
+    "Accesorios": { icon: "\u25C7", accent: "#b66a4b", bg: "#f7ebe4", border: "#e7c8b8" },
+    "Belleza": { icon: "\u273F", accent: "#b25f7d", bg: "#f8e9ef", border: "#e7c0d1" },
+    "Deportes": { icon: "\u25B2", accent: "#4f7b5f", bg: "#ebf4ec", border: "#c8dccb" },
+    "Electr\u00F3nica": { icon: "\u25A3", accent: "#4b6f9f", bg: "#eaf0f8", border: "#c8d7ea" },
+    "Hogar": { icon: "\u2302", accent: "#8b6a3f", bg: "#f4eee5", border: "#ddcfbb" },
+    "Ropa": { icon: "\u25A0", accent: "#8d4f78", bg: "#f3e9f1", border: "#dbc3d3" },
+    "Zapatos": { icon: "\u25C6", accent: "#8a6940", bg: "#f6ede2", border: "#e1d0ba" }
+  };
+
   const searchInput = document.getElementById("searchInput");
   const categoryFilter = document.getElementById("categoryFilter");
+  const categoryPills = document.getElementById("categoryPills");
   const sortFilter = document.getElementById("sortFilter");
   const productGrid = document.getElementById("productGrid");
   const noResults = document.getElementById("noResults");
@@ -177,12 +188,70 @@
 
   function populateCategories() {
     var categories = [...new Set(PRODUCTS.map(function (p) { return p.category; }))].sort();
+
+    createCategoryPill("all", "Todas");
+
     categories.forEach(function (cat) {
       var opt = document.createElement("option");
       opt.value = cat;
       opt.textContent = cat;
       categoryFilter.appendChild(opt);
+      createCategoryPill(cat, cat);
     });
+
+    syncCategoryPills();
+  }
+
+  function createCategoryPill(value, label) {
+    if (!categoryPills) return;
+    var meta = getCategoryMeta(value);
+
+    var button = document.createElement("button");
+    button.type = "button";
+    button.className = "category-pill";
+    button.setAttribute("role", "tab");
+    button.setAttribute("data-category", value);
+    button.setAttribute("aria-selected", value === categoryFilter.value ? "true" : "false");
+    button.setAttribute("style", getCategoryStyle(meta));
+    button.innerHTML = '<span class="category-pill-icon" aria-hidden="true">' + meta.icon + '</span><span class="category-pill-label">' + label + '</span>';
+    button.addEventListener("click", function () {
+      categoryFilter.value = value;
+      render();
+    });
+    categoryPills.appendChild(button);
+  }
+
+  function syncCategoryPills() {
+    if (!categoryPills) return;
+
+    var activeCategory = categoryFilter.value;
+    var buttons = categoryPills.querySelectorAll(".category-pill");
+
+    buttons.forEach(function (button) {
+      var isActive = button.getAttribute("data-category") === activeCategory;
+      button.classList.toggle("is-active", isActive);
+      button.setAttribute("aria-selected", isActive ? "true" : "false");
+    });
+  }
+
+  function getCategoryMeta(category) {
+    if (category === "all") {
+      return { icon: "\u25C9", accent: "#c4704f", bg: "#f7ece5", border: "#e8cbbd" };
+    }
+
+    return CATEGORY_META[category] || { icon: "\u25CF", accent: "#73553b", bg: "#f4ede6", border: "#decfbe" };
+  }
+
+  function getCategoryStyle(meta) {
+    return "--category-accent:" + meta.accent + ";--category-bg:" + meta.bg + ";--category-border:" + meta.border + ";";
+  }
+
+  function createCategoryBadge(category) {
+    var meta = getCategoryMeta(category);
+    return '<span class="product-category" style="' + getCategoryStyle(meta) + '">' +
+      '<span class="product-category-icon" aria-hidden="true">' + meta.icon + '</span>' +
+      '<span class="product-category-label">' + category + '</span>' +
+    '</span>';
   }
 
   function getFilteredProducts() {
@@ -383,7 +452,7 @@
     return '<article class="product-card" data-product-id="' + product.id + '" role="button" tabindex="0" aria-label="Ver publicación de ' + product.name + '">' +
       cardImageHTML +
       '<div class="product-body">' +
-        '<span class="product-category">' + product.category + '</span>' +
+        createCategoryBadge(product.category) +
         '<h3 class="product-name">' + product.name + '</h3>' +
         '<p class="product-description">' + product.description + '</p>' +
         '<div class="product-footer">' +
@@ -396,6 +465,7 @@
 
   function render() {
     var products = getFilteredProducts();
+    syncCategoryPills();
 
     if (products.length === 0) {
       productGrid.innerHTML = "";
@@ -471,7 +541,7 @@
           '<p class="publication-recommendation">' + recommendationText + '</p>' +
         '</div>' +
         '<div class="publication-info">' +
-          '<span class="product-category">' + product.category + '</span>' +
+          createCategoryBadge(product.category) +
           '<h2 class="publication-title" id="modalProductTitle">' + product.name + '</h2>' +
           '<p class="publication-description">' + product.description + '</p>' +
           '<div class="publication-price">' + formatPrice(product.price) + oldPrice + '</div>' +

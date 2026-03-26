@@ -185,12 +185,12 @@ a {
 
 /* === Hero === */
 .hero {
-  background:
+  background-image:
     linear-gradient(rgba(54, 38, 25, 0.38), rgba(54, 38, 25, 0.38)),
-    image-set(
-      url('../img/inicio.webp') type('image/webp'),
-      url('../img/inicio.jpg') type('image/jpeg')
-    ) center/cover no-repeat;
+    url('../img/inicio.jpg');
+  background-position: center, center top;
+  background-size: cover, cover;
+  background-repeat: no-repeat, no-repeat;
   color: #fff;
   text-align: center;
   padding: 100px 20px; /* 90px; */

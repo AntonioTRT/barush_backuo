@@ -43,6 +43,7 @@ img {
   --radius: 10px;
   --radius-lg: 22px;
   --transition: 0.3s ease;
+  --section-visibility-size: 700px;
 }
 
 html {
@@ -57,6 +58,13 @@ body {
     linear-gradient(180deg, #f7f3ed 0%, var(--color-bg) 100%);
   color: var(--color-text);
   line-height: 1.6;
+  overflow-x: hidden;
+}
+
+section,
+.footer {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px var(--section-visibility-size);
 }
 
 .container {
@@ -98,6 +106,7 @@ a {
 .header {
   background: var(--color-header-bg);
   backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border-bottom: 1px solid rgba(255,255,255,0.18);
   box-shadow: 0 4px 24px rgba(0,0,0,0.08);
   color: #ffffff;
@@ -176,7 +185,12 @@ a {
 
 /* === Hero === */
 .hero {
-  background: url('../img/inicio.jpg') center/cover no-repeat;
+  background:
+    linear-gradient(rgba(54, 38, 25, 0.38), rgba(54, 38, 25, 0.38)),
+    image-set(
+      url('../img/inicio.webp') type('image/webp'),
+      url('../img/inicio.jpg') type('image/jpeg')
+    ) center/cover no-repeat;
   color: #fff;
   text-align: center;
   padding: 100px 20px; /* 90px; */
@@ -345,6 +359,7 @@ a {
   border-radius: 24px;
   box-shadow: var(--shadow-sm);
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .search-box {
@@ -531,7 +546,6 @@ a {
   display: flex;
   flex-direction: column;
   min-height: 100%;
-  backdrop-filter: blur(10px);
 }
 
 .product-card:hover {
@@ -584,6 +598,7 @@ a {
   object-position: center;
   opacity: 0;
   transition: opacity 0.35s ease;
+  will-change: opacity;
 }
 
 .image-slider .slide-image.is-active {
@@ -722,8 +737,6 @@ a {
   .product-media-slider {
     height: 190px;
   }
-}
-
 }
 
 .product-price {
@@ -1468,9 +1481,19 @@ a {
 }
 
 @media (max-width: 768px) {
+  :root {
+    --section-visibility-size: 560px;
+  }
+
   .header .container {
     flex-direction: row;
     flex-wrap: wrap;
+  }
+
+  .header,
+  .toolbar {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
 
   .nav {
@@ -1565,5 +1588,38 @@ a {
 
   .newsletter-form input {
     min-width: unset;
+  }
+}
+
+@media (prefers-reduced-motion: reduce), (hover: none) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .btn,
+  .service-card,
+  .product-card,
+  .testimonial-card,
+  .category-pill,
+  .slider-arrow,
+  .nav-link,
+  .testimonial-open-catalog-outside,
+  .testimonial-open-catalog {
+    transition: none;
+  }
+
+  .btn:hover,
+  .service-card:hover,
+  .product-card:hover,
+  .testimonial-card:hover,
+  .category-pill:hover,
+  .testimonial-open-catalog-outside:hover,
+  .testimonial-open-catalog:hover {
+    transform: none;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .image-slider .slide-image {
+    transition: none;
   }
 }

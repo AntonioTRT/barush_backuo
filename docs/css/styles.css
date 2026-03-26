@@ -1424,31 +1424,47 @@ a {
 .social-links {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
 }
 
 .social-links a {
   display: inline-flex;
   align-items: center;
+  gap: 12px;
+  width: fit-content;
+  color: rgba(250, 250, 250, 0.86);
+  transition: color var(--transition), transform var(--transition);
+}
+
+.social-links a .social-icon {
+  display: inline-flex;
+  align-items: center;
   justify-content: center;
   width: 36px;
   height: 36px;
-  color: var(--color-text);
   border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: 999px;
-  transition: color var(--transition), border-color var(--transition), transform var(--transition);
+  transition: border-color var(--transition), transform var(--transition);
 }
 
 .social-links a:hover {
   color: var(--color-accent);
-  border-color: var(--color-accent);
   transform: translateY(-1px);
+}
+
+.social-links a:hover .social-icon {
+  border-color: var(--color-accent);
 }
 
 .social-links a svg {
   width: 18px;
   height: 18px;
   fill: currentColor;
+}
+
+.social-label {
+  font-size: 0.92rem;
+  line-height: 1;
 }
 
 .footer-bottom {

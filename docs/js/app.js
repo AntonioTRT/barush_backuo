@@ -58,6 +58,8 @@
   const productGrid = document.getElementById("productGrid");
   const noResults = document.getElementById("noResults");
   const resultsCount = document.getElementById("resultsCount");
+  const activeCategoryState = document.getElementById("activeCategoryState");
+  const resetCatalogFilters = document.getElementById("resetCatalogFilters");
   const menuToggle = document.getElementById("menuToggle");
   const nav = document.querySelector(".nav");
   const productModal = document.getElementById("productModal");
@@ -103,6 +105,10 @@
     searchInput.addEventListener("input", scheduleRender);
     categoryFilter.addEventListener("change", render);
     sortFilter.addEventListener("change", render);
+
+    if (resetCatalogFilters) {
+      resetCatalogFilters.addEventListener("click", resetCatalogView);
+    }
 
     productGrid.addEventListener("click", function (event) {
       var card = event.target.closest(".product-card");
@@ -331,6 +337,19 @@
     '</span>';
   }
 
+  function getActiveCategoryStateLabel() {
+    var category = categoryFilter.value;
+    return category === "all" ? "Todas las categorías" : "Categoría: " + category;
+  }
+
+  function resetCatalogView() {
+    searchInput.value = "";
+    categoryFilter.value = "all";
+    sortFilter.value = "name-asc";
+    render();
+    searchInput.focus();
+  }
+
   function getFilteredProducts() {
     var query = searchInput.value.toLowerCase().trim();
     var category = categoryFilter.value;
@@ -537,10 +556,12 @@
     var priceHTML = product.originalPrice
       ? formatPrice(product.price) + '<span class="original-price">' + formatPrice(product.originalPrice) + '</span>'
       : formatPrice(product.price);
-
-    var badgeHTML = product.offer
-      ? '<span class="badge-offer">Oferta</span>'
-      : "";
+    var statusHTML = product.offer
+      ? '<span class="product-flag product-flag-offer">Oferta activa</span>'
+      : '<span class="product-flag">Disponible</span>';
+    var priceCaption = product.offer
+      ? "Precio especial disponible"
+      : "Consulta disponibilidad y detalles";
 
     var imageSizeAttrs = getProductImageSizeAttributes(product);
     var cardImageHTML = '<div class="product-image">' +
@@ -550,12 +571,18 @@
     return '<article class="product-card" data-product-id="' + product.id + '" role="button" tabindex="0" aria-label="Ver publicación de ' + product.name + '">' +
       cardImageHTML +
       '<div class="product-body">' +
-        createCategoryBadge(product.category) +
+        '<div class="product-card-header">' +
+          createCategoryBadge(product.category) +
+          statusHTML +
+        '</div>' +
         '<h3 class="product-name">' + product.name + '</h3>' +
         '<p class="product-description">' + product.description + '</p>' +
         '<div class="product-footer">' +
-          '<span class="product-price">' + priceHTML + '</span>' +
-          badgeHTML +
+          '<div class="product-pricing">' +
+            '<span class="product-price">' + priceHTML + '</span>' +
+            '<span class="product-price-caption">' + priceCaption + '</span>' +
+          '</div>' +
+          '<span class="product-cta">Ver detalle</span>' +
         '</div>' +
       '</div>' +
     '</article>';
@@ -569,13 +596,19 @@
       productGrid.innerHTML = "";
       noResults.style.display = "block";
       resultsCount.textContent = "0 productos encontrados";
+      if (activeCategoryState) {
+        activeCategoryState.textContent = getActiveCategoryStateLabel();
+      }
       return;
     }
 
     noResults.style.display = "none";
     resultsCount.textContent = products.length === PRODUCTS.length
-      ? products.length + " productos"
+      ? products.length + " productos disponibles"
       : products.length + " de " + PRODUCTS.length + " productos";
+    if (activeCategoryState) {
+      activeCategoryState.textContent = getActiveCategoryStateLabel();
+    }
 
     productGrid.innerHTML = products.map(createCard).join("");
     bindStandaloneMediaAspectRatio(productGrid);
@@ -631,20 +664,55 @@
 
     var publicationImageHTML = buildMediaHTML(images, "publication-media", "publication-image", product.name, getProductImageSizeAttributes(product));
     var recommendationText = getRecommendationText(product);
+    var priceNote = product.offer
+      ? "Este producto muestra un precio especial dentro del catálogo."
+      : "La cotización final puede ajustarse según disponibilidad en tienda oficial.";
+    var publicationStatus = product.offer
+      ? '<span class="publication-tag publication-tag-offer">Oferta disponible</span>'
+      : '<span class="publication-tag">Selección recomendada</span>';
 
     productModalContent.innerHTML =
       '<div class="publication-layout">' +
         '<div class="publication-media-column">' +
-          publicationImageHTML +
-          '<p class="publication-recommendation">' + recommendationText + '</p>' +
+          '<div class="publication-gallery-card">' +
+            publicationImageHTML +
+          '</div>' +
+          '<div class="publication-recommendation-card">' +
+            '<span class="publication-panel-label">Recomendación Barush</span>' +
+            '<p class="publication-recommendation">' + recommendationText + '</p>' +
+          '</div>' +
         '</div>' +
         '<div class="publication-info">' +
-          createCategoryBadge(product.category) +
-          '<h2 class="publication-title" id="modalProductTitle">' + product.name + '</h2>' +
-          '<p class="publication-description">' + product.description + '</p>' +
-          '<div class="publication-price">' + formatPrice(product.price) + oldPrice + '</div>' +
-          '<input id="orderInput" type="text" placeholder="Escribe tu mensaje...">' +
-          '<button class="btn whatsapp-order" id="whatsAppOrderButton" type="button">Pedir por WhatsApp</button>' +
+          '<div class="publication-info-card">' +
+            '<div class="publication-meta">' +
+              createCategoryBadge(product.category) +
+              publicationStatus +
+              '<span class="publication-tag publication-tag-muted">ID ' + product.id + '</span>' +
+            '</div>' +
+            '<h2 class="publication-title" id="modalProductTitle">' + product.name + '</h2>' +
+            '<p class="publication-description">' + product.description + '</p>' +
+            '<div class="publication-price-card">' +
+              '<span class="publication-price-label">Precio estimado</span>' +
+              '<div class="publication-price">' + formatPrice(product.price) + oldPrice + '</div>' +
+              '<p class="publication-price-note">' + priceNote + '</p>' +
+            '</div>' +
+            '<div class="publication-support-grid">' +
+              '<div class="publication-support-item">' +
+                '<strong>Compra guiada</strong>' +
+                '<span>Te ayudamos a revisar dudas como talla, color, cantidad o disponibilidad antes de cerrar tu pedido.</span>' +
+              '</div>' +
+              '<div class="publication-support-item">' +
+                '<strong>Solicitud más rápida</strong>' +
+                '<span>Tu mensaje de WhatsApp saldrá preparado con el nombre, ID y precio del producto para que el seguimiento sea más ágil.</span>' +
+              '</div>' +
+            '</div>' +
+            '<label class="order-label" for="orderInput">Cuéntanos qué detalle te interesa</label>' +
+            '<textarea id="orderInput" rows="4" placeholder="Ejemplo: talla, color, cantidad o ciudad de entrega"></textarea>' +
+            '<div class="publication-actions">' +
+              '<button class="btn whatsapp-order" id="whatsAppOrderButton" type="button">Solicitar por WhatsApp</button>' +
+              '<p class="publication-action-note">Abriremos un mensaje listo para enviar con los datos del producto.</p>' +
+            '</div>' +
+          '</div>' +
         '</div>' +
       '</div>';
 

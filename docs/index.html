@@ -118,45 +118,79 @@
   <!-- ===== SECCION: CATALOGO DE PRODUCTOS ===== -->
   <section class="catalog-section" id="catalogo">
     <div class="container">
-      <div class="section-header">
-        <h2>Nuestro <span class="highlight">Catálogo</span></h2>
-        <p>Explora nuestra selección de productos recomendados especialmente para ti</p>
-      </div>
-
-      <div class="toolbar">
-        <div class="search-box">
-          <input type="text" id="searchInput" placeholder="Buscar productos..." aria-label="Buscar productos">
+      <div class="catalog-shell">
+        <div class="catalog-intro">
+          <div class="section-header catalog-section-header">
+            <span class="catalog-kicker">Selección Curada</span>
+            <h2>Nuestro <span class="highlight">Catálogo</span></h2>
+            <p>Explora una vista más clara y cómoda para encontrar productos recomendados, revisar precios y pedir información en pocos pasos.</p>
+            <div class="catalog-intro-points" aria-label="Beneficios del catálogo">
+              <span>Comparación rápida</span>
+              <span>Precios claros</span>
+              <span>Atención por WhatsApp</span>
+            </div>
+          </div>
         </div>
-        <div class="filters">
-          <select id="categoryFilter" class="visually-hidden" aria-label="Filtrar por categoría">
-            <option value="all">Todas las categorías</option>
-          </select>
-          <select id="sortFilter" aria-label="Ordenar por">
-            <option value="name-asc">Nombre A-Z</option>
-            <option value="name-desc">Nombre Z-A</option>
-            <option value="price-asc">Precio: menor a mayor</option>
-            <option value="price-desc">Precio: mayor a menor</option>
-          </select>
+
+        <div class="catalog-panel">
+          <div class="toolbar">
+            <div class="search-box">
+              <label class="field-label" for="searchInput">Buscar producto</label>
+              <div class="search-field">
+                <span class="search-field-icon" aria-hidden="true">⌕</span>
+                <input type="text" id="searchInput" placeholder="Busca por marca, producto o categoría" aria-label="Buscar productos">
+              </div>
+              <p class="field-helper">Puedes escribir nombres como Nike, bolsa, tenis o accesorios.</p>
+            </div>
+            <div class="filters">
+              <div class="filter-field">
+                <span class="field-label">Ordenar catálogo</span>
+                <select id="sortFilter" aria-label="Ordenar por">
+                  <option value="name-asc">Nombre A-Z</option>
+                  <option value="name-desc">Nombre Z-A</option>
+                  <option value="price-asc">Precio: menor a mayor</option>
+                  <option value="price-desc">Precio: mayor a menor</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="category-strip" aria-label="Categorías destacadas">
+            <div class="category-strip-header">
+              <div>
+                <span class="category-strip-label">Categorías</span>
+                <p>Elige una categoría para ver más rápido lo que te interesa.</p>
+              </div>
+            </div>
+            <div class="filters">
+              <select id="categoryFilter" class="visually-hidden" aria-label="Filtrar por categoría">
+                <option value="all">Todas las categorías</option>
+              </select>
+            </div>
+            <div class="category-pills" id="categoryPills" role="tablist" aria-label="Filtrar productos por categoría"></div>
+          </div>
+
+          <div class="results-info">
+            <div class="results-summary">
+              <span class="results-caption">Vista actual</span>
+              <span id="resultsCount"></span>
+            </div>
+            <div class="results-chip" id="activeCategoryState">Todas las categorías</div>
+          </div>
+
+          <div class="product-grid" id="productGrid">
+            <!-- Products injected by JS -->
+          </div>
+
+          <div class="no-results" id="noResults" style="display:none;">
+            <div class="no-results-card">
+              <span class="no-results-icon" aria-hidden="true">⌕</span>
+              <h3>No encontramos coincidencias</h3>
+              <p>Prueba con otro término de búsqueda o restablece los filtros para volver a ver todo el catálogo.</p>
+              <button class="btn btn-reset-catalog" id="resetCatalogFilters" type="button">Restablecer filtros</button>
+            </div>
+          </div>
         </div>
-      </div>
-
-      <div class="category-strip" aria-label="Categorías destacadas">
-        <div class="category-strip-header">
-          <span class="category-strip-label">Categorías</span>
-        </div>
-        <div class="category-pills" id="categoryPills" role="tablist" aria-label="Filtrar productos por categoría"></div>
-      </div>
-
-      <div class="results-info">
-        <span id="resultsCount"></span>
-      </div>
-
-      <div class="product-grid" id="productGrid">
-        <!-- Products injected by JS -->
-      </div>
-
-      <div class="no-results" id="noResults" style="display:none;">
-        <p>No se encontraron productos con esos criterios.</p>
       </div>
     </div>
   </section>

@@ -984,42 +984,140 @@ a {
 }
 
 .steps-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: 24px;
 }
 
 .step-card {
+  flex: 1 1 220px;
+  max-width: 240px;
   text-align: center;
-  padding: 32px 24px;
+  padding: 30px 22px 28px;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(214, 204, 194, 0.9);
+  background: linear-gradient(180deg, #fff 0%, #f8f3eb 100%);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+  overflow: hidden;
+  isolation: isolate;
+  opacity: 0;
+  animation: stepFadeIn 0.7s ease forwards;
+}
+
+.steps-grid .step-card:nth-child(1) {
+  animation-delay: 0.05s;
+}
+
+.steps-grid .step-card:nth-child(2) {
+  animation-delay: 0.13s;
+}
+
+.steps-grid .step-card:nth-child(3) {
+  animation-delay: 0.21s;
+}
+
+.steps-grid .step-card:nth-child(4) {
+  animation-delay: 0.29s;
+}
+
+.steps-grid .step-card:nth-child(5) {
+  animation-delay: 0.37s;
+}
+
+.step-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(191, 162, 122, 0.1), rgba(191, 162, 122, 0));
+  pointer-events: none;
+}
+
+.step-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.step-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(191, 162, 122, 0.65);
 }
 
 .step-number {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 60px;
-  height: 60px;
+  width: 74px;
+  height: 74px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--color-accent), var(--color-accent-hover));
+  background: linear-gradient(135deg, #9b6e44, var(--color-accent), var(--color-accent-hover));
   color: #fff;
-  font-size: 1.5rem;
-  font-weight: 800;
-  margin-bottom: 20px;
-  box-shadow: 0 8px 18px rgba(122, 90, 58, 0.22);
+  font-size: 1.85rem;
+  font-weight: 900;
+  margin-bottom: 14px;
+  border: 3px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 12px 24px rgba(122, 90, 58, 0.28), 0 0 0 6px rgba(191, 162, 122, 0.16);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.step-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  margin-bottom: 16px;
+  border-radius: 18px;
+  background: rgba(191, 162, 122, 0.14);
+  box-shadow: inset 0 0 0 1px rgba(191, 162, 122, 0.18);
+  font-size: 1.8rem;
+  line-height: 1;
+  transition: transform var(--transition), background var(--transition), box-shadow var(--transition);
 }
 
 .step-card h3 {
-  font-size: 1.2rem;
+  font-size: 1.18rem;
   color: var(--color-primary);
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  line-height: 1.28;
 }
 
 .step-card p {
-  font-size: 0.92rem;
+  margin: 0;
+  font-size: 0.95rem;
   color: var(--color-text-light);
   line-height: 1.6;
+  max-width: 22ch;
+}
+
+.step-card:hover .step-number {
+  transform: scale(1.08);
+  box-shadow: 0 16px 30px rgba(122, 90, 58, 0.3), 0 0 0 8px rgba(191, 162, 122, 0.18);
+}
+
+.step-card:hover .step-icon {
+  transform: translateY(-2px) scale(1.08);
+  background: rgba(191, 162, 122, 0.22);
+  box-shadow: inset 0 0 0 1px rgba(191, 162, 122, 0.26), 0 10px 20px rgba(65, 43, 27, 0.08);
+}
+
+@keyframes stepFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* === Testimonials Section === */
@@ -1501,6 +1599,20 @@ a {
     --section-visibility-size: 560px;
   }
 
+  .steps-grid {
+    gap: 18px;
+  }
+
+  .step-card {
+    max-width: none;
+  }
+
+  .step-number {
+    width: 68px;
+    height: 68px;
+    font-size: 1.7rem;
+  }
+
   .header .container {
     flex-direction: row;
     flex-wrap: wrap;
@@ -1614,6 +1726,9 @@ a {
 
   .btn,
   .service-card,
+  .step-card,
+  .step-icon,
+  .step-number,
   .product-card,
   .testimonial-card,
   .category-pill,
@@ -1626,6 +1741,7 @@ a {
 
   .btn:hover,
   .service-card:hover,
+  .step-card:hover,
   .product-card:hover,
   .testimonial-card:hover,
   .category-pill:hover,
@@ -1633,6 +1749,16 @@ a {
   .testimonial-open-catalog:hover {
     transform: none;
     box-shadow: var(--shadow-sm);
+  }
+
+  .step-card {
+    animation: none;
+    opacity: 1;
+  }
+
+  .step-card:hover .step-number,
+  .step-card:hover .step-icon {
+    transform: none;
   }
 
   .image-slider .slide-image {

@@ -13,7 +13,7 @@ const PRODUCTS = [
     id: 2,
     name: "Tenis On Running",
     description: "Tenis On Running con distintos modelos disponibles, amortiguación avanzada y diseño moderno.",
-    price: 3300,
+    price: null,
     originalPrice: null,
     category: "Zapatos",
     images: [
@@ -25,43 +25,36 @@ const PRODUCTS = [
   },
   {
     id: 3,
-    name: "Bolso Bandolera Michael Kors Jet Set Travel Medium Dome",
-    description: "Bolso elegante y funcional de la marca Michael Kors, ideal para uso diario y ocasiones especiales.",
-    price: 2800,
-    originalPrice: 3200,
+    name: "Bolsos Michael Kors",
+    description: "Modelos de bolsos Michael Kors disponibles en esta galería. Solicita color, tamaño y cotización por mensaje.",
+    price: null,
+    originalPrice: null,
     category: "Accesorios",
-    image: "img/catalogo/catalago07.png",
-    offer: true
+    images: [
+      "img/catalogo/catalago07.png",
+      "img/catalogo/catalago08.png"
+    ],
+    offer: false
   },
   {
     id: 4,
-    name: "Bolso Michael Kors",
-    description: "Bolso Michael Kors original con acabado premium y diseño elegante, ideal para uso diario. Precio especial: $2,800; combo con cartera a juego: $3,800.",
-    price: 2800,
-    originalPrice: null,
-    category: "Accesorios",
-    image: "img/catalogo/catalago08.png",
-    offer: true
-  },
-  {
-    id: 5,
     name: "Paquete Michael Kors",
     description: "Paquete de productos Michael Kors, incluyendo bolso y accesorios, ideal para uso diario y ocasiones especiales.",
-    price: 2100,
-    originalPrice: 2500,
+    price: null,
+    originalPrice: null,
     category: "Accesorios",
     images: [
       "img/catalogo/catalago05.png",
       "img/catalogo/catalago06.png"
     ],
-    offer: true
+    offer: false
   },
   {
-    id: 6,
+    id: 5,
     name: "Sudadera Nike con capucha tipo hoodie y bolsa canguro",
     description: "Sudadera Nike con capucha tipo hoodie y bolsa canguro, ideal para uso diario y ocasiones especiales.",
-    price: 1650,
-    originalPrice: 2000,
+    price: null,
+    originalPrice: null,
     category: "Ropa",
     images: [
       "img/catalogo/catalago09.png",
@@ -69,13 +62,13 @@ const PRODUCTS = [
       "img/catalogo/catalago11.png",
       "img/catalogo/catalago12.png"
     ],
-    offer: true
+    offer: false
   },
   {
-    id: 7,
+    id: 6,
     name: "Mochila Lululemon",
     description: "Mochila Lululemon con múltiples compartimentos y diseño ergonómico, ideal para uso diario y actividades deportivas.",
-    price: 2744,
+    price: null,
     originalPrice: null,
     category: "Accesorios",
     images: [
@@ -86,20 +79,23 @@ const PRODUCTS = [
     offer: false
   },
   {
-    id: 8,
-    name: "New Balance 9060 en color Pink Granite Washed Burgundy. ",
-    description: "Tenis New Balance 9060 en color Pink Granite Washed Burgundy, con diseño moderno y comodidad excepcional.",
-    price: 1590,
-    originalPrice: 1650,
+    id: 7,
+    name: "New Balance 9060",
+    description: "Modelos New Balance 9060 disponibles en esta galería. Solicita talla, color y cotización por mensaje.",
+    price: null,
+    originalPrice: null,
     category: "Zapatos",
-    image: "img/catalogo/catalago16.png",
-    offer: true
+    images: [
+      "img/catalogo/catalago16.png",
+      "img/catalogo/catalago26.png"
+    ],
+    offer: false
   },
   {
-    id: 9,
+    id: 8,
     name: "Bolso crossbody Steve Madden con llavero",
     description: "Bolso crossbody Steve Madden con llavero, ideal para uso diario y ocasiones especiales.",
-    price: 840,
+    price: null,
     originalPrice: null,
     category: "Accesorios",
     images: [
@@ -111,7 +107,7 @@ const PRODUCTS = [
     offer: false
   },
   {
-    id: 10,
+    id: 9,
     name: "Modelos On Running",
     description: "Modelos On Cloudnova y On Cloud 5 disponibles en esta galería. Solicita talla, color y cotización por mensaje.",
     price: null,
@@ -125,10 +121,10 @@ const PRODUCTS = [
     offer: false
   },
   {
-    id: 13,
+    id: 10,
     name: "Tenis Chunky Retro Urban",
     description: "Tenis estilo chunky con diseño retro y estética urbana. Su suela de plataforma brinda mayor comodidad y estabilidad en cada paso, mientras que sus materiales ligeros y transpirables ofrecen un ajuste confortable durante todo el día. Ideales para complementar un look moderno y versátil, perfectos para uso diario o para salir con amigos.",
-    price: 1064,
+    price: null,
     originalPrice: null,
     category: "Zapatos",
     images: [
@@ -138,17 +134,7 @@ const PRODUCTS = [
     offer: false
   },
   {
-    id: 14,
-    name: "New Balance 9060",
-    description: "un diseño retro-futurista que combina estilo urbano y comodidad. Incorporan una suela robusta con tecnología de amortiguación que brinda una pisada suave y estable, ideal para el uso diario. Su confección en materiales como malla y gamuza ofrece transpirabilidad y durabilidad, mientras que su estética moderna los convierte en una opción versátil para complementar cualquier outfit urbano o casual. Perfectos para quienes buscan un calzado que combine estilo y funcionalidad en su día a día.",
-    price: 1560,
-    originalPrice: 5808.70,
-    category: "Zapatos",
-    image: "img/catalogo/catalago26.png",
-    offer: true
-  },
-  {
-    id: 15,
+    id: 11,
     name: "Audífonos Inalámbricos Bluetooth",
     description: "Audífonos tipo over-ear con cancelación de ruido, micrófono integrado y hasta 30 horas de batería.",
     price: 1299,
@@ -158,7 +144,7 @@ const PRODUCTS = [
     offer: true
   },
   {
-    id: 16,
+    id: 12,
     name: "Reloj Deportivo Smart",
     description: "Reloj inteligente con monitor de ritmo cardíaco, GPS y notificaciones de mensajes.",
     price: 1999,
@@ -168,7 +154,7 @@ const PRODUCTS = [
     offer: false
   },
   {
-    id: 17,
+    id: 13,
     name: "Set de Maletas Reforzadas",
     description: "Set de 3 maletas rígidas con ruedas dobles 360° y cerradura TSA.",
     price: 3299,
@@ -178,7 +164,7 @@ const PRODUCTS = [
     offer: true
   },
   {
-    id: 18,
+    id: 14,
     name: "Cámara de Seguridad WiFi",
     description: "Cámara de seguridad con visión nocturna, detección de movimiento y audio bidireccional.",
     price: 1099,

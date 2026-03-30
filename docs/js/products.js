@@ -135,12 +135,16 @@ const PRODUCTS = [
   },
   {
     id: 11,
-    name: "Audífonos Inalámbricos Bluetooth",
-    description: "Audífonos tipo over-ear con cancelación de ruido, micrófono integrado y hasta 30 horas de batería.",
-    price: 1299,
-    originalPrice: 1499,
-    category: "Electrónica",
-    image: "img/catalogo/catalogo01.png",
+    name: "Owala “TrioFlow Collection”",
+    description: "Una colección de botellas térmicas que combina estilo, funcionalidad y personalidad en tres diseños únicos: tonos cálidos, elegantes y pastel. Cada botella está diseñada para adaptarse a tu ritmo de vida, ya sea en la escuela, el gimnasio o el día a día.",
+    price: null,
+    originalPrice: null,
+    category: "Hogar",
+    images: [
+      "img/catalogo/catalago27.png",
+      "img/catalogo/catalago28.png",
+      "img/catalogo/catalago29.png"
+    ],
     offer: true
   },
   {

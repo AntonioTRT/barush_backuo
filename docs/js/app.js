@@ -376,6 +376,10 @@
     return !!product && typeof product.price === "number" && !Number.isNaN(product.price);
   }
 
+  function hasActiveOffer(product) {
+    return !!product && !!product.offer && hasProductPrice(product);
+  }
+
   function compareProductsByPrice(a, b, direction) {
     var aHasPrice = hasProductPrice(a);
     var bHasPrice = hasProductPrice(b);
@@ -408,7 +412,7 @@
       return "Cotización por mensaje";
     }
 
-    return product.offer
+    return hasActiveOffer(product)
       ? "Precio especial disponible"
       : "Consulta disponibilidad y detalles";
   }
@@ -434,7 +438,7 @@
       return "La cotización de este producto se comparte por mensaje según disponibilidad.";
     }
 
-    return product.offer
+    return hasActiveOffer(product)
       ? "Este producto muestra un precio especial dentro del catálogo."
       : "La cotización final puede ajustarse según disponibilidad en tienda oficial.";
   }
@@ -619,7 +623,7 @@
   function createCard(product) {
     var images = getProductImages(product);
     var priceHTML = getCardPriceHTML(product);
-    var statusHTML = product.offer
+    var statusHTML = hasActiveOffer(product)
       ? '<span class="product-flag product-flag-offer">Oferta activa</span>'
       : '<span class="product-flag">Disponible</span>';
     var priceCaption = getPriceCaption(product);
@@ -726,9 +730,9 @@
     var publicationImageHTML = buildMediaHTML(images, "publication-media", "publication-image", product.name, getProductImageSizeAttributes(product));
     var recommendationText = getRecommendationText(product);
     var priceNote = getPriceNote(product);
-    var publicationStatus = product.offer
+    var publicationStatus = hasActiveOffer(product)
       ? '<span class="publication-tag publication-tag-offer">Oferta disponible</span>'
-      : '<span class="publication-tag">Selección recomendada</span>';
+      : '<span class="publication-tag">Disponible</span>';
 
     productModalContent.innerHTML =
       '<div class="publication-layout">' +

@@ -112,32 +112,16 @@ const PRODUCTS = [
   },
   {
     id: 10,
-    name: "On Cloudnova (White)",
-    description: "Tenis On Cloudnova en color blanco, con diseño moderno y comodidad excepcional.",
-    price: 2600,
+    name: "Modelos On Running",
+    description: "Modelos On Cloudnova y On Cloud 5 disponibles en esta galería. Solicita talla, color y cotización por mensaje.",
+    price: null,
     originalPrice: null,
     category: "Zapatos",
-    image: "img/catalogo/catalago21.png",
-    offer: false
-  },
-  {
-    id: 11,
-    name: "On Cloud 5",
-    description: "Tenis On Cloud 5 en color negro, con un diseño moderno y gran comodidad. Incorporan tecnología de amortiguación que brinda una pisada suave y ligera, ideales para el uso diario o actividades ligeras. Su material transpirable y ajuste cómodo los hacen una opción práctica y versátil.",
-    price: 3640,
-    originalPrice: null,
-    category: "Zapatos",
-    image: "img/catalogo/catalago22.png",
-    offer: false
-  },
-  {
-    id: 12,
-    name: "On Cloudnova",
-    description: "Tenis On Cloudnova en color blanco, con un diseño moderno y estilo urbano. Su suela con tecnología de amortiguación brinda una pisada suave y cómoda, ideal para el uso diario. Fabricados con materiales ligeros y transpirables, ofrecen un ajuste cómodo y un look versátil que combina fácilmente con cualquier outfit.",
-    price: 2800,
-    originalPrice: null,
-    category: "Zapatos",
-    image: "img/catalogo/catalago23.png",
+    images: [
+      "img/catalogo/catalago21.png",
+      "img/catalogo/catalago22.png",
+      "img/catalogo/catalago23.png"
+    ],
     offer: false
   },
   {

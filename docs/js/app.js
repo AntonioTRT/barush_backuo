@@ -37,8 +37,6 @@
     8: "Mensaje de Baruch: Que nunca se te olvide lo valioso que es cuidar tu mente, tu energia y tu paz. No todo merece una respuesta inmediata ni toda batalla vale tu desgaste; elegir la calma tambien es una forma de fortaleza, y proteger tu bienestar es una decision sabia, no una debilidad.",
     9: "Mensaje de Baruch: Si el camino se ha sentido pesado, toma este mensaje como una pausa amable en medio del dia. Lo que hoy parece confuso puede acomodarse poco a poco, y lo que hoy sientes lejano puede acercarse cuando menos lo esperes, si sigues caminando con esperanza y con el alma firme.",
     10: "Mensaje de Baruch: Hay belleza en volver a empezar sin hacer tanto ruido, con humildad, con ganas y con una fe sencilla en que algo bueno puede pasar. Que esta etapa te encuentre mas fuerte, mas claro y mas dispuesto a recibir lo que si esta alineado con la vida que quieres construir.",
-    11: "Mensaje de Baruch: Ojala todo lo que haces con intencion regrese a ti multiplicado en tranquilidad, oportunidades y personas que sumen de verdad. A veces el mejor avance no se nota por fuera inmediatamente, pero por dentro ya estas aprendiendo a elegirte, a respetarte y a caminar mas ligero.",
-    12: "Mensaje de Baruch: Aunque haya dias lentos o cansados, no subestimes el valor de seguir presente. Estar aqui, intentarlo otra vez y mantener una actitud noble ya es una forma poderosa de crecimiento, porque no siempre gana quien corre mas rapido, sino quien sabe mantenerse fiel a lo que busca.",
     13: "Mensaje de Baruch: Que esta lectura te deje una sensacion de calma y no de prisa. Todo llega mejor cuando encuentra una mente serena y un corazon dispuesto, asi que no te castigues por ir paso a paso; muchas veces la estabilidad que tanto deseas se construye justamente de esa manera.",
     14: "Mensaje de Baruch: La vida tambien cambia cuando eliges hablarte con mas amabilidad. No necesitas hacerlo perfecto para merecer algo bonito; basta con seguir aprendiendo, pedir ayuda cuando haga falta y no abandonar la version de ti que todavia cree en sus propios suenos con honestidad.",
     15: "Mensaje de Baruch: Que este mensaje te acompane como una pequena muestra de confianza en todo lo que puedes lograr. Incluso cuando nadie ve tus esfuerzos completos, cada desvelo, cada intento y cada decision responsable va formando un futuro mas firme, mas digno y mas cercano a lo que anhelas.",
@@ -367,8 +365,8 @@
       switch (sort) {
         case "name-asc": return a.name.localeCompare(b.name);
         case "name-desc": return b.name.localeCompare(a.name);
-        case "price-asc": return a.price - b.price;
-        case "price-desc": return b.price - a.price;
+        case "price-asc": return compareProductsByPrice(a, b, "asc");
+        case "price-desc": return compareProductsByPrice(a, b, "desc");
         default: return 0;
       }
     });
@@ -376,8 +374,79 @@
     return filtered;
   }
 
+  function hasProductPrice(product) {
+    return !!product && typeof product.price === "number" && !Number.isNaN(product.price);
+  }
+
+  function compareProductsByPrice(a, b, direction) {
+    var aHasPrice = hasProductPrice(a);
+    var bHasPrice = hasProductPrice(b);
+
+    if (!aHasPrice && !bHasPrice) return 0;
+    if (!aHasPrice) return 1;
+    if (!bHasPrice) return -1;
+
+    return direction === "desc" ? b.price - a.price : a.price - b.price;
+  }
+
   function formatPrice(price) {
     return "$" + price.toLocaleString("es-MX");
+  }
+
+  function getCardPriceHTML(product) {
+    if (!hasProductPrice(product)) {
+      return "";
+    }
+
+    if (product.originalPrice) {
+      return '<span class="product-price">' + formatPrice(product.price) + '<span class="original-price">' + formatPrice(product.originalPrice) + '</span></span>';
+    }
+
+    return '<span class="product-price">' + formatPrice(product.price) + '</span>';
+  }
+
+  function getPriceCaption(product) {
+    if (!hasProductPrice(product)) {
+      return "Cotización por mensaje";
+    }
+
+    return product.offer
+      ? "Precio especial disponible"
+      : "Consulta disponibilidad y detalles";
+  }
+
+  function getPublicationPriceLabel(product) {
+    return hasProductPrice(product) ? "Precio estimado" : "Cotización";
+  }
+
+  function getPublicationPriceHTML(product) {
+    var oldPrice = product.originalPrice
+      ? '<span class="old-price">' + formatPrice(product.originalPrice) + '</span>'
+      : "";
+
+    if (!hasProductPrice(product)) {
+      return "Disponible por mensaje";
+    }
+
+    return formatPrice(product.price) + oldPrice;
+  }
+
+  function getPriceNote(product) {
+    if (!hasProductPrice(product)) {
+      return "La cotización de este producto se comparte por mensaje según disponibilidad.";
+    }
+
+    return product.offer
+      ? "Este producto muestra un precio especial dentro del catálogo."
+      : "La cotización final puede ajustarse según disponibilidad en tienda oficial.";
+  }
+
+  function getWhatsAppSupportCopy(product) {
+    if (!hasProductPrice(product)) {
+      return "Tu mensaje de WhatsApp saldrá preparado con el nombre e ID del producto para que el seguimiento sea más ágil.";
+    }
+
+    return "Tu mensaje de WhatsApp saldrá preparado con el nombre, ID y precio del producto para que el seguimiento sea más ágil.";
   }
 
   function getRecommendationText(product) {
@@ -551,15 +620,11 @@
 
   function createCard(product) {
     var images = getProductImages(product);
-    var priceHTML = product.originalPrice
-      ? formatPrice(product.price) + '<span class="original-price">' + formatPrice(product.originalPrice) + '</span>'
-      : formatPrice(product.price);
+    var priceHTML = getCardPriceHTML(product);
     var statusHTML = product.offer
       ? '<span class="product-flag product-flag-offer">Oferta activa</span>'
       : '<span class="product-flag">Disponible</span>';
-    var priceCaption = product.offer
-      ? "Precio especial disponible"
-      : "Consulta disponibilidad y detalles";
+    var priceCaption = getPriceCaption(product);
 
     var imageSizeAttrs = getProductImageSizeAttributes(product);
     var cardImageHTML = '<div class="product-image">' +
@@ -577,7 +642,7 @@
         '<p class="product-description">' + product.description + '</p>' +
         '<div class="product-footer">' +
           '<div class="product-pricing">' +
-            '<span class="product-price">' + priceHTML + '</span>' +
+            priceHTML +
             '<span class="product-price-caption">' + priceCaption + '</span>' +
           '</div>' +
           '<span class="product-cta">Ver detalle</span>' +
@@ -628,10 +693,14 @@
     if (!activeProduct) return;
     var orderInput = document.getElementById("orderInput");
     var userText = orderInput && orderInput.value.trim() ? orderInput.value.trim() : "Me interesa este producto.";
-    var text = "Hola, te interesa un producto similar a este?:\n puedes darme mas detalles de lo que buscas" +
-      "Producto: " + activeProduct.name + "\n" +
-      "Precio: " + formatPrice(activeProduct.price) + "\n" +
-      "Mensaje: " + userText;
+    var text = "Hola, te interesa un producto similar a este?:\n puedes darme mas detalles de lo que buscas\n" +
+      "Producto: " + activeProduct.name + "\n";
+
+    if (hasProductPrice(activeProduct)) {
+      text += "Precio: " + formatPrice(activeProduct.price) + "\n";
+    }
+
+    text += "Mensaje: " + userText;
 
     window.open("https://api.whatsapp.com/send?text=" + encodeURIComponent(text), "_blank");
   }
@@ -656,15 +725,9 @@
     activeProduct = product;
     var images = getProductImages(product);
 
-    var oldPrice = product.originalPrice
-      ? '<span class="old-price">' + formatPrice(product.originalPrice) + '</span>'
-      : "";
-
     var publicationImageHTML = buildMediaHTML(images, "publication-media", "publication-image", product.name, getProductImageSizeAttributes(product));
     var recommendationText = getRecommendationText(product);
-    var priceNote = product.offer
-      ? "Este producto muestra un precio especial dentro del catálogo."
-      : "La cotización final puede ajustarse según disponibilidad en tienda oficial.";
+    var priceNote = getPriceNote(product);
     var publicationStatus = product.offer
       ? '<span class="publication-tag publication-tag-offer">Oferta disponible</span>'
       : '<span class="publication-tag">Selección recomendada</span>';
@@ -690,8 +753,8 @@
             '<h2 class="publication-title" id="modalProductTitle">' + product.name + '</h2>' +
             '<p class="publication-description">' + product.description + '</p>' +
             '<div class="publication-price-card">' +
-              '<span class="publication-price-label">Precio estimado</span>' +
-              '<div class="publication-price">' + formatPrice(product.price) + oldPrice + '</div>' +
+              '<span class="publication-price-label">' + getPublicationPriceLabel(product) + '</span>' +
+              '<div class="publication-price">' + getPublicationPriceHTML(product) + '</div>' +
               '<p class="publication-price-note">' + priceNote + '</p>' +
             '</div>' +
             '<div class="publication-support-grid">' +
@@ -701,7 +764,7 @@
               '</div>' +
               '<div class="publication-support-item">' +
                 '<strong>Solicitud más rápida</strong>' +
-                '<span>Tu mensaje de WhatsApp saldrá preparado con el nombre, ID y precio del producto para que el seguimiento sea más ágil.</span>' +
+                '<span>' + getWhatsAppSupportCopy(product) + '</span>' +
               '</div>' +
             '</div>' +
             '<label class="order-label" for="orderInput">Cuéntanos qué detalle te interesa</label>' +
@@ -726,9 +789,13 @@
         var userText = orderInput && orderInput.value.trim() ? orderInput.value.trim() : "Me interesa este producto.";
         var text = "Hola, te interesa este producto?\n" +
           "ID: " + product.id + "\n" +
-          "Producto: " + product.name + "\n" +
-          "Precio: " + formatPrice(product.price) + "\n" +
-          "¿Qué detalles buscas? " + userText;
+          "Producto: " + product.name + "\n";
+
+        if (hasProductPrice(product)) {
+          text += "Precio: " + formatPrice(product.price) + "\n";
+        }
+
+        text += "¿Qué detalles buscas? " + userText;
         var whatsappUrl = "https://api.whatsapp.com/send?text=" + encodeURIComponent(text);
         if (window.WHATSAPP_NUMBER && window.WHATSAPP_NUMBER.length > 0) {
           whatsappUrl = "https://api.whatsapp.com/send?phone=" + window.WHATSAPP_NUMBER + "&text=" + encodeURIComponent(text);

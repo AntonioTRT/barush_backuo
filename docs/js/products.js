@@ -149,12 +149,20 @@ const PRODUCTS = [
   },
   {
     id: 12,
-    name: "Reloj Deportivo Smart",
-    description: "Reloj inteligente con monitor de ritmo cardíaco, GPS y notificaciones de mensajes.",
+    name: "Nike Urban Color Pack",
+    description: "Diseñados para el uso diario, estos tenis ofrecen una silueta clásica que nunca pasa de moda, con materiales resistentes y una suela cómoda que brinda estabilidad y confort en cada paso. Perfectos para outfits casuales, streetwear o incluso algo más limpio y minimalista.",
     price: null,
     originalPrice: null,
-    category: "Accesorios",
-    image: "img/catalogo/catalogo01.png",
+    category: "Zapatos",
+    images: [
+      "img/catalogo/catalago30.png",
+      "img/catalogo/catalago31.png",
+      "img/catalogo/catalago32.png",
+      "img/catalogo/catalago33.png",
+      "img/catalogo/catalago34.png",
+      "img/catalogo/catalago35.png",
+      "img/catalogo/catalago36.png"
+    ],
     offer: false
   },
   {

@@ -192,5 +192,23 @@ const PRODUCTS = [
       { src: "img/catalogo/catalago44.png", width: 1536, height: 1024 }
     ],
     offer: false
+  },
+  {
+    id: 15,
+    name: "Victoria’s Secret",
+    description: "Diseñados para brindar ajuste perfecto y máxima comodidad durante todo el día, estos sets son ideales tanto para uso diario como para ocasiones especiales. Fabricados con materiales suaves, elásticos y de alta calidad que se adaptan al cuerpo.",
+    price: null,
+    originalPrice: null,
+    category: "Ropa",
+    images: [
+      { src: "img/catalogo/catalago45.png", width: 1024, height: 1536 },
+      { src: "img/catalogo/catalago46.png", width: 1024, height: 1536 },
+      { src: "img/catalogo/catalago47.png", width: 1024, height: 1536 },
+      { src: "img/catalogo/catalago48.png", width: 1024, height: 1536 },
+      { src: "img/catalogo/catalago49.png", width: 1024, height: 1536 },
+      { src: "img/catalogo/catalago50.png", width: 1536, height: 1024 },
+      { src: "img/catalogo/catalago51.png", width: 1536, height: 1024 }
+    ],
+    offer: false
   }
 ];

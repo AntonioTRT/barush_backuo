@@ -363,8 +363,6 @@
       switch (sort) {
         case "name-asc": return a.name.localeCompare(b.name);
         case "name-desc": return b.name.localeCompare(a.name);
-        case "price-asc": return compareProductsByPrice(a, b, "asc");
-        case "price-desc": return compareProductsByPrice(a, b, "desc");
         default: return 0;
       }
     });
@@ -377,78 +375,31 @@
   }
 
   function hasActiveOffer(product) {
-    return !!product && !!product.offer && hasProductPrice(product);
-  }
-
-  function compareProductsByPrice(a, b, direction) {
-    var aHasPrice = hasProductPrice(a);
-    var bHasPrice = hasProductPrice(b);
-
-    if (!aHasPrice && !bHasPrice) return 0;
-    if (!aHasPrice) return 1;
-    if (!bHasPrice) return -1;
-
-    return direction === "desc" ? b.price - a.price : a.price - b.price;
-  }
-
-  function formatPrice(price) {
-    return "$" + price.toLocaleString("es-MX");
+    return false;
   }
 
   function getCardPriceHTML(product) {
-    if (!hasProductPrice(product)) {
-      return "";
-    }
-
-    if (product.originalPrice) {
-      return '<span class="product-price">' + formatPrice(product.price) + '<span class="original-price">' + formatPrice(product.originalPrice) + '</span></span>';
-    }
-
-    return '<span class="product-price">' + formatPrice(product.price) + '</span>';
+    return "";
   }
 
   function getPriceCaption(product) {
-    if (!hasProductPrice(product)) {
-      return "Cotización por mensaje";
-    }
-
-    return hasActiveOffer(product)
-      ? "Precio especial disponible"
-      : "Consulta disponibilidad y detalles";
+    return "Información por mensaje";
   }
 
   function getPublicationPriceLabel(product) {
-    return hasProductPrice(product) ? "Precio estimado" : "Cotización";
+    return "Información";
   }
 
   function getPublicationPriceHTML(product) {
-    var oldPrice = product.originalPrice
-      ? '<span class="old-price">' + formatPrice(product.originalPrice) + '</span>'
-      : "";
-
-    if (!hasProductPrice(product)) {
-      return "Disponible por mensaje";
-    }
-
-    return formatPrice(product.price) + oldPrice;
+    return "Disponible por mensaje";
   }
 
   function getPriceNote(product) {
-    if (!hasProductPrice(product)) {
-      return "La cotización de este producto se comparte por mensaje según disponibilidad.";
-    }
-
-    return hasActiveOffer(product)
-      ? "Este producto muestra un precio especial dentro del catálogo."
-      : "La cotización final puede ajustarse según disponibilidad en tienda oficial.";
+    return "Los detalles de este producto se comparten por mensaje según disponibilidad.";
   }
 
   function getWhatsAppSupportCopy(product) {
-    if (!hasProductPrice(product)) {
-      return "Tu mensaje de WhatsApp saldrá preparado con el nombre e ID del producto para que el seguimiento sea más ágil.";
-    }
-
-    return "Tu mensaje de WhatsApp saldrá preparado con el nombre, ID y precio del producto para que el seguimiento sea más ágil.";
+    return "Tu mensaje de WhatsApp saldrá preparado con el nombre e ID del producto para que el seguimiento sea más ágil.";
   }
 
   function getRecommendationText(product) {
@@ -622,10 +573,7 @@
 
   function createCard(product) {
     var images = getProductImages(product);
-    var priceHTML = getCardPriceHTML(product);
-    var statusHTML = hasActiveOffer(product)
-      ? '<span class="product-flag product-flag-offer">Oferta activa</span>'
-      : '<span class="product-flag">Disponible</span>';
+    var statusHTML = '<span class="product-flag">Disponible</span>';
     var priceCaption = getPriceCaption(product);
 
     var imageSizeAttrs = getProductImageSizeAttributes(product);
@@ -644,7 +592,6 @@
         '<p class="product-description">' + product.description + '</p>' +
         '<div class="product-footer">' +
           '<div class="product-pricing">' +
-            priceHTML +
             '<span class="product-price-caption">' + priceCaption + '</span>' +
           '</div>' +
           '<span class="product-cta">Ver detalle</span>' +
@@ -698,10 +645,6 @@
     var text = "Hola, te interesa un producto similar a este?:\n puedes darme mas detalles de lo que buscas\n" +
       "Producto: " + activeProduct.name + "\n";
 
-    if (hasProductPrice(activeProduct)) {
-      text += "Precio: " + formatPrice(activeProduct.price) + "\n";
-    }
-
     text += "Mensaje: " + userText;
 
     window.open("https://api.whatsapp.com/send?text=" + encodeURIComponent(text), "_blank");
@@ -730,9 +673,7 @@
     var publicationImageHTML = buildMediaHTML(images, "publication-media", "publication-image", product.name, getProductImageSizeAttributes(product));
     var recommendationText = getRecommendationText(product);
     var priceNote = getPriceNote(product);
-    var publicationStatus = hasActiveOffer(product)
-      ? '<span class="publication-tag publication-tag-offer">Oferta disponible</span>'
-      : '<span class="publication-tag">Disponible</span>';
+    var publicationStatus = '<span class="publication-tag">Disponible</span>';
 
     productModalContent.innerHTML =
       '<div class="publication-layout">' +
@@ -792,10 +733,6 @@
         var text = "Hola, te interesa este producto?\n" +
           "ID: " + product.id + "\n" +
           "Producto: " + product.name + "\n";
-
-        if (hasProductPrice(product)) {
-          text += "Precio: " + formatPrice(product.price) + "\n";
-        }
 
         text += "¿Qué detalles buscas? " + userText;
         var whatsappUrl = "https://api.whatsapp.com/send?text=" + encodeURIComponent(text);

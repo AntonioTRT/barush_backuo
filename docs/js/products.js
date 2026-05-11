@@ -2,12 +2,12 @@ const PRODUCTS = [
   {
     id: 1,
     name: "Tenis Adidas ",
-    description: "Tenis de alta calidad de la marca Adidas, ideales para deportes y uso diario. ¡Descuento: 2x $3920!",
-    price: 3920,
-    originalPrice: 4000,
+    description: "Tenis de alta calidad de la marca Adidas, ideales para deportes y uso diario.",
+    price: null,
+    originalPrice: null,
     category: "Zapatos",
     image: "img/catalogo/catalogo00.png",
-    offer: true
+    offer: false
   },
   {
     id: 2,
@@ -26,7 +26,7 @@ const PRODUCTS = [
   {
     id: 3,
     name: "Bolsos Michael Kors",
-    description: "Modelos de bolsos Michael Kors disponibles en esta galería. Solicita color, tamaño y cotización por mensaje.",
+    description: "Modelos de bolsos Michael Kors disponibles en esta galería. Solicita color, tamaño e información por mensaje.",
     price: null,
     originalPrice: null,
     category: "Accesorios",
@@ -81,7 +81,7 @@ const PRODUCTS = [
   {
     id: 7,
     name: "New Balance 9060",
-    description: "Modelos New Balance 9060 disponibles en esta galería. Solicita talla, color y cotización por mensaje.",
+    description: "Modelos New Balance 9060 disponibles en esta galería. Solicita talla, color e información por mensaje.",
     price: null,
     originalPrice: null,
     category: "Zapatos",
@@ -109,7 +109,7 @@ const PRODUCTS = [
   {
     id: 9,
     name: "Modelos On Running",
-    description: "Modelos On Cloudnova y On Cloud 5 disponibles en esta galería. Solicita talla, color y cotización por mensaje.",
+    description: "Modelos On Cloudnova y On Cloud 5 disponibles en esta galería. Solicita talla, color e información por mensaje.",
     price: null,
     originalPrice: null,
     category: "Zapatos",
@@ -145,13 +145,13 @@ const PRODUCTS = [
       "img/catalogo/catalago28.png",
       "img/catalogo/catalago29.png"
     ],
-    offer: true
+    offer: false
   },
   {
     id: 12,
     name: "Reloj Deportivo Smart",
     description: "Reloj inteligente con monitor de ritmo cardíaco, GPS y notificaciones de mensajes.",
-    price: 1999,
+    price: null,
     originalPrice: null,
     category: "Accesorios",
     image: "img/catalogo/catalogo01.png",
@@ -161,20 +161,20 @@ const PRODUCTS = [
     id: 13,
     name: "Set de Maletas Reforzadas",
     description: "Set de 3 maletas rígidas con ruedas dobles 360° y cerradura TSA.",
-    price: 3299,
-    originalPrice: 3999,
+    price: null,
+    originalPrice: null,
     category: "Viajes",
     image: "img/catalogo/catalogo01.png",
-    offer: true
+    offer: false
   },
   {
     id: 14,
     name: "Cámara de Seguridad WiFi",
     description: "Cámara de seguridad con visión nocturna, detección de movimiento y audio bidireccional.",
-    price: 1099,
-    originalPrice: 1299,
+    price: null,
+    originalPrice: null,
     category: "Hogar",
     image: "img/catalogo/catalogo01.png",
-    offer: true
+    offer: false
   }
 ];

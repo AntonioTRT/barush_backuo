@@ -167,12 +167,12 @@ const PRODUCTS = [
   },
   {
     id: 13,
-    name: "Set de Maletas Reforzadas",
-    description: "Set de 3 maletas rígidas con ruedas dobles 360° y cerradura TSA.",
+    name: "Steve Madden Essentials Wallet Collection",
+    description: "Fabricadas con materiales de calidad, estas piezas ofrecen múltiples compartimentos para tarjetas, efectivo y documentos, combinando practicidad con un diseño moderno y sofisticado. Perfectas para uso diario o como complemento de moda.",
     price: null,
     originalPrice: null,
-    category: "Viajes",
-    image: "img/catalogo/catalogo01.png",
+    category: "Accesorios",
+    image: "img/catalogo/catalago37.png",
     offer: false
   },
   {

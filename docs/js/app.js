@@ -412,7 +412,10 @@
 
   function getProductImages(product) {
     if (Array.isArray(product.images) && product.images.length > 0) {
-      return product.images.slice(0, 4);
+      return product.images;
+    }
+    if (Array.isArray(product.image) && product.image.length > 0) {
+      return product.image;
     }
     return [product.image];
   }
@@ -424,11 +427,23 @@
     return '';
   }
 
+  function getMediaSource(image) {
+    return typeof image === "string" ? image : image.src;
+  }
+
+  function getMediaSizeAttributes(image, fallbackAttributes) {
+    if (image && typeof image === "object" && image.width && image.height) {
+      return ' width="' + image.width + '" height="' + image.height + '"';
+    }
+    return fallbackAttributes || '';
+  }
+
   function buildMediaHTML(images, sliderClass, imageClass, productName, imageSizeAttributes) {
-    var sizeAttrs = imageSizeAttributes || '';
     if (images.length > 1) {
-      var slides = images.map(function (src, index) {
+      var slides = images.map(function (image, index) {
         var activeClass = index === 0 ? " is-active" : "";
+        var src = getMediaSource(image);
+        var sizeAttrs = getMediaSizeAttributes(image, imageSizeAttributes);
         return '<img class="slide-image ' + imageClass + activeClass + '" src="' + src + '" alt="' + productName + ' imagen ' + (index + 1) + '" loading="lazy" decoding="async"' + sizeAttrs + '>';
       }).join("");
 
@@ -439,7 +454,8 @@
       '</div>';
     }
 
-    return '<img class="' + imageClass + '" src="' + images[0] + '" alt="' + productName + '" loading="lazy" decoding="async"' + sizeAttrs + '>';
+    var image = images[0];
+    return '<img class="' + imageClass + '" src="' + getMediaSource(image) + '" alt="' + productName + '" loading="lazy" decoding="async"' + getMediaSizeAttributes(image, imageSizeAttributes) + '>';
   }
 
   function updateMediaAspectRatio(target, image) {

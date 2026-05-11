@@ -177,12 +177,20 @@ const PRODUCTS = [
   },
   {
     id: 14,
-    name: "Cámara de Seguridad WiFi",
-    description: "Cámara de seguridad con visión nocturna, detección de movimiento y audio bidireccional.",
+    name: "Nike & Adidas Premium Socks Pack",
+    description: "Fabricadas con materiales de alta calidad, estas calcetas brindan ajuste perfecto, transpirabilidad y soporte durante todo el día. Ideales para uso casual, entrenamiento o complementar tus outfits deportivos.",
     price: null,
     originalPrice: null,
-    category: "Hogar",
-    image: "img/catalogo/catalogo01.png",
+    category: "Ropa",
+    image: [
+      { src: "img/catalogo/catalago38.png", width: 1024, height: 1536 },
+      { src: "img/catalogo/catalago39.png", width: 1024, height: 1536 },
+      { src: "img/catalogo/catalago40.png", width: 1024, height: 1536 },
+      { src: "img/catalogo/catalago41.png", width: 1024, height: 1536 },
+      { src: "img/catalogo/catalago42.png", width: 1024, height: 1536 },
+      { src: "img/catalogo/catalago43.png", width: 1024, height: 1536 },
+      { src: "img/catalogo/catalago44.png", width: 1536, height: 1024 }
+    ],
     offer: false
   }
 ];

@@ -1,20 +1,20 @@
-﻿(function () {
+(function () {
   const IMAGE_ICONS = {
-    headphones: "ðŸŽ§",
-    backpack: "ðŸŽ’",
-    watch: "âŒš",
-    skincare: "ðŸ§´",
-    keyboard: "âŒ¨ï¸",
-    bottle: "ðŸ§Š",
-    shoes: "ðŸ‘Ÿ",
-    lamp: "ðŸ’¡",
-    camera: "ðŸ“·",
-    organizer: "ðŸ’„",
-    bands: "ðŸ‹ï¸",
-    powerbank: "ðŸ”‹",
-    chair: "ðŸª‘",
-    sunscreen: "â˜€ï¸",
-    sportsbag: "ðŸƒ",
+    headphones: "🎧",
+    backpack: "🎒",
+    watch: "⌚",
+    skincare: "🧴",
+    keyboard: "⌨️",
+    bottle: "🧊",
+    shoes: "👟",
+    lamp: "💡",
+    camera: "📷",
+    organizer: "💄",
+    bands: "🏋️",
+    powerbank: "🔋",
+    chair: "🪑",
+    sunscreen: "☀️",
+    sportsbag: "🏃",
   
   };
 
@@ -224,13 +224,13 @@
 
     content.innerHTML =
       '<h3 id="commentModalTitle">Deja tu comentario para Baruch</h3>' +
-      '<p>Escribe tu comentario y este serÃ¡ enviado directamente al correo electrÃ³nico baruch.usamx@gmail.com para su atenciÃ³n.</p>' +
+      '<p>Escribe tu comentario y este será enviado directamente al correo electrónico baruch.usamx@gmail.com para su atención.</p>' +
       '<label for="commentName">Nombre</label>' +
       '<input id="commentName" type="text" placeholder="Tu nombre" />' +
       '<label for="commentEmail">Email</label>' +
       '<input id="commentEmail" type="email" placeholder="Tu email" />' +
       '<label for="commentText">Comentario</label>' +
-      '<textarea id="commentText" rows="5" placeholder="Escribe aquÃ­ tu comentario..."></textarea>' +
+      '<textarea id="commentText" rows="5" placeholder="Escribe aquí tu comentario..."></textarea>' +
       '<button id="commentSubmit" class="comment-submit" type="button">Enviar comentario</button>';
 
     modal.classList.add("open");
@@ -333,7 +333,7 @@
 
   function getActiveCategoryStateLabel() {
     var category = categoryFilter.value;
-    return category === "all" ? "Todas las categorÃ­as" : "CategorÃ­a: " + category;
+    return category === "all" ? "Todas las categorías" : "Categoría: " + category;
   }
 
   function resetCatalogView() {
@@ -383,11 +383,11 @@
   }
 
   function getPriceCaption(product) {
-    return "InformaciÃ³n por mensaje";
+    return "Información por mensaje";
   }
 
   function getPublicationPriceLabel(product) {
-    return "InformaciÃ³n";
+    return "Información";
   }
 
   function getPublicationPriceHTML(product) {
@@ -395,11 +395,11 @@
   }
 
   function getPriceNote(product) {
-    return "Los detalles de este producto se comparten por mensaje segÃºn disponibilidad.";
+    return "Los detalles de este producto se comparten por mensaje según disponibilidad.";
   }
 
   function getWhatsAppSupportCopy(product) {
-    return "Tu mensaje de WhatsApp saldrÃ¡ preparado con el nombre e ID del producto para que el seguimiento sea mÃ¡s Ã¡gil.";
+    return "Tu mensaje de WhatsApp saldrá preparado con el nombre e ID del producto para que el seguimiento sea más ágil.";
   }
 
   function getRecommendationText(product) {
@@ -446,99 +446,16 @@
         var sizeAttrs = getMediaSizeAttributes(image, imageSizeAttributes);
         return '<img class="slide-image ' + imageClass + activeClass + '" src="' + src + '" alt="' + productName + ' imagen ' + (index + 1) + '" loading="lazy" decoding="async"' + sizeAttrs + '>';
       }).join("");
-      var dots = images.map(function (_image, index) {
-        var activeClass = index === 0 ? " is-active" : "";
-        return '<button type="button" class="slider-dot' + activeClass + '" data-slide-index="' + index + '" aria-label="Ver imagen ' + (index + 1) + '"></button>';
-      }).join("");
 
       return '<div class="image-slider ' + sliderClass + '">' +
         '<button type="button" class="slider-arrow slider-arrow-prev" aria-label="Imagen anterior">&#8249;</button>' +
         slides +
         '<button type="button" class="slider-arrow slider-arrow-next" aria-label="Siguiente imagen">&#8250;</button>' +
-        '<div class="slider-dots" aria-hidden="false">' + dots + '</div>' +
       '</div>';
     }
 
     var image = images[0];
     return '<img class="' + imageClass + '" src="' + getMediaSource(image) + '" alt="' + productName + '" loading="lazy" decoding="async"' + getMediaSizeAttributes(image, imageSizeAttributes) + '>';
-  }
-
-  function buildPublicationCardDeckHTML(images, productName) {
-    var cards = images.map(function (image, index) {
-      var src = getMediaSource(image);
-      return '<button type="button" class="publication-deck-card" data-card-index="' + index + '" aria-label="' + productName + ' imagen ' + (index + 1) + '">' +
-        '<img class="publication-deck-image" src="' + src + '" alt="' + productName + ' imagen ' + (index + 1) + '" loading="lazy" decoding="async">' +
-        '<span class="publication-deck-count">' + (index + 1) + ' / ' + images.length + '</span>' +
-      '</button>';
-    }).join("");
-
-    var controls = images.length > 1
-      ? '<div class="publication-deck-side-controls">' +
-          '<button type="button" class="publication-deck-side publication-deck-prev" aria-label="Imagen anterior">&#8249;</button>' +
-          '<button type="button" class="publication-deck-side publication-deck-next" aria-label="Siguiente imagen">&#8250;</button>' +
-        '</div>' +
-        '<div class="publication-deck-controls">' +
-          '<button type="button" class="publication-deck-prev" aria-label="Imagen anterior">Anterior</button>' +
-          '<button type="button" class="publication-deck-next" aria-label="Siguiente imagen">Siguiente</button>' +
-        '</div>'
-      : "";
-
-    return '<div class="publication-card-carousel" data-center-index="0">' +
-      '<div class="publication-deck">' + cards + '</div>' +
-      controls +
-    '</div>';
-  }
-
-  function initPublicationCardDeck(scope) {
-    var root = scope || document;
-    var carousel = root.querySelector(".publication-card-carousel");
-    if (!carousel) return;
-
-    var cards = Array.from(carousel.querySelectorAll(".publication-deck-card"));
-    var prevButtons = carousel.querySelectorAll(".publication-deck-prev");
-    var nextButtons = carousel.querySelectorAll(".publication-deck-next");
-    var centerIndex = 0;
-    var positions = [2, 3, 4, 0, 1];
-
-    function assignPositions() {
-      var count = cards.length;
-      cards.forEach(function (card, index) {
-        var slot = ((index - centerIndex) % count + count) % count;
-        var visualPos = typeof positions[slot] === "number" ? positions[slot] : 5;
-        card.setAttribute("data-pos", visualPos);
-        card.classList.toggle("is-center", visualPos === 2);
-      });
-    }
-
-    function rotate(direction) {
-      centerIndex = (centerIndex + direction + cards.length) % cards.length;
-      assignPositions();
-    }
-
-    cards.forEach(function (card) {
-      card.addEventListener("click", function (event) {
-        event.preventDefault();
-        var index = parseInt(card.getAttribute("data-card-index"), 10);
-        if (index !== centerIndex) {
-          centerIndex = index;
-          assignPositions();
-        }
-      });
-    });
-
-    prevButtons.forEach(function (button) {
-      button.addEventListener("click", function () {
-        rotate(-1);
-      });
-    });
-
-    nextButtons.forEach(function (button) {
-      button.addEventListener("click", function () {
-        rotate(1);
-      });
-    });
-
-    assignPositions();
   }
 
   function updateMediaAspectRatio(target, image) {
@@ -603,7 +520,6 @@
 
       var prevButton = slider.querySelector(".slider-arrow-prev");
       var nextButton = slider.querySelector(".slider-arrow-next");
-      var dots = slider.querySelectorAll(".slider-dot");
       var currentIndex = 0;
       var aspectTarget = slider.closest(".product-image") || slider;
 
@@ -615,9 +531,6 @@
         currentIndex = (index + slides.length) % slides.length;
         slides.forEach(function (slide, slideIndex) {
           slide.classList.toggle("is-active", slideIndex === currentIndex);
-        });
-        dots.forEach(function (dot, dotIndex) {
-          dot.classList.toggle("is-active", dotIndex === currentIndex);
         });
         syncSliderAspectRatio();
       }
@@ -647,16 +560,6 @@
       if (nextButton) {
         nextButton.addEventListener("click", onArrowClick(nextSlide));
       }
-
-      dots.forEach(function (dot) {
-        dot.addEventListener("click", function (event) {
-          event.preventDefault();
-          event.stopPropagation();
-          showSlide(parseInt(dot.getAttribute("data-slide-index"), 10));
-          stopSliderAuto(slider);
-          startSliderAuto(slider);
-        });
-      });
 
       slider._nextSlide = nextSlide;
 
@@ -694,7 +597,7 @@
       buildMediaHTML(images, "product-media-slider", "product-image-media", product.name, imageSizeAttrs) +
       '</div>';
 
-    return '<article class="product-card" data-product-id="' + product.id + '" role="button" tabindex="0" aria-label="Ver publicaciÃ³n de ' + product.name + '">' +
+    return '<article class="product-card" data-product-id="' + product.id + '" role="button" tabindex="0" aria-label="Ver publicación de ' + product.name + '">' +
       cardImageHTML +
       '<div class="product-body">' +
         '<div class="product-card-header">' +
@@ -783,38 +686,51 @@
     activeProduct = product;
     var images = getProductImages(product);
 
-    var publicationCardDeckHTML = buildPublicationCardDeckHTML(images, product.name);
+    var publicationImageHTML = buildMediaHTML(images, "publication-media", "publication-image", product.name, getProductImageSizeAttributes(product));
+    var recommendationText = getRecommendationText(product);
+    var priceNote = getPriceNote(product);
+    var publicationStatus = '<span class="publication-tag">Disponible</span>';
+
     productModalContent.innerHTML =
-      '<div class="publication-layout publication-layout-simple">' +
-        '<div class="publication-card-carousel-wrap">' +
-          '<div class="publication-gallery-card publication-gallery-card-deck">' +
-            publicationCardDeckHTML +
+      '<div class="publication-layout">' +
+        '<div class="publication-media-column">' +
+          '<div class="publication-gallery-card">' +
+            publicationImageHTML +
+          '</div>' +
+          '<div class="publication-recommendation-card">' +
+            '<span class="publication-panel-label">Recomendación Barush</span>' +
+            '<p class="publication-recommendation">' + recommendationText + '</p>' +
           '</div>' +
         '</div>' +
-        '<div class="publication-info publication-info-simple">' +
-          '<div class="publication-info-card publication-info-card-simple">' +
+        '<div class="publication-info">' +
+          '<div class="publication-info-card">' +
+            '<div class="publication-meta">' +
+              createCategoryBadge(product.category) +
+              publicationStatus +
+              '<span class="publication-tag publication-tag-muted">ID ' + product.id + '</span>' +
+            '</div>' +
             '<h2 class="publication-title" id="modalProductTitle">' + product.name + '</h2>' +
             '<p class="publication-description">' + product.description + '</p>' +
-            '<label class="order-label" for="orderInput">CuÃ©ntanos quÃ© detalle te interesa</label>' +
-            '<div class="publication-input-wrap">' +
-              '<svg class="publication-input-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4.2L19.7 8.5a2.1 2.1 0 0 0 0-3L18.5 4.3a2.1 2.1 0 0 0-3 0L4 15.8V20Zm2-2v-1.4l8.8-8.8 1.4 1.4L7.4 18H6Zm11.6-10.2-1.4-1.4.8-.8 1.4 1.4-.8.8Z"/></svg>' +
-              '<textarea id="orderInput" rows="4" placeholder="Ejemplo: talla, color, cantidad o ciudad de entrega"></textarea>' +
+            '<div class="publication-price-card">' +
+              '<span class="publication-price-label">' + getPublicationPriceLabel(product) + '</span>' +
+              '<div class="publication-price">' + getPublicationPriceHTML(product) + '</div>' +
+              '<p class="publication-price-note">' + priceNote + '</p>' +
             '</div>' +
+            '<div class="publication-support-grid">' +
+              '<div class="publication-support-item">' +
+                '<strong>Compra guiada</strong>' +
+                '<span>Te ayudamos a revisar dudas como talla, color, cantidad o disponibilidad antes de cerrar tu pedido.</span>' +
+              '</div>' +
+              '<div class="publication-support-item">' +
+                '<strong>Solicitud más rápida</strong>' +
+                '<span>' + getWhatsAppSupportCopy(product) + '</span>' +
+              '</div>' +
+            '</div>' +
+            '<label class="order-label" for="orderInput">Cuéntanos qué detalle te interesa</label>' +
+            '<textarea id="orderInput" rows="4" placeholder="Ejemplo: talla, color, cantidad o ciudad de entrega"></textarea>' +
             '<div class="publication-actions">' +
-              '<button class="btn whatsapp-order" id="whatsAppOrderButton" type="button"><svg class="button-whatsapp-icon" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 4a11.8 11.8 0 0 0-10 18.1L4.8 28l6-1.6A11.8 11.8 0 1 0 16 4Zm0 2.2a9.6 9.6 0 0 1 8.2 14.7 9.5 9.5 0 0 1-11.9 3.4l-.4-.2-3.5.9.9-3.4-.3-.5A9.6 9.6 0 0 1 16 6.2Zm-4.1 4.6c-.2 0-.5.1-.7.3-.4.4-1.3 1.3-1.3 3.1s1.3 3.6 1.5 3.9c.2.2 2.5 4 6.2 5.4 3 .1 3.7-.8 4.1-1.5.3-.6.3-1.3.2-1.5-.1-.2-.4-.3-.8-.5l-2.1-1c-.4-.1-.7-.2-1 .2-.3.4-.9 1.1-1.1 1.3-.2.2-.4.2-.8 0-.4-.2-1.5-.6-2.8-1.8-1-1-1.7-2.1-1.9-2.5-.2-.4 0-.6.2-.8l.6-.7c.2-.2.2-.4.3-.6.1-.2 0-.5 0-.7l-.9-2.2c-.2-.5-.5-.5-.7-.5h-.6Z"/></svg><span>Solicitar por WhatsApp</span></button>' +
+              '<button class="btn whatsapp-order" id="whatsAppOrderButton" type="button">Solicitar por WhatsApp</button>' +
               '<p class="publication-action-note">Abriremos un mensaje listo para enviar con los datos del producto.</p>' +
-            '</div>' +
-            '<div class="publication-trust-grid">' +
-              '<div class="publication-trust-item">' +
-                '<svg class="publication-trust-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4.5 5.2v5.9c0 4.7 3.1 8.9 7.5 10.2 4.4-1.3 7.5-5.5 7.5-10.2V5.2L12 2Zm0 2.2 5.5 2.3v4.6c0 3.6-2.2 6.9-5.5 8-3.3-1.1-5.5-4.4-5.5-8V6.5L12 4.2Zm3.7 5-4.8 4.9-2-2-1.4 1.4 3.4 3.4 6.2-6.3-1.4-1.4Z"/></svg>' +
-                '<strong>Compra segura</strong>' +
-                '<span>Tus datos estan protegidos y tu compra es 100% segura.</span>' +
-              '</div>' +
-              '<div class="publication-trust-item">' +
-                '<svg class="publication-trust-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h11v9h1.2l2-4H21v4h-1.1a3 3 0 0 1-5.8 0H9.9a3 3 0 0 1-5.8 0H3V5Zm2 2v5.2A3 3 0 0 1 9.9 12H12V7H5Zm11 5h3v-.1h-.6L16.9 9H16v3Zm-9 1.5A1.5 1.5 0 1 0 7 16.5 1.5 1.5 0 0 0 7 13.5Zm10 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Z"/></svg>' +
-                '<strong>Envio rapido</strong>' +
-                '<span>Recibe tu pedido en el menor tiempo posible.</span>' +
-              '</div>' +
             '</div>' +
           '</div>' +
         '</div>' +
@@ -823,7 +739,6 @@
     productModal.classList.add("open");
     productModal.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
-    initPublicationCardDeck(productModalContent);
 
     var whatsAppOrderButton = document.getElementById("whatsAppOrderButton");
     var orderInput = document.getElementById("orderInput");
@@ -835,7 +750,7 @@
           "ID: " + product.id + "\n" +
           "Producto: " + product.name + "\n";
 
-        text += "Â¿QuÃ© detalles buscas? " + userText;
+        text += "¿Qué detalles buscas? " + userText;
         var whatsappUrl = "https://api.whatsapp.com/send?text=" + encodeURIComponent(text);
         if (window.WHATSAPP_NUMBER && window.WHATSAPP_NUMBER.length > 0) {
           whatsappUrl = "https://api.whatsapp.com/send?phone=" + window.WHATSAPP_NUMBER + "&text=" + encodeURIComponent(text);
@@ -844,6 +759,8 @@
       });
     }
 
+    bindStandaloneMediaAspectRatio(productModalContent);
+    initImageSliders(productModalContent);
   }
 
   function closePublication() {

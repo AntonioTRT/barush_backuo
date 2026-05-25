@@ -82,42 +82,52 @@
   var tickingScroll = false;
 
   function init() {
-    populateCategories();
-    fetch("js/allowed_ids.json")
-      .then(response => response.json())
-      .then(data => {
-        let ids = [];
-        if (Array.isArray(data.allowed_ids) && data.allowed_ids.length > 0) {
-          ids = data.allowed_ids;
-        } else if (Array.isArray(data.all_ids) && data.all_ids.length > 0) {
-          ids = data.all_ids;
+      var hasCatalogUI = categoryFilter && categoryPills && searchInput && sortFilter && productGrid && resultsCount && activeCategoryState;
+
+      if (hasCatalogUI) {
+        populateCategories();
+      }
+
+      fetch("js/allowed_ids.json")
+        .then(response => response.json())
+        .then(data => {
+          let ids = [];
+          if (Array.isArray(data.allowed_ids) && data.allowed_ids.length > 0) {
+            ids = data.allowed_ids;
+          } else if (Array.isArray(data.all_ids) && data.all_ids.length > 0) {
+            ids = data.all_ids;
+          }
+          window.ALLOWED_IDS = ids;
+          window.WHATSAPP_NUMBER = data.whatsapp_number;
+          if (hasCatalogUI) {
+            render();
+          }
+        });
+
+      if (hasCatalogUI) {
+        searchInput.addEventListener("input", scheduleRender);
+        categoryFilter.addEventListener("change", render);
+        sortFilter.addEventListener("change", render);
+
+        if (resetCatalogFilters) {
+          resetCatalogFilters.addEventListener("click", resetCatalogView);
         }
-        window.ALLOWED_IDS = ids;
-        window.WHATSAPP_NUMBER = data.whatsapp_number;
-        render();
-      });
-    searchInput.addEventListener("input", scheduleRender);
-    categoryFilter.addEventListener("change", render);
-    sortFilter.addEventListener("change", render);
 
-    if (resetCatalogFilters) {
-      resetCatalogFilters.addEventListener("click", resetCatalogView);
-    }
+        productGrid.addEventListener("click", function (event) {
+          var card = event.target.closest(".product-card");
+          if (!card) return;
+          openPublication(parseInt(card.getAttribute("data-product-id"), 10));
+        });
 
-    productGrid.addEventListener("click", function (event) {
-      var card = event.target.closest(".product-card");
-      if (!card) return;
-      openPublication(parseInt(card.getAttribute("data-product-id"), 10));
-    });
-
-    productGrid.addEventListener("keydown", function (event) {
-      if (event.key !== "Enter" && event.key !== " ") return;
-      var card = event.target.closest(".product-card");
-      if (!card) return;
-      event.preventDefault();
-      openPublication(parseInt(card.getAttribute("data-product-id"), 10));
-    });
-
+        productGrid.addEventListener("keydown", function (event) {
+          if (event.key !== "Enter" && event.key !== " ") return;
+          var card = event.target.closest(".product-card");
+          if (!card) return;
+          event.preventDefault();
+          openPublication(parseInt(card.getAttribute("data-product-id"), 10));
+        });
+      }
+      populateFooterCategories();
     if (productModalClose) {
       productModalClose.addEventListener("click", closePublication);
     }
@@ -277,6 +287,7 @@
     });
 
     syncCategoryPills();
+    populateFooterCategories(categories);
   }
 
   function createCategoryPill(value, label) {
@@ -296,6 +307,24 @@
       render();
     });
     categoryPills.appendChild(button);
+  }
+
+  function populateFooterCategories(categories) {
+    var list = document.getElementById("footerCategoryList");
+    if (!list) return;
+
+    var footerCategories = categories || [...new Set(PRODUCTS.map(function (p) { return p.category; }))].sort();
+    list.innerHTML = "";
+
+    footerCategories.forEach(function (category) {
+      var meta = getCategoryMeta(category);
+      var item = document.createElement("li");
+      var link = document.createElement("a");
+      link.href = "index.html#catalogo";
+      link.innerHTML = '<span class="footer-category-icon" aria-hidden="true">' + meta.icon + '</span>' + category;
+      item.appendChild(link);
+      list.appendChild(item);
+    });
   }
 
   function syncCategoryPills() {

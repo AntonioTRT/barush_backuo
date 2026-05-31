@@ -515,13 +515,26 @@
     return fallbackAttributes || '';
   }
 
-  function buildMediaHTML(images, sliderClass, imageClass, productName, imageSizeAttributes) {
+  function getResponsiveImageAttributes(image, sizes) {
+    var src = getMediaSource(image);
+    if (!src || src.indexOf("img/catalogo/optimized/") === -1) {
+      return '';
+    }
+
+    var thumbSrc = src.replace("/optimized/", "/thumbs/");
+    return ' srcset="' + thumbSrc + ' 480w, ' + src + ' 900w" sizes="' + sizes + '"';
+  }
+
+  function buildMediaHTML(images, sliderClass, imageClass, productName, imageSizeAttributes, imageSizes) {
+    var sizes = imageSizes || "(max-width: 768px) 92vw, 560px";
+
     if (images.length > 1) {
       var slides = images.map(function (image, index) {
         var activeClass = index === 0 ? " is-active" : "";
         var src = getMediaSource(image);
         var sizeAttrs = getMediaSizeAttributes(image, imageSizeAttributes);
-        return '<img class="slide-image ' + imageClass + activeClass + '" src="' + src + '" alt="' + productName + ' imagen ' + (index + 1) + '" loading="lazy" decoding="async"' + sizeAttrs + '>';
+        var responsiveAttrs = getResponsiveImageAttributes(image, sizes);
+        return '<img class="slide-image ' + imageClass + activeClass + '" src="' + src + '" alt="' + productName + ' imagen ' + (index + 1) + '" loading="lazy" decoding="async"' + responsiveAttrs + sizeAttrs + '>';
       }).join("");
 
       return '<div class="image-slider ' + sliderClass + '">' +
@@ -532,7 +545,7 @@
     }
 
     var image = images[0];
-    return '<img class="' + imageClass + '" src="' + getMediaSource(image) + '" alt="' + productName + '" loading="lazy" decoding="async"' + getMediaSizeAttributes(image, imageSizeAttributes) + '>';
+    return '<img class="' + imageClass + '" src="' + getMediaSource(image) + '" alt="' + productName + '" loading="lazy" decoding="async"' + getResponsiveImageAttributes(image, sizes) + getMediaSizeAttributes(image, imageSizeAttributes) + '>';
   }
 
   function updateMediaAspectRatio(target, image) {
@@ -673,7 +686,7 @@
 
     var imageSizeAttrs = getProductImageSizeAttributes(product);
     var cardImageHTML = '<div class="product-image">' +
-      buildMediaHTML(images, "product-media-slider", "product-image-media", product.name, imageSizeAttrs) +
+      buildMediaHTML(images, "product-media-slider", "product-image-media", product.name, imageSizeAttrs, "(max-width: 768px) 50vw, 260px") +
       '</div>';
 
     return '<article class="product-card" data-product-id="' + product.id + '" role="button" tabindex="0" aria-label="Ver publicación de ' + product.name + '">' +
@@ -765,7 +778,7 @@
     activeProduct = product;
     var images = getProductImages(product);
 
-    var publicationImageHTML = buildMediaHTML(images, "publication-media", "publication-image", product.name, getProductImageSizeAttributes(product));
+    var publicationImageHTML = buildMediaHTML(images, "publication-media", "publication-image", product.name, getProductImageSizeAttributes(product), "(max-width: 768px) 92vw, 560px");
     var priceNote = getPriceNote(product);
     var publicationStatus = '<span class="publication-tag">Disponible</span>';
 

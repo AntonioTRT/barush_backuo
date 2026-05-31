@@ -241,7 +241,8 @@
       '<input id="commentEmail" type="email" placeholder="Tu email" />' +
       '<label for="commentText">Comentario</label>' +
       '<textarea id="commentText" rows="5" placeholder="Escribe aquí tu comentario..."></textarea>' +
-      '<button id="commentSubmit" class="comment-submit" type="button">Enviar comentario</button>';
+      '<button id="commentSubmit" class="comment-submit" type="button">Enviar comentario</button>' +
+      '<p id="commentStatus" class="comment-status" role="status" aria-live="polite"></p>';
 
     modal.classList.add("open");
     modal.setAttribute("aria-hidden", "false");
@@ -253,14 +254,61 @@
         var name = document.getElementById("commentName").value.trim();
         var email = document.getElementById("commentEmail").value.trim();
         var text = document.getElementById("commentText").value.trim();
+        var status = document.getElementById("commentStatus");
         if (!text) {
-          alert("Por favor escribe tu comentario antes de enviar.");
+          if (status) {
+            status.textContent = "Por favor escribe tu comentario antes de enviar.";
+            status.className = "comment-status is-error";
+          }
           return;
         }
 
-        var subject = encodeURIComponent("Comentario desde sitio Barush");
-        var body = encodeURIComponent("Nombre: " + (name || "No proporcionado") + "\nEmail: " + (email || "No proporcionado") + "\n\nComentario:\n" + text);
-        window.location.href = "mailto:baruch.usamx@gmail.com?subject=" + subject + "&body=" + body;
+        submit.disabled = true;
+        submit.textContent = "Enviando...";
+        if (status) {
+          status.textContent = "Enviando comentario sin salir de la página...";
+          status.className = "comment-status";
+        }
+
+        fetch("https://formsubmit.co/ajax/baruch.usamx@gmail.com", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify({
+            _subject: "Comentario desde sitio Barush",
+            _template: "table",
+            nombre: name || "No proporcionado",
+            email: email || "No proporcionado",
+            comentario: text
+          })
+        })
+          .then(function (response) {
+            if (!response.ok) {
+              throw new Error("No se pudo enviar el comentario.");
+            }
+            return response.json();
+          })
+          .then(function () {
+            if (status) {
+              status.textContent = "Comentario enviado correctamente. Gracias por escribirnos.";
+              status.className = "comment-status is-success";
+            }
+            document.getElementById("commentName").value = "";
+            document.getElementById("commentEmail").value = "";
+            document.getElementById("commentText").value = "";
+          })
+          .catch(function () {
+            if (status) {
+              status.textContent = "No se pudo enviar ahora. Intenta otra vez en unos minutos.";
+              status.className = "comment-status is-error";
+            }
+          })
+          .finally(function () {
+            submit.disabled = false;
+            submit.textContent = "Enviar comentario";
+          });
       });
     }
   }
@@ -518,8 +566,8 @@
   function shouldAutoRotateSlider(slider) {
     if (!slider) return false;
     if (prefersReducedMotion.matches) return false;
-    if (!prefersHover.matches) return false;
-    return slider.classList.contains("publication-media");
+    return slider.classList.contains("product-media-slider") ||
+      slider.classList.contains("publication-media");
   }
 
   function stopSliderAuto(slider) {
@@ -598,13 +646,15 @@
         }
       });
 
-      slider.addEventListener("mouseenter", function () {
-        stopSliderAuto(slider);
-      });
+      if (prefersHover.matches) {
+        slider.addEventListener("mouseenter", function () {
+          stopSliderAuto(slider);
+        });
 
-      slider.addEventListener("mouseleave", function () {
-        startSliderAuto(slider);
-      });
+        slider.addEventListener("mouseleave", function () {
+          startSliderAuto(slider);
+        });
+      }
 
       showSlide(0);
       if (sliderObserver && shouldAutoRotateSlider(slider)) {
@@ -716,7 +766,6 @@
     var images = getProductImages(product);
 
     var publicationImageHTML = buildMediaHTML(images, "publication-media", "publication-image", product.name, getProductImageSizeAttributes(product));
-    var recommendationText = getRecommendationText(product);
     var priceNote = getPriceNote(product);
     var publicationStatus = '<span class="publication-tag">Disponible</span>';
 
@@ -725,10 +774,6 @@
         '<div class="publication-media-column">' +
           '<div class="publication-gallery-card">' +
             publicationImageHTML +
-          '</div>' +
-          '<div class="publication-recommendation-card">' +
-            '<span class="publication-panel-label">Recomendación Barush</span>' +
-            '<p class="publication-recommendation">' + recommendationText + '</p>' +
           '</div>' +
         '</div>' +
         '<div class="publication-info">' +
@@ -745,21 +790,10 @@
               '<div class="publication-price">' + getPublicationPriceHTML(product) + '</div>' +
               '<p class="publication-price-note">' + priceNote + '</p>' +
             '</div>' +
-            '<div class="publication-support-grid">' +
-              '<div class="publication-support-item">' +
-                '<strong>Compra guiada</strong>' +
-                '<span>Te ayudamos a revisar dudas como talla, color, cantidad o disponibilidad antes de cerrar tu pedido.</span>' +
-              '</div>' +
-              '<div class="publication-support-item">' +
-                '<strong>Solicitud más rápida</strong>' +
-                '<span>' + getWhatsAppSupportCopy(product) + '</span>' +
-              '</div>' +
-            '</div>' +
             '<label class="order-label" for="orderInput">Cuéntanos qué detalle te interesa</label>' +
-            '<textarea id="orderInput" rows="4" placeholder="Ejemplo: talla, color, cantidad o ciudad de entrega"></textarea>' +
+            '<textarea id="orderInput" rows="3" placeholder="Talla, color, cantidad o ciudad de entrega"></textarea>' +
             '<div class="publication-actions">' +
               '<button class="btn whatsapp-order" id="whatsAppOrderButton" type="button">Solicitar por WhatsApp</button>' +
-              '<p class="publication-action-note">Abriremos un mensaje listo para enviar con los datos del producto.</p>' +
             '</div>' +
           '</div>' +
         '</div>' +

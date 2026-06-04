@@ -210,5 +210,38 @@ const PRODUCTS = [
       { src: "img/catalogo/optimized/catalago51.jpg", width: 1536, height: 1024 }
     ],
     offer: false
+  },
+  {
+    id: 16,
+    name: "Victoria secret body cream & body spray",
+    description: "Victoria secret body cream & body spray con cremas corporales y body sprays en aromas frescos, dulces y calidos. Las imagenes muestran sets de cuidado corporal en tonos rosa, azul, naranja y shimmer, con opciones como Aqua Kiss, Midnight Bloom, Bare Vanilla Vacation, Pure Seduction y presentaciones brillantes.",
+    price: null,
+    originalPrice: null,
+    category: "Belleza",
+    images: [
+      { src: "img/catalogo/optimized/catalago52.jpg", width: 1680, height: 945 },
+      { src: "img/catalogo/optimized/catalago53.jpg", width: 1680, height: 945 },
+      { src: "img/catalogo/optimized/catalago54.jpg", width: 1226, height: 1225 },
+      { src: "img/catalogo/optimized/catalago55.jpg", width: 1290, height: 1229 },
+      { src: "img/catalogo/optimized/catalago56.jpg", width: 1666, height: 929 }
+    ],
+    offer: false
+  },
+  {
+    id: 17,
+    name: "Fragancias Exclusivas",
+    description: "Fragancias Exclusivas con perfumes de diseno elegante y presencia sofisticada. Las imagenes muestran botellas Valentino en negro y rosa, Gucci Guilty en tono dorado, fragancias Jean Paul Gaultier con siluetas metalicas y Carolina Herrera Good Girl en presentaciones azul intenso, ideales para quienes buscan aromas distintivos para ocasiones especiales o uso diario.",
+    price: null,
+    originalPrice: null,
+    category: "Belleza",
+    images: [
+      { src: "img/catalogo/optimized/catalago57.jpg", width: 1154, height: 1363 },
+      { src: "img/catalogo/optimized/catalago58.jpg", width: 1162, height: 1354 },
+      { src: "img/catalogo/optimized/catalago59.jpg", width: 1051, height: 1496 },
+      { src: "img/catalogo/optimized/catalago60.jpg", width: 1448, height: 1086 },
+      { src: "img/catalogo/optimized/catalago61.jpg", width: 964, height: 1632 },
+      { src: "img/catalogo/optimized/catalago62.jpg", width: 986, height: 1594 }
+    ],
+    offer: false
   }
 ];

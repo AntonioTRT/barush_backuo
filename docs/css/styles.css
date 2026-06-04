@@ -3729,8 +3729,9 @@ a {
   }
 
   .image-slider .slide-image {
-    padding: 0;
-    object-fit: cover;
+    padding: 6px;
+    object-fit: contain;
+    object-position: center;
   }
 
   .slider-arrow {
@@ -3943,8 +3944,9 @@ a {
   }
 
   #catalogo .slide-image {
-    object-fit: cover !important;
-    padding: 0 !important;
+    object-fit: contain !important;
+    object-position: center !important;
+    padding: 6px !important;
   }
 
   #catalogo .product-body {

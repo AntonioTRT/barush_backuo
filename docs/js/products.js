@@ -243,5 +243,61 @@ const PRODUCTS = [
       { src: "img/catalogo/optimized/catalago62.jpg", width: 986, height: 1594 }
     ],
     offer: false
+  },
+  {
+    id: 18,
+    name: "Fragancias Rabanne | Colección Phantom & Fame",
+    description: "Fragancias Rabanne | Coleccion Phantom & Fame con disenos futuristas y llamativos. Las imagenes muestran Phantom en acabado plateado con detalles negro y rojo, junto a Fame en presentaciones doradas con detalles rojos y blancos, una coleccion pensada para destacar con aromas modernos, elegantes y con mucha personalidad.",
+    price: null,
+    originalPrice: null,
+    category: "Belleza",
+    images: [
+      { src: "img/catalogo/optimized/catalago63.jpg", width: 1143, height: 1376 },
+      { src: "img/catalogo/optimized/catalago64.jpg", width: 1114, height: 1411 },
+      { src: "img/catalogo/optimized/catalago65.jpg", width: 1056, height: 1490 },
+      { src: "img/catalogo/optimized/catalago66.jpg", width: 1023, height: 1537 }
+    ],
+    offer: false
+  },
+  {
+    id: 19,
+    name: "Bolsa Tote Premium Valentino Negra",
+    description: "Bolsa Tote Premium Valentino Negra con silueta amplia, acabado brillante y estilo elegante para uso diario o salidas especiales. La imagen muestra una tote negra con asas largas, logo V frontal en relieve y detalle de borlas laterales, pensada para combinar practicidad, presencia y un look sofisticado.",
+    price: null,
+    originalPrice: null,
+    category: "Accesorios",
+    images: [
+      { src: "img/catalogo/optimized/catalago67.jpg", width: 1321, height: 1191 }
+    ],
+    offer: false
+  },
+  {
+    id: 20,
+    name: "Modelos para Niña y Niño | Personajes y Moda",
+    description: "Modelos para Niña y Niño | Personajes y Moda con opciones coloridas, comodas y divertidas para uso diario. Las imagenes muestran tenis con personajes como Minecraft, Hello Kitty, Paw Patrol, Bluey y Sonic, ademas de modelos casuales tipo New Balance, Converse y Adidas, sandalias, zapatos con brillo, flats con flores y clogs estilo crocs para combinar juego, escuela y moda infantil.",
+    price: null,
+    originalPrice: null,
+    category: "Zapatos",
+    images: [
+      { src: "img/catalogo/optimized/catalago68.jpg", width: 1508, height: 1043 },
+      { src: "img/catalogo/optimized/catalago69.jpg", width: 1455, height: 1081 },
+      { src: "img/catalogo/optimized/catalago70.jpg", width: 1276, height: 1233 },
+      { src: "img/catalogo/optimized/catalago71.jpg", width: 1374, height: 1145 },
+      { src: "img/catalogo/optimized/catalago72.jpg", width: 1436, height: 1096 },
+      { src: "img/catalogo/optimized/catalago73.jpg", width: 1448, height: 1086 },
+      { src: "img/catalogo/optimized/catalago74.jpg", width: 1475, height: 1066 },
+      { src: "img/catalogo/optimized/catalago75.jpg", width: 1536, height: 1024 },
+      { src: "img/catalogo/optimized/catalago76.jpg", width: 1536, height: 1024 },
+      { src: "img/catalogo/optimized/catalago77.jpg", width: 1478, height: 1064 },
+      { src: "img/catalogo/optimized/catalago78.jpg", width: 1536, height: 1024 },
+      { src: "img/catalogo/optimized/catalago79.jpg", width: 1536, height: 1024 },
+      { src: "img/catalogo/optimized/catalago80.jpg", width: 1536, height: 1024 },
+      { src: "img/catalogo/optimized/catalago81.jpg", width: 1536, height: 1024 },
+      { src: "img/catalogo/optimized/catalago82.jpg", width: 1536, height: 1024 },
+      { src: "img/catalogo/optimized/catalago83.jpg", width: 1536, height: 1024 },
+      { src: "img/catalogo/optimized/catalago84.jpg", width: 1536, height: 1024 },
+      { src: "img/catalogo/optimized/catalago85.jpg", width: 1536, height: 1024 }
+    ],
+    offer: false
   }
 ];

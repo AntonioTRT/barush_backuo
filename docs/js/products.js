@@ -74,7 +74,8 @@ const PRODUCTS = [
     images: [
       "img/catalogo/optimized/catalago13.jpg",
       "img/catalogo/optimized/catalago14.jpg",
-      "img/catalogo/optimized/catalago15.jpg"
+      "img/catalogo/optimized/catalago15.jpg",
+      { src: "img/catalogo/optimized/catalago100.jpg", width: 1122, height: 1402 }
     ],
     offer: false
   },
@@ -297,6 +298,72 @@ const PRODUCTS = [
       { src: "img/catalogo/optimized/catalago83.jpg", width: 1536, height: 1024 },
       { src: "img/catalogo/optimized/catalago84.jpg", width: 1536, height: 1024 },
       { src: "img/catalogo/optimized/catalago85.jpg", width: 1536, height: 1024 }
+    ],
+    offer: false
+  },
+  {
+    id: 21,
+    name: "Chanclas Slide Premium Lululemon",
+    description: "Chanclas Slide Premium Lululemon con diseno minimalista, moderno y comodo para uso diario. La imagen muestra un par en tono beige neutro, con banda ancha de acabado tejido, plantilla moldeada y silueta ligera, ideal para descansar, viajar, ir a la alberca o completar un look casual.",
+    price: null,
+    originalPrice: null,
+    category: "Zapatos",
+    images: [
+      { src: "img/catalogo/optimized/catalago86.jpg", width: 1190, height: 1322 }
+    ],
+    offer: false
+  },
+  {
+    id: 22,
+    name: "Colección Premium de Calcetas Lululemon",
+    description: "Coleccion Premium de Calcetas Lululemon con opciones comodas y versatiles para uso diario, entrenamiento y yoga. Las imagenes muestran modelos blancos, negros, rosas y combinados, en largos crew y quarter, paquetes de varios pares y calcetas antiderrapantes con puntos de agarre, todas con un estilo deportivo limpio y moderno.",
+    price: null,
+    originalPrice: null,
+    category: "Ropa",
+    images: [
+      { src: "img/catalogo/optimized/catalago87.jpg", width: 1023, height: 1537 },
+      { src: "img/catalogo/optimized/catalago88.jpg", width: 1023, height: 1537 },
+      { src: "img/catalogo/optimized/catalago89.jpg", width: 1023, height: 1537 },
+      { src: "img/catalogo/optimized/catalago90.jpg", width: 1122, height: 1402 }
+    ],
+    offer: false
+  },
+  {
+    id: 23,
+    name: "Leggings y Conjuntos Premium Lululemon",
+    description: "Leggings y Conjuntos Premium Lululemon con ajuste comodo, estilo deportivo y siluetas versatiles para entrenamiento o uso casual. Las imagenes muestran leggings de cintura alta en tonos rojo, verde y negro, ademas de un conjunto azul coordinado con top deportivo de tirantes cruzados y leggings, ideal para yoga, gimnasio y actividades diarias.",
+    price: null,
+    originalPrice: null,
+    category: "Ropa",
+    images: [
+      { src: "img/catalogo/optimized/catalago91.jpg", width: 1426, height: 1103 },
+      { src: "img/catalogo/optimized/catalago92.jpg", width: 799, height: 1969 },
+      { src: "img/catalogo/optimized/catalago93.jpg", width: 1086, height: 1448 }
+    ],
+    offer: false
+  },
+  {
+    id: 24,
+    name: "Colección InvisiWear para Mujer Lululemon",
+    description: "Coleccion InvisiWear para Mujer Lululemon con ropa interior suave, ligera y disenada para brindar un acabado discreto bajo la ropa. Las imagenes muestran un paquete de tres bikinis de tiro medio en tonos vino, rosa y negro, con corte limpio y ajuste comodo para uso diario, entrenamiento o looks ajustados.",
+    price: null,
+    originalPrice: null,
+    category: "Ropa",
+    images: [
+      { src: "img/catalogo/optimized/catalago94.jpg", width: 1023, height: 1537 },
+      { src: "img/catalogo/optimized/catalago95.jpg", width: 400, height: 480 }
+    ],
+    offer: false
+  },
+  {
+    id: 26,
+    name: "Botellas de Hidratación Premium Lululemon",
+    description: "Botellas de Hidratacion Premium Lululemon con gran capacidad, estilo moderno y diseno practico para mantener tus bebidas a la mano. La imagen muestra una botella rosa de cuerpo alto, tapa deportiva, asa lateral y correa con logotipo, ideal para gimnasio, trabajo, viajes y actividades diarias.",
+    price: null,
+    originalPrice: null,
+    category: "Hogar",
+    images: [
+      { src: "img/catalogo/optimized/catalago99.jpg", width: 881, height: 1785 }
     ],
     offer: false
   }

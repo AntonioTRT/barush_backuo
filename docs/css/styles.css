@@ -3418,6 +3418,28 @@ a {
   }
 }
 
+/* Keep the tall Lululemon bottle compact inside its product card. */
+#catalogo .product-card[data-product-id="26"] .product-image {
+  min-height: 0 !important;
+  aspect-ratio: 1 / 1 !important;
+}
+
+#catalogo .product-card[data-product-id="26"] .product-image-media {
+  display: block;
+  width: 62% !important;
+  height: 88% !important;
+  margin: auto;
+  object-fit: contain !important;
+  object-position: center !important;
+}
+
+@media (max-width: 480px) {
+  #catalogo .product-card[data-product-id="26"] .product-image-media {
+    width: 58% !important;
+    height: 84% !important;
+  }
+}
+
 /* Compact layout requested: smaller cards and catalog blocks on all viewports. */
 .section-header {
   margin-bottom: 34px;

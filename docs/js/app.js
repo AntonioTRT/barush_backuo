@@ -550,6 +550,7 @@
 
   function updateMediaAspectRatio(target, image) {
     if (!target || !image || !image.naturalWidth || !image.naturalHeight) return;
+    if (target.classList && target.classList.contains("product-image")) return;
     target.style.setProperty("--media-aspect-ratio", image.naturalWidth + " / " + image.naturalHeight);
   }
 
@@ -670,6 +671,7 @@
       }
 
       showSlide(0);
+      startSliderAuto(slider);
       if (sliderObserver && shouldAutoRotateSlider(slider)) {
         sliderObserver.observe(slider);
       } else {

@@ -4169,3 +4169,34 @@ a {
     font-size: 0.8rem !important;
   }
 }
+
+/* Final catalog sizing guard: every product card keeps the same media box. */
+#catalogo .product-card {
+  height: 100%;
+}
+
+#catalogo .product-image {
+  aspect-ratio: 1 / 1 !important;
+  min-height: 0 !important;
+  height: auto !important;
+  flex: 0 0 auto;
+}
+
+#catalogo .product-image-media,
+#catalogo .product-media-slider,
+#catalogo .image-slider,
+#catalogo .slide-image {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 0 !important;
+}
+
+#catalogo .product-image-media,
+#catalogo .slide-image {
+  object-fit: contain !important;
+  object-position: center !important;
+}
+
+#catalogo .product-body {
+  flex: 1 1 auto;
+}

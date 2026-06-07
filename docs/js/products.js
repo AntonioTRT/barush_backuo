@@ -356,6 +356,22 @@ const PRODUCTS = [
     offer: false
   },
   {
+    id: 25,
+    name: "Bolsos Premium Karl Lagerfeld",
+    description: "Bolsos Premium Karl Lagerfeld con disenos elegantes, modernos y de presencia sofisticada. Las imagenes muestran bolsos en tonos camel, blanco y negro, con asas de mano, correas tipo crossbody, cadenas metalicas, dijes decorativos y detalles inspirados en Paris, ideales para complementar looks casuales, ejecutivos o de ocasion especial.",
+    price: null,
+    originalPrice: null,
+    category: "Accesorios",
+    images: [
+      { src: "img/catalogo/optimized/catalago101.jpg", width: 1168, height: 1347 },
+      { src: "img/catalogo/optimized/102.jpg", width: 1187, height: 1325 },
+      { src: "img/catalogo/optimized/103.jpg", width: 1122, height: 1402 },
+      { src: "img/catalogo/optimized/104.jpg", width: 1177, height: 1337 },
+      { src: "img/catalogo/optimized/105.jpg", width: 1153, height: 1364 }
+    ],
+    offer: false
+  },
+  {
     id: 26,
     name: "Botellas de Hidratación Premium Lululemon",
     description: "Botellas de Hidratacion Premium Lululemon con gran capacidad, estilo moderno y diseno practico para mantener tus bebidas a la mano. La imagen muestra una botella rosa de cuerpo alto, tapa deportiva, asa lateral y correa con logotipo, ideal para gimnasio, trabajo, viajes y actividades diarias.",
@@ -364,6 +380,47 @@ const PRODUCTS = [
     category: "Hogar",
     images: [
       { src: "img/catalogo/optimized/catalago99.jpg", width: 881, height: 1785 }
+    ],
+    offer: false
+  },
+  {
+    id: 27,
+    name: "Colección de Bolsos Premium Lululemon",
+    description: "Coleccion de Bolsos Premium Lululemon con accesorios compactos, modernos y faciles de combinar para uso diario, gimnasio o salidas casuales. Las imagenes muestran bolsos en tonos verde suave, negro y vino, con correas ajustables, cierres metalicos, cadena decorativa y detalles discretos del logotipo, pensados para llevar lo esencial con estilo limpio y funcional.",
+    price: null,
+    originalPrice: null,
+    category: "Accesorios",
+    images: [
+      { src: "img/catalogo/optimized/catalago96.jpg", width: 1086, height: 1448 },
+      { src: "img/catalogo/optimized/catalago97.jpg", width: 1288, height: 1221 },
+      { src: "img/catalogo/optimized/catalago98.jpg", width: 1426, height: 1103 }
+    ],
+    offer: false
+  },
+  {
+    id: 28,
+    name: "Fragancias y Cuidado Corporal Bath & Body Works",
+    description: "Fragancias y Cuidado Corporal Bath & Body Works con una seleccion amplia de aromas para el hogar, manos y cuerpo. Las imagenes muestran velas aromaticas White Barn, geles antibacteriales, jabones espumosos, cremas corporales, body mist y colecciones especiales con notas florales, frutales, dulces, frescas y relajantes como lavanda, vainilla, champagne, cactus blossom, lilas, durazno y pina tropical.",
+    price: null,
+    originalPrice: null,
+    category: "Belleza",
+    images: [
+      { src: "img/catalogo/optimized/catalago106.jpg", width: 969, height: 1624 },
+      { src: "img/catalogo/optimized/catalago107.jpg", width: 1028, height: 1529 },
+      { src: "img/catalogo/optimized/catalago108.jpg", width: 1349, height: 1166 },
+      { src: "img/catalogo/optimized/catalago109.jpg", width: 1060, height: 1484 },
+      { src: "img/catalogo/optimized/catalago110.jpg", width: 941, height: 1672 },
+      { src: "img/catalogo/optimized/catalago111.jpg", width: 1072, height: 1467 },
+      { src: "img/catalogo/optimized/catalago112.jpg", width: 1571, height: 1001 },
+      { src: "img/catalogo/optimized/catalago113.jpg", width: 1254, height: 1254 },
+      { src: "img/catalogo/optimized/catalago114.jpg", width: 1448, height: 1086 },
+      { src: "img/catalogo/optimized/catalago115.jpg", width: 1536, height: 1024 },
+      { src: "img/catalogo/optimized/catalago116.jpg", width: 1254, height: 1254 },
+      { src: "img/catalogo/optimized/catalago117.jpg", width: 1254, height: 1254 },
+      { src: "img/catalogo/optimized/catalago118.jpg", width: 1254, height: 1254 },
+      { src: "img/catalogo/optimized/catalago119.jpg", width: 1774, height: 887 },
+      { src: "img/catalogo/optimized/catalago120.jpg", width: 1254, height: 1254 },
+      { src: "img/catalogo/optimized/catalago121.jpg", width: 1402, height: 1122 }
     ],
     offer: false
   }

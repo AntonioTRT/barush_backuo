@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <!-- ===== HEADER / NAVEGACION ===== -->
   <header class="header">
     <div class="container">
       <div class="header-content">
@@ -29,25 +28,135 @@
   </header>
 
   <main>
-    <section class="faq-section container">
-      <h2>Preguntas Frecuentes (FAQ)</h2>
-      <div class="faq-item">
-        <h3>¿Cómo puedo hacer un pedido?</h3>
-        <p>Puedes hacer un pedido contactándonos por WhatsApp o a través de nuestro catálogo en línea.</p>
+    <section class="faq-section">
+      <div class="container">
+        <div class="faq-heading">
+          <h2>Preguntas Frecuentes (FAQ)</h2>
+          <div class="faq-divider" aria-hidden="true"><span></span><i class="fa-regular fa-gem"></i><span></span></div>
+          <p>Encuentra respuestas a las dudas más comunes sobre nuestros productos y servicios. Si no encuentras lo que buscas, nuestro equipo estará encantado de ayudarte.</p>
+        </div>
+
+        <div class="faq-grid">
+          <div class="faq-column">
+            <details class="faq-card" open>
+              <summary>
+                <span class="faq-icon"><i class="fa-solid fa-box-open"></i></span>
+                <span>¿Cómo puedo realizar un pedido?</span>
+                <i class="fa-solid fa-chevron-down faq-chevron"></i>
+              </summary>
+              <p>Puedes realizar tu pedido desde nuestro catálogo en línea o escribirnos por WhatsApp. Te ayudaremos a confirmar disponibilidad, detalles del producto y tiempo estimado de entrega.</p>
+            </details>
+
+            <details class="faq-card">
+              <summary>
+                <span class="faq-icon"><i class="fa-solid fa-truck"></i></span>
+                <span>¿Cuánto tarda en llegar mi pedido?</span>
+                <i class="fa-solid fa-chevron-down faq-chevron"></i>
+              </summary>
+              <p>El tiempo de entrega depende del producto, proveedor y ciudad de destino. Al confirmar tu pedido te compartimos una fecha estimada y te mantenemos informado durante el proceso.</p>
+            </details>
+
+            <details class="faq-card">
+              <summary>
+                <span class="faq-icon"><i class="fa-solid fa-location-dot"></i></span>
+                <span>¿Puedo rastrear mi pedido?</span>
+                <i class="fa-solid fa-chevron-down faq-chevron"></i>
+              </summary>
+              <p>Sí. Cuando el pedido sea enviado, te compartiremos la guía o información disponible para que puedas dar seguimiento a tu compra.</p>
+            </details>
+
+            <details class="faq-card">
+              <summary>
+                <span class="faq-icon"><i class="fa-regular fa-credit-card"></i></span>
+                <span>¿Qué métodos de pago aceptan?</span>
+                <i class="fa-solid fa-chevron-down faq-chevron"></i>
+              </summary>
+              <p>Aceptamos métodos seguros como transferencia bancaria y opciones disponibles según el tipo de pedido. Antes de pagar, confirmamos contigo todos los detalles.</p>
+            </details>
+
+            <details class="faq-card">
+              <summary>
+                <span class="faq-icon"><i class="fa-solid fa-arrows-rotate"></i></span>
+                <span>¿Puedo cancelar o modificar mi pedido?</span>
+                <i class="fa-solid fa-chevron-down faq-chevron"></i>
+              </summary>
+              <p>Si tu pedido aún no ha sido procesado, podemos revisar cambios o cancelación. Escríbenos lo antes posible para ayudarte con la mejor opción disponible.</p>
+            </details>
+          </div>
+
+          <div class="faq-column">
+            <details class="faq-card">
+              <summary>
+                <span class="faq-icon"><i class="fa-solid fa-globe"></i></span>
+                <span>¿Realizan envíos a todo México?</span>
+                <i class="fa-solid fa-chevron-down faq-chevron"></i>
+              </summary>
+              <p>Sí, trabajamos con envíos dentro de México. La cobertura, costo y tiempo de entrega se revisan de acuerdo con tu ubicación y el producto solicitado.</p>
+            </details>
+
+            <details class="faq-card">
+              <summary>
+                <span class="faq-icon"><i class="fa-solid fa-shield-halved"></i></span>
+                <span>¿Los productos tienen garantía?</span>
+                <i class="fa-solid fa-chevron-down faq-chevron"></i>
+              </summary>
+              <p>Cada producto puede tener condiciones distintas. Si aplica garantía o revisión por defecto, te explicamos el proceso antes de cerrar la compra.</p>
+            </details>
+
+            <details class="faq-card">
+              <summary>
+                <span class="faq-icon"><i class="fa-solid fa-headset"></i></span>
+                <span>¿Cómo puedo contactar al equipo de soporte?</span>
+                <i class="fa-solid fa-chevron-down faq-chevron"></i>
+              </summary>
+              <p>Puedes escribirnos por WhatsApp o por nuestras redes sociales. Te responderemos con atención personalizada para resolver tus dudas.</p>
+            </details>
+
+            <div class="faq-help-card">
+              <span class="faq-help-icon">?</span>
+              <div>
+                <h3>¿No encontré mi pregunta?</h3>
+                <p>Si tienes alguna duda adicional, estaremos encantados de ayudarte. Contáctanos y responderemos lo antes posible.</p>
+                <a class="faq-whatsapp-btn" href="https://api.whatsapp.com/send?phone=18304156891&text=Hola%2C%20tengo%20una%20pregunta%20sobre%20Baruch." target="_blank" rel="noopener">
+                  <i class="fa-brands fa-whatsapp"></i>
+                  Contactarnos por WhatsApp
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-trust-strip" aria-label="Beneficios de Baruch">
+          <div class="faq-trust-item">
+            <i class="fa-solid fa-shield-halved"></i>
+            <div>
+              <h3>Compra segura</h3>
+              <p>Tus datos y pagos están protegidos.</p>
+            </div>
+          </div>
+          <div class="faq-trust-item">
+            <i class="fa-solid fa-cube"></i>
+            <div>
+              <h3>Envíos confiables</h3>
+              <p>Trabajamos con opciones seguras y rastreables.</p>
+            </div>
+          </div>
+          <div class="faq-trust-item">
+            <i class="fa-solid fa-award"></i>
+            <div>
+              <h3>Productos de calidad</h3>
+              <p>Seleccionamos lo mejor para ti.</p>
+            </div>
+          </div>
+          <div class="faq-trust-item">
+            <i class="fa-solid fa-headset"></i>
+            <div>
+              <h3>Atención personalizada</h3>
+              <p>Estamos aquí para ayudarte en cada paso.</p>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="faq-item">
-        <h3>¿Cuánto tarda en llegar mi pedido?</h3>
-        <p>El tiempo de entrega depende del proveedor y la ubicación, pero normalmente es de 7 a 15 días hábiles.</p>
-      </div>
-      <div class="faq-item">
-        <h3>¿Puedo rastrear mi pedido?</h3>
-        <p>Sí, te proporcionaremos un número de rastreo una vez que tu pedido haya sido enviado.</p>
-      </div>
-      <div class="faq-item">
-        <h3>¿Qué métodos de pago aceptan?</h3>
-        <p>Aceptamos transferencias bancarias, pagos con tarjeta y otros métodos seguros.</p>
-      </div>
-      <!-- Agrega más preguntas aquí -->
     </section>
   </main>
 
@@ -106,7 +215,7 @@
       <div class="footer-column">
         <h3>Categorías</h3>
         <ul id="footerCategoryList">
-          <li>Cargando categorías…</li>
+          <li>Cargando categorías...</li>
         </ul>
       </div>
 
@@ -122,7 +231,7 @@
     </div>
 
     <div class="footer-bottom">
-      <p>♡ Gracias por elegir <strong>Baruch.</strong></p>
+      <p>Gracias por elegir <strong>Baruch.</strong></p>
       <p>© 2026 Baruch. Todos los derechos reservados. | Personal Shop Assistant</p>
     </div>
   </footer>
